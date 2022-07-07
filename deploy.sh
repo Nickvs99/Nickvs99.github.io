@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 BRANCH_NAME="gh-pages"
+COMMIT_HASH=$(git rev-parse --short HEAD)
 
 # abort on errors
 set -e
@@ -18,7 +19,7 @@ git init
 git checkout -b $BRANCH_NAME
 
 git add -A
-git commit -m 'deploy'
+git commit -m "deploy ${COMMIT_HASH}" 
 
 git remote add origin https://github.com/Nickvs99/Nickvs99.github.io.git
 git push -f origin $BRANCH_NAME
