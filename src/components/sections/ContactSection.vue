@@ -1,12 +1,17 @@
 <template>
 
-<div id="contact-section">
+<GenericSection id="contact-section">
     <h1>Contact</h1>
-</div>
+</GenericSection>
 
 </template>
 
 <script>
+
+import GenericSection from "./GenericSection.vue"
+export default {
+  components: { GenericSection }
+}
 
 </script>
 
