@@ -1,18 +1,32 @@
 <template>
-    <button @click="scrollToTargetOffset()"> {{ content }} </button>
+    <button @click="scrollToTargetOffset()" class="navbar-item" :class="{active: isActive}"> {{ content }} </button>
 </template>
 
 <script>
 
 export default {
     props: ["content", "section_id"],
+    
+    data() {
+        return {
+            isActive: false,
+        }
+    },
+    
+    mounted() {
+        window.addEventListener("scroll", this.onScroll);
+    },
+    unmounted() {
+        window.removeEventListener("scroll", this.onScroll);
+    },
+
     methods: {
         
         /**
          * Scrolls towards the associated region. A offset is applied such
          * that the navigation bar does not overlap with the section. 
          */
-        scrollToTargetOffset(){
+        scrollToTargetOffset() {
             let target = document.getElementById(this.section_id);
             let targetPosition = target.getBoundingClientRect().top;
 
@@ -20,12 +34,48 @@ export default {
             let offsetPosition = targetPosition + window.pageYOffset - offset;
 
             window.scrollTo({top: offsetPosition, behavior: "smooth"});
-        }
-    }
+        },
+
+        /**
+         * Checks if the associated section is at the top of the viewport
+         */
+        isAtTopOfViewport() { 
+            let navbarBottomPosition = document.getElementById("navbar").getBoundingClientRect().bottom;
+
+            let els = document.elementsFromPoint(window.innerWidth / 2, navbarBottomPosition);
+
+            for (let el of els){
+                if (el.id === this.section_id) {
+                    return true;
+                }
+            }
+            return false;
+        },
+
+        onScroll() {
+            this.isActive = this.isAtTopOfViewport();
+        },
+    }   
 }
 
 </script>
 
 <style>
+
+/* TEMP styling */
+.navbar-item {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.navbar-item.active {
+    color: red;
+}
 
 </style>
