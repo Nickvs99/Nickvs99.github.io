@@ -21,4 +21,9 @@ export default {
 
 <style>
 
+#navbar {
+    position: sticky;
+    top: 0px;
+}
+
 </style>
