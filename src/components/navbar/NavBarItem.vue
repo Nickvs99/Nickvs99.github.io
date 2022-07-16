@@ -78,4 +78,8 @@ export default {
     color: red;
 }
 
+.navbar-item.collapsed {
+    background-color: blue;
+}
+
 </style>
