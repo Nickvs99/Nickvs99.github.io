@@ -1,3 +1,14 @@
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+  
+/* Removes the default margin from vue */
+body { 
+    margin: 0;
+  }
+
 .hidden {
     display: none !important;
 }

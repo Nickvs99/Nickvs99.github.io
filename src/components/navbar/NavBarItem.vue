@@ -64,7 +64,7 @@ export default {
 
 /* TEMP styling */
 .navbar-item {
-    background-color: #4CAF50; /* Green */
+    background-color: transparent;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -74,12 +74,25 @@ export default {
     font-size: 16px;
 }
 
+.navbar-item:hover {
+    background-color:rgba(0, 0, 0, 0.1);
+}
+
+/* On click */
+.navbar-item:active {
+    background-color:rgba(0, 0, 0, 0.35);
+}
+
 .navbar-item.active {
-    color: red;
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
 }
 
 .navbar-item.collapsed {
-    background-color: blue;
+    width: 100%;
+    text-align: left;
 }
 
 </style>

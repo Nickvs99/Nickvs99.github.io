@@ -2,14 +2,14 @@
 
 <div id="navbar" :class="{collapsed: isCollapsed}">
 
-    <button id="menu-button" 
+    <button id="menu-button" class="navbar-item" 
             :class="{hidden: !isCollapsed, active: menuActive}"
             @click="toggleMenu()"
             >
             Menu
     </button>
 
-    <div id="navbar-collapsable-content" :class="{hidden: isCollapsed && !menuActive}">
+    <div id="navbar-collapsable-content" :class="{hidden: isCollapsed && !menuActive, collapsed: isCollapsed}">
         <NavBarItem content="Home" section_id="home-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
         <NavBarItem content="About me" section_id="aboutme-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
         <NavBarItem content="Projects" section_id="project-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
@@ -90,22 +90,27 @@ export default {
 <style>
 
 #navbar {
+    background-color: #4CAF50; /* Green */
     position: sticky;
     top: 0px;
+    width: 100%;
 }
 
-#navbar.collapsed {
-    background-color: red;
+#navbar-collapsable-content {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#navbar-collapsable-content.collapsed {
+    display: block;
 }
 
 #menu-button {
     display: inline-block;
-    background-color: pink;
 }
 
 #menu-button.active {
     display: inline-block;
-    background-color: yellow;
 }
 
 </style>
