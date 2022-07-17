@@ -9,7 +9,7 @@
             Menu
     </button>
 
-    <div id="navbar-collapsable-content" :class="{hidden: isCollapsed && !menuActive, collapsed: isCollapsed}">
+    <div id="navbar-collapsable-content" :class="{'menu-active': isCollapsed && menuActive, collapsed: isCollapsed}">
         <NavBarItem content="Home" section_id="home-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
         <NavBarItem content="About me" section_id="aboutme-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
         <NavBarItem content="Projects" section_id="project-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
@@ -105,6 +105,17 @@ export default {
 #navbar-collapsable-content.collapsed {
     display: block;
     position: absolute;
+    overflow: hidden;
+}
+
+#navbar-collapsable-content.collapsed.menu-active {
+    max-height: 240px; /* TODO Ideally set through js, works for now */
+    transition: max-height 0.5s ease-out;
+}
+
+#navbar-collapsable-content.collapsed:not(.menu-active) { 
+    max-height: 0px;
+    transition: max-height 0.25s ease-out;
 }
 
 #menu-button {
