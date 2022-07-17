@@ -97,12 +97,14 @@ export default {
 }
 
 #navbar-collapsable-content {
+    background-color: #4CAF50; /* Green */
     display: flex;
     justify-content: flex-end;
 }
 
 #navbar-collapsable-content.collapsed {
     display: block;
+    position: absolute;
 }
 
 #menu-button {
