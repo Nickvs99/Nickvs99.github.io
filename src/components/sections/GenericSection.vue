@@ -16,7 +16,6 @@
 
 .section {
     background-color: pink;
-    height: 250px;
 }
 
 </style>
