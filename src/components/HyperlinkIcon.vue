@@ -1,9 +1,9 @@
 <template>
-    <a :href="`${href}`"> 
+    <a :href="`${href}`" class="anchor"> 
 
         <EquilateralShape n="6" radius="50" offset="0" class="hexagon-icon"/>
-        <!-- <img :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img"> -->
-        <!-- <EquilateralShape/> -->
+        <img :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img">
+
     </a>
 </template>
 
@@ -21,13 +21,8 @@ export default {
 
 <style>
 
-/* TEMP styling */
-.trapezoid {
-	border-bottom: 50px solid #555;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	height: 0;
-	width: 125px;
+.anchor {
+    position: relative;
 }
 
 .hexagon-icon {
@@ -35,8 +30,15 @@ export default {
 }
 
 .icon-img {
-    max-width:100%;
-    max-height:100%;
+
+    position: absolute;
+    transform-origin: center;
+
+    bottom: 25px;
+    left: 25px;
+
+    width:50px;
+    height:50px;
 }
 
 </style>
