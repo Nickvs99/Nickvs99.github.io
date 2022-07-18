@@ -1,5 +1,5 @@
 <template>
-    <a :href="`${href}`" class="anchor"> 
+    <a :href="`${href}`" class="anchor"  target=”_blank”> 
 
         <EquilateralShape n="6" radius="50" offset="0" class="hexagon-icon"/>
         <img :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img">
