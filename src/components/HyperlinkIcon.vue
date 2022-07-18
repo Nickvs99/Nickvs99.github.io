@@ -1,19 +1,20 @@
 <template>
-    <a :href="`${href}`">
-        
-        <div class="trapezoid ">
-        
-            <img :src="require(`@/${src_icon}`)" :alt="`${src_alt}`">
+    <a :href="`${href}`"> 
 
-        </div>
+        <EquilateralShape n="6" radius="50" offset="0" class="hexagon-icon"/>
+        <!-- <img :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img"> -->
+        <!-- <EquilateralShape/> -->
     </a>
 </template>
 
 
 <script>
 
+import EquilateralShape from "@/components/shapes/EquilateralShape.vue"
+
 export default {
     props: ["href", "src_icon", "src_alt"],
+    components: {EquilateralShape},
 }
 
 </script>
@@ -27,6 +28,15 @@ export default {
 	border-right: 25px solid transparent;
 	height: 0;
 	width: 125px;
+}
+
+.hexagon-icon {
+    fill: yellow;
+}
+
+.icon-img {
+    max-width:100%;
+    max-height:100%;
 }
 
 </style>

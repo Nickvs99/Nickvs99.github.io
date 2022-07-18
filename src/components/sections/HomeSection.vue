@@ -7,10 +7,10 @@
     
     <img src="@/assets/me.jpg" alt="Picture of me" width="200">
 
+    <HyperlinkIcon href="https://www.github.com" src_icon="assets/email-icon.jpg" src_alt="Email icon"/>
     <HyperlinkIcon href="https://www.github.com" src_icon="assets/github-logo.png" src_alt="Github logo"/>
-    <HyperlinkIcon href="https://www.github.com" src_icon="assets/github-logo.png" src_alt="Github logo"/>
-    <HyperlinkIcon href="https://www.github.com" src_icon="assets/github-logo.png" src_alt="Github logo"/>
-    <HyperlinkIcon href="https://www.github.com" src_icon="assets/github-logo.png" src_alt="Github logo"/>
+    <HyperlinkIcon href="https://www.github.com" src_icon="assets/linkedin-logo.png" src_alt="LinkedIn logo"/>
+    <HyperlinkIcon href="https://www.github.com" src_icon="assets/cv-icon.jpg" src_alt="CV icon"/>
 
 </GenericSection>
 
