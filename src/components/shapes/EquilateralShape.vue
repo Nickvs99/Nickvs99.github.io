@@ -39,8 +39,6 @@ export default {
 
                 angle += rotation;
             }
-
-            console.log(points);
             
             return points.join(" ")
         }
