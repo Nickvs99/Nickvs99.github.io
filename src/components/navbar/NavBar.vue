@@ -87,17 +87,17 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
 #navbar {
-    background-color: #4CAF50; /* Green */
+    background-color: $primary-color; 
     position: sticky;
     top: 0px;
     width: 100%;
 }
 
 #navbar-collapsable-content {
-    background-color: #4CAF50; /* Green */
+    background-color: $primary-color; 
     display: flex;
     justify-content: flex-end;
 }

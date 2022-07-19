@@ -31,7 +31,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
 #home-section {
     background: #f9f4ea;
@@ -40,13 +40,12 @@ export default {
 #home-text-container {
     margin-left: 10%;
     max-width: 500px;
-}
 
-@media(max-width: 480px){
-    #home-text-container{
-        margin-left: 0%;
+    @media(max-width: $sm-screen-width){
+        margin-left: 0;
     }
 }
+
 #profile-img {
   border-radius: 30px;
   width: 200px;
@@ -57,7 +56,7 @@ export default {
 }
 
 #title-greeting {
-    color: green;
+    color: $primary-color;
 }
 
 </style>
