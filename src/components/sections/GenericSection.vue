@@ -15,7 +15,8 @@
 <style>
 
 .section {
-    background-color: pink;
+    overflow: auto;
+    padding: 0 10px;
 }
 
 </style>
