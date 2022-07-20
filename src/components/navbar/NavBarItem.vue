@@ -60,7 +60,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
 /* TEMP styling */
 .navbar-item {
@@ -75,12 +75,12 @@ export default {
 }
 
 .navbar-item:hover {
-    background-color:rgba(0, 0, 0, 0.1);
+    background-color: $primary-color-dark;
 }
 
 /* On click */
 .navbar-item:active {
-    background-color:rgba(0, 0, 0, 0.35);
+    background-color: $primary-color-darkest;
 }
 
 .navbar-item.active {
