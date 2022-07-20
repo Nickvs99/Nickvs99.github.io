@@ -50,8 +50,8 @@ export default {
 <style>
 
 .polygon-container {
-    background-color:purple;
     width: var(--width);
     height: var(--width);
 }
+
 </style>

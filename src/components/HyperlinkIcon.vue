@@ -19,7 +19,16 @@ export default {
     data () {
         return {
             radius: 50,
+            maxRadius: 50,
         }
+    },
+
+    mounted() {
+        window.addEventListener("resize", this.setRadius);
+        this.setRadius();
+    }, 
+    unmounted() {
+        window.removeEventListener("resize", this.setRadius);
     },
 
     computed: {
@@ -29,19 +38,39 @@ export default {
                 '--icon-offset': (this.radius / 2) + "px", // Places icon at the center
             }
         }
+    },
+
+    methods : {
+        
+        /** 
+         * Adapts the radius based on the width available.
+         */
+        setRadius() {
+            let container = document.getElementById("hyperlink-container");
+
+            let style = getComputedStyle(container);
+            let containerPadding = parseInt(style.paddingRight);
+            let containerWidth = container.getBoundingClientRect().width;   
+            
+            let elementWidth = (containerWidth - 2 * containerPadding) / container.children.length;
+
+            this.radius = Math.min(elementWidth / 2, this.maxRadius);
+        }
     }
 }
 
 </script>
 
-<style>
+<style lang="scss">
 
 .anchor {
     position: relative;
 }
 
 .hexagon-icon {
-    fill: yellow;
+    fill: $primary-color;
+    stroke: $primary-color-dark;
+    stroke-width: 2px;
 }
 
 .icon-img {
