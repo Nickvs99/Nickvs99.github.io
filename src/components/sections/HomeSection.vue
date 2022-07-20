@@ -2,19 +2,22 @@
 
 <GenericSection id="home-section">
 
-    <div id="home-text-container">
-        <h1 id="title-greeting">Hi, I'm Nick</h1>
-        <p id="summary-paragraph">A Computation Science master student with a background in physics and astronomy. Loves a challenge and has an interest in a wide range of fields, ranging from game development to finance, and from physics to web development. </p>
-    </div>
-
-    <img src="@/assets/me.jpg" alt="Picture of me" id="profile-img">
-
-    <div id="hyperlink-container">
-        <HyperlinkIcon href="mailto:vansantennick@gmail.com" src_icon="assets/hyperlink-logos/email-icon.jpg" src_alt="Email icon"/>
-        <HyperlinkIcon href="https://github.com/Nickvs99" src_icon="assets/hyperlink-logos/github-logo.png" src_alt="Github logo"/>
-        <HyperlinkIcon href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/hyperlink-logos/linkedin-logo.png" src_alt="LinkedIn logo"/>
-        <HyperlinkIcon href="./docs/Resume - Nick van Santen.pdf" src_icon="assets/hyperlink-logos/cv-icon.jpg" src_alt="CV icon" download/>
-    </div>
+    <div id="home-content">
+        
+        <div id="home-content-left">
+            <h1 id="title-greeting">Hi, I'm Nick</h1>
+            <p id="summary-paragraph">A <b>Computational Science</b> master student with a bachelor level background in <b>Physics and Astronomy</b>. Loves a challenge and has a great interest in a wide range of fields, ranging from game development to finance, and from physics to web development. </p>
+            
+            <div id="hyperlink-container">
+                <HyperlinkIcon href="mailto:vansantennick@gmail.com" src_icon="assets/hyperlink-logos/email-icon.jpg" src_alt="Email icon"/>
+                <HyperlinkIcon href="https://github.com/Nickvs99" src_icon="assets/hyperlink-logos/github-logo.png" src_alt="Github logo"/>
+                <HyperlinkIcon href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/hyperlink-logos/linkedin-logo.png" src_alt="LinkedIn logo"/>
+                <HyperlinkIcon href="./docs/Resume - Nick van Santen.pdf" src_icon="assets/hyperlink-logos/cv-icon.jpg" src_alt="CV icon" download/>
+            </div>
+        </div>
+        
+        <img src="@/assets/me.jpg" alt="Picture of me" id="profile-img">
+    </div>    
 
 </GenericSection>
 
@@ -34,29 +37,49 @@ export default {
 <style lang="scss">
 
 #home-section {
-    background: #f9f4ea;
+    background-color: #f9f4ea;
+    padding-top: 150px;
+    padding-bottom: 50px;
 }
 
-#home-text-container {
-    margin-left: 10%;
+#home-content {
+    position: relative;
+    display: flex;
+}
+
+#home-content-left {
+    width: 50%;
     max-width: 500px;
 
-    @media(max-width: $sm-screen-width){
-        margin-left: 0;
+    @media (max-width: $md-screen-width) {
+        margin: auto;
+        width: 100%;
     }
 }
 
 #profile-img {
-  border-radius: 30px;
-  width: 200px;
+    border-radius: 30px;
+    margin: auto;
+    width: 275px;
+
+    @media (max-width: $md-screen-width) {
+        display: none !important;
+    }
 }
 
 #summary-paragraph {
-    background-color: grey;
+    margin: 20px 0;
 }
 
 #title-greeting {
     color: $primary-color;
+    margin: 0 0 30px 0;
+}
+
+#hyperlink-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0;
 }
 
 </style>

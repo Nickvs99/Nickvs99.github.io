@@ -12,11 +12,16 @@
 
 </script>
 
-<style>
+<style lang="scss">
 
 .section {
-    overflow: auto;
-    padding: 0 10px;
+    overflow: hidden;
+    padding: 0 10%;
+    position: relative;
+
+    @media(max-width: $sm-screen-width){
+        padding: 0 10px;
+    }
 }
 
 </style>
