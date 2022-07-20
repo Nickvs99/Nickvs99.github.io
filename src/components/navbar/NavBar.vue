@@ -94,10 +94,10 @@ export default {
     position: sticky;
     top: 0px;
     width: 100%;
+    z-index: $foreground-index;
 }
 
 #navbar-collapsable-content {
-    background-color: $primary-color; 
     display: flex;
     justify-content: flex-end;
 }

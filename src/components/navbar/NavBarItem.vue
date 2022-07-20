@@ -64,7 +64,7 @@ export default {
 
 /* TEMP styling */
 .navbar-item {
-    background-color: transparent;
+    background-color: $primary-color;  
     border: none;
     color: white;
     padding: 15px 32px;
