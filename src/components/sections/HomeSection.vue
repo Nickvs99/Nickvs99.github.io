@@ -40,6 +40,10 @@ export default {
     background-color: #f9f4ea;
     padding-top: 150px;
     padding-bottom: 50px;
+
+    @media (max-width: $sm-screen-width) {
+        padding-top: 50px;
+    }
 }
 
 #home-content {
