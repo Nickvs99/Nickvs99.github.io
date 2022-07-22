@@ -30,12 +30,13 @@ export default {
     methods: {
 
         initializeGrid() {
+            this.hexSideRadius = this.hexRadius * Math.cos(30 * (Math.PI / 180));
 
             this.determineGridSize();
             
-            this.hexSideRadius = this.hexRadius * Math.cos(30 * (Math.PI / 180));
+            this.marginX = this.calcMarginX();
 
-            this.positionOffsetX = this.calcPositionOffsetX();
+            this.positionOffsetY = 2 * this.hexSideRadius * Math.cos(30 * (Math.PI / 180));
 
             for (let i = 0; i < this.$el.children.length; i++)
             {
@@ -53,11 +54,27 @@ export default {
 
             // Calculate how many columns can fit the given width
             let containerWidth = this.$el.getBoundingClientRect().width;
-            this.ncolumns = Math.floor(containerWidth / (this.hexRadius * 2)); // TODO might be wrong due to the offset in the second row
-
-            // Calculate the number of rows needed to fill in all children
             let childrenCount = this.$el.children.length;
-            this.nrows = Math.ceil(childrenCount / this.ncolumns)
+            
+            // Since the second row sticks out this might actually overshoot the width
+            let tempColumns = Math.floor(containerWidth / (this.hexSideRadius * 2)); 
+            
+            // Calculate the number of rows needed to fill in all children
+            let tempRows = Math.ceil(childrenCount / tempColumns)
+
+            // If at least two rows are used, check if the second row overshoots the container width
+            // Update the number of columns accordingly
+            if(tempRows >= 2) {
+                
+                let contentWidth = this.calcContentWidth(tempColumns);
+
+                if (contentWidth > containerWidth) {
+                    tempColumns -= 1;
+                }
+            }
+
+            this.ncolumns = tempColumns; 
+            this.nrows = Math.ceil(childrenCount / tempColumns)
         },
 
         /**
@@ -67,43 +84,42 @@ export default {
             let row = Math.floor(i / this.ncolumns);
             let column = i - row*this.ncolumns;
 
-            // TODO calc correct position based on row and column index
-            return [this.positionOffsetX + column * this.hexSideRadius * 2, row * this.hexSideRadius * 2];
+            let rowOffset = row % 2 == 0 ? 0 : this.hexSideRadius;
+            let positionOffsetX = this.marginX + rowOffset
+
+            return [positionOffsetX + column * this.hexSideRadius * 2, row * this.positionOffsetY];
         },
 
         /**
          * Calculates the width needed to display the child elements.
          */
-        calcContentWidth() {
+        calcContentWidth(ncolumns) {
 
             let mostRightValue;
             
             // The outer most right position would be the last element of the 2nd, 4th, ... row
             // Check if that element exists
-            let lastElementSecondRowIndex = this.ncolumns * 2 - 1
+            let lastElementSecondRowIndex = ncolumns * 2 - 1
             if (this.$el.children.length >= lastElementSecondRowIndex){
-                mostRightValue = this.hexSideRadius * 2 * this.ncolumns + this.hexSideRadius
+                mostRightValue = this.hexSideRadius * 2 * ncolumns + this.hexSideRadius
             }
             else {
-                let mostRightFirstRowIndex = Math.min(this.$el.children.length - 1, this.ncolumns - 1);
+                let mostRightFirstRowIndex = Math.min(this.$el.children.length - 1, ncolumns - 1);
                 mostRightValue = this.hexSideRadius * 2 * (mostRightFirstRowIndex + 1);
             }
-
 
             return mostRightValue;
         },
 
         /**
-         * Calculates the offset of the grid depending on the align option.
+         * Calculates the x margin of the grid depending on the align option.
          */
-        calcPositionOffsetX() {
+        calcMarginX() {
             let containerWidth = this.$el.getBoundingClientRect().width;
 
-            let contentWidth = this.calcContentWidth()
+            let contentWidth = this.calcContentWidth(this.ncolumns);
 
             let diff = containerWidth - contentWidth;
-
-            console.log(containerWidth, contentWidth, diff);
 
             if (this.hexGridAlign === "left") {
                 return 0;
