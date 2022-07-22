@@ -10,6 +10,8 @@
 
 <script>
 
+let { EquilateralShape } = require("@/js/EquilateralShape.js");
+
 export default {
     props: ["n", "radius", "offset"],
 
@@ -25,22 +27,8 @@ export default {
 
         SetPoints() {
 
-            let points = [];
-            let rotation = 2 * Math.PI / this.n;
-            let angle = this.offset * Math.PI / 180;
-
-            for(let i = 0; i < this.n; i++) {
-                
-                // Make sure all values are positive
-                let x = (Math.cos(angle) + 1) * this.radius ;
-                let y = (Math.sin(angle) + 1) * this.radius ;
-
-                points.push(`${x},${y}`);
-
-                angle += rotation;
-            }
-            
-            return points.join(" ")
+            let shape = new EquilateralShape(this.n, this.radius, this.offset);
+            return shape.points.join(" ");
         }
     },
 }
