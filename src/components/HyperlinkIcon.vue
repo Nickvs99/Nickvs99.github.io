@@ -1,7 +1,7 @@
 <template>
     <a :href="`${href}`" class="anchor"  target=”_blank” :style="cssProps"> 
 
-        <EquilateralShape n="6" :radius=radius offset="0" class="hexagon-icon"/>
+        <EquilateralShape n="6" :radius=radius offset="30" class="hexagon-icon"/>
         <img :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img">
 
     </a>
@@ -23,14 +23,6 @@ export default {
         }
     },
 
-    mounted() {
-        window.addEventListener("resize", this.setRadius);
-        this.setRadius();
-    }, 
-    unmounted() {
-        window.removeEventListener("resize", this.setRadius);
-    },
-
     computed: {
         cssProps() {
             return {
@@ -39,24 +31,6 @@ export default {
             }
         }
     },
-
-    methods : {
-        
-        /** 
-         * Adapts the radius based on the width available.
-         */
-        setRadius() {
-            let container = document.getElementById("hyperlink-container");
-
-            let style = getComputedStyle(container);
-            let containerPadding = parseInt(style.paddingRight);
-            let containerWidth = container.getBoundingClientRect().width;   
-            
-            let elementWidth = (containerWidth - 2 * containerPadding) / container.children.length;
-
-            this.radius = Math.min(elementWidth / 2, this.maxRadius);
-        }
-    }
 }
 
 </script>
@@ -64,7 +38,7 @@ export default {
 <style lang="scss">
 
 .anchor {
-    position: relative;
+    position: absolute;
 }
 
 .hexagon-icon {
@@ -74,7 +48,6 @@ export default {
 }
 
 .icon-img {
-
     position: absolute;
     transform-origin: center;
 

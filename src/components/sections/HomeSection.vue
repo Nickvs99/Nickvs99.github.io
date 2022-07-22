@@ -8,12 +8,13 @@
             <h1 id="title-greeting">Hi, I'm Nick</h1>
             <p id="summary-paragraph">A <b>Computational Science</b> master student with a bachelor level background in <b>Physics and Astronomy</b>. Loves a challenge and has a great interest in a wide range of fields, ranging from game development to finance, and from physics to web development. </p>
             
-            <div id="hyperlink-container">
+            <HexagonGrid hexRadius="55" hexGridAlign="center">
                 <HyperlinkIcon href="mailto:vansantennick@gmail.com" src_icon="assets/hyperlink-logos/email-icon.jpg" src_alt="Email icon"/>
                 <HyperlinkIcon href="https://github.com/Nickvs99" src_icon="assets/hyperlink-logos/github-logo.png" src_alt="Github logo"/>
                 <HyperlinkIcon href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/hyperlink-logos/linkedin-logo.png" src_alt="LinkedIn logo"/>
                 <HyperlinkIcon href="./docs/Resume - Nick van Santen.pdf" src_icon="assets/hyperlink-logos/cv-icon.jpg" src_alt="CV icon" download/>
-            </div>
+            </HexagonGrid>
+
         </div>
         
         <img src="@/assets/me.jpg" alt="Picture of me" id="profile-img">
@@ -26,10 +27,11 @@
 <script>
 
 import GenericSection from "@/components/sections/GenericSection.vue"
+import HexagonGrid from "@/components/grid/HexagonGrid.vue"
 import HyperlinkIcon from "@/components/HyperlinkIcon.vue"
 
 export default {
-    components: { GenericSection, HyperlinkIcon },
+    components: { GenericSection, HexagonGrid, HyperlinkIcon },
 }
 
 </script>
@@ -78,12 +80,6 @@ export default {
 #title-greeting {
     color: $primary-color;
     margin: 0 0 30px 0;
-}
-
-#hyperlink-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 0;
 }
 
 </style>
