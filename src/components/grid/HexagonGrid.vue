@@ -10,6 +10,8 @@
 
 <script>
 
+let { EquilateralShape } = require("@/js/EquilateralShape.js");
+
 export default {
 
     /**
@@ -30,13 +32,18 @@ export default {
     methods: {
 
         initializeGrid() {
-            this.hexSideRadius = this.hexRadius * Math.cos(30 * (Math.PI / 180));
+
+            let shape = new EquilateralShape(6, this.hexRadius, 30); //TODO variable offset
+
+            this.hexWidth = shape.width;
+            this.hexHeight = shape.heightl
 
             this.determineGridSize();
             
             this.marginX = this.calcMarginX();
 
-            this.positionOffsetY = 2 * this.hexSideRadius * Math.cos(30 * (Math.PI / 180));
+            // TODO hexwidth / 2 only works for a 30 degree offset
+            this.positionOffsetY = 2 * (this.hexWidth / 2) * Math.cos(30 * (Math.PI / 180));
 
             for (let i = 0; i < this.$el.children.length; i++)
             {
@@ -57,7 +64,7 @@ export default {
             let childrenCount = this.$el.children.length;
             
             // Since the second row sticks out this might actually overshoot the width
-            let tempColumns = Math.floor(containerWidth / (this.hexSideRadius * 2)); 
+            let tempColumns = Math.floor(containerWidth / this.hexWidth); 
             
             // Calculate the number of rows needed to fill in all children
             let tempRows = Math.ceil(childrenCount / tempColumns)
@@ -84,10 +91,10 @@ export default {
             let row = Math.floor(i / this.ncolumns);
             let column = i - row*this.ncolumns;
 
-            let rowOffset = row % 2 == 0 ? 0 : this.hexSideRadius;
-            let positionOffsetX = this.marginX + rowOffset
+            let rowOffset = row % 2 == 0 ? 0 : this.hexWidth / 2;
+            let positionOffsetX = this.marginX + rowOffset;
 
-            return [positionOffsetX + column * this.hexSideRadius * 2, row * this.positionOffsetY];
+            return [positionOffsetX + column * this.hexWidth, row * this.positionOffsetY];
         },
 
         /**
@@ -101,11 +108,11 @@ export default {
             // Check if that element exists
             let lastElementSecondRowIndex = ncolumns * 2 - 1
             if (this.$el.children.length >= lastElementSecondRowIndex){
-                mostRightValue = this.hexSideRadius * 2 * ncolumns + this.hexSideRadius
+                mostRightValue = this.hexWidth * ncolumns + this.hexWidth / 2;
             }
             else {
                 let mostRightFirstRowIndex = Math.min(this.$el.children.length - 1, ncolumns - 1);
-                mostRightValue = this.hexSideRadius * 2 * (mostRightFirstRowIndex + 1);
+                mostRightValue = this.hexWidth * (mostRightFirstRowIndex + 1);
             }
 
             return mostRightValue;

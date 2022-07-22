@@ -13,6 +13,8 @@ class EquilateralShape {
         this.angleOffset = angleOffset;
 
         this.points = this.calcPoints();
+        this.width = this.calcWidth();
+        this.height = this.calcHeight();
     }
 
     calcPoints() {
@@ -33,6 +35,38 @@ class EquilateralShape {
         }
 
         return points;
+    }
+
+    calcWidth() {
+
+        let minX = this.points[0][0];
+        let maxX = this.points[0][0];
+
+        for(let i = 1; i < this.points.length; i++) {
+
+            let x = this.points[i][0];
+
+            minX = Math.min(minX, x);
+            maxX = Math.max(maxX, x);
+        }
+
+        return maxX - minX;
+    }
+
+    calcHeight() {
+        
+        let minY = this.points[0][1];
+        let maxY = this.points[0][1];
+
+        for(let i = 1; i < this.points.length; i++) {
+
+            let y = this.points[i][1];
+
+            minY = Math.min(minY, y);
+            maxY = Math.max(maxY, y);
+        }
+
+        return maxY - minY;
     }
 }
 
