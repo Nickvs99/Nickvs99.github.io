@@ -18,7 +18,20 @@ export default {
      * Gets the available width and then tries to place as many hexagons inside that width.
      * If there is insufficient width for all hexagons then place another row underneath.
      */ 
-    props: ["hexRadius", "hexGridAlign"],
+    props: ["hexRadius", "hexGridAlign", "hexGridStyle"],
+
+    /**
+     * 4 hex grid styles:
+     *  - even-large            Even rows have one entry more
+     *  - even-left             Even rows are offset to the left
+     *  - even-right            Even rows are offset to the right
+     *  - even-small            Even rows have one entry less
+     * 
+     * Even refers to the 2nd, 4th, 6th row and thus row index 1, 3, 5, ...
+     * 
+     * TODO would be cleaner if each of the four styles inherit from some base class, 
+     * current implementation uses a bunch of if statements.
+     */
 
     mounted() {
         window.addEventListener("resize", this.initializeGrid);
@@ -36,7 +49,6 @@ export default {
             let shape = new EquilateralShape(6, this.hexRadius, 30); //TODO variable offset
 
             this.hexWidth = shape.width;
-            this.hexHeight = shape.heightl
 
             this.determineGridSize();
             
@@ -63,38 +75,96 @@ export default {
             let containerWidth = this.$el.getBoundingClientRect().width;
             let childrenCount = this.$el.children.length;
             
-            // Since the second row sticks out this might actually overshoot the width
+            // Calculate the number of columns solely based on the hexWidth
             let tempColumns = Math.floor(containerWidth / this.hexWidth); 
-            
-            // Calculate the number of rows needed to fill in all children
-            let tempRows = Math.ceil(childrenCount / tempColumns)
 
-            // If at least two rows are used, check if the second row overshoots the container width
-            // Update the number of columns accordingly
-            if(tempRows >= 2) {
-                
+            // The even-left and even-right options could cause the content to actually 
+            // overflow the container, therefore adjustments might be needed
+            if(["even-left", "even-right"].includes(this.hexGridStyle)) {
                 let contentWidth = this.calcContentWidth(tempColumns);
-
                 if (contentWidth > containerWidth) {
                     tempColumns -= 1;
                 }
             }
 
             this.ncolumns = tempColumns; 
-            this.nrows = Math.ceil(childrenCount / tempColumns)
+            this.nrows = Math.ceil(childrenCount / this.ncolumns);
         },
 
         /**
          * Calculates the position of element i. Returns the x-coordinate and y-coordinate.
          */
         calcPosition(i) {
-            let row = Math.floor(i / this.ncolumns);
-            let column = i - row*this.ncolumns;
+            let [row, column] = this.determineRowAndColumn(i)
 
-            let rowOffset = row % 2 == 0 ? 0 : this.hexWidth / 2;
+            let rowOffset = this.calcRowOffset(row);
             let positionOffsetX = this.marginX + rowOffset;
 
             return [positionOffsetX + column * this.hexWidth, row * this.positionOffsetY];
+        },
+
+        determineRowAndColumn(i) {
+            
+            if(["even-left", "even-right"].includes(this.hexGridStyle)) {
+                
+                let rowIndex= Math.floor(i / this.ncolumns);
+                let columnIndex = i - rowIndex * this.ncolumns;
+
+                return [rowIndex, columnIndex];
+            }
+            else if (["even-small", "even-large"].includes(this.hexGridStyle)) {
+
+                let rowIndex = 0;
+                let rowLength = this.determineRowLength(rowIndex);
+
+                // Keep removing the length of the row until that is no longer possible
+                // i is then at its column value
+                while ( i > rowLength - 1) {
+                    
+                    i -= rowLength;
+                    
+                    rowIndex += 1;
+                    rowLength = this.determineRowLength(rowIndex);
+                }
+
+                let columnIndex = i;
+                return [rowIndex, columnIndex];
+            }
+        },
+
+        determineRowLength(rowIndex) {
+            
+            if(["even-left", "even-right"].includes(this.hexGridStyle)) {
+                return this.ncolumns;
+            }
+
+            else if (["even-small", "even-large"].includes(this.hexGridStyle)) {
+                
+                let isEven = this.isRowEven(rowIndex);
+                
+                if(this.hexGridStyle === "even-small") {
+                    return isEven ? this.ncolumns - 1 : this.ncolumns;
+                }
+                else if (this.hexGridStyle === "even-large") {
+                    return isEven ? this.ncolumns : this.ncolumns - 1;
+                }
+            }
+        },
+
+        calcRowOffset(row) {
+
+            let isEven = this.isRowEven(row)
+
+            if(["even-small", "even-right"].includes(this.hexGridStyle)) {
+                return isEven ?  this.hexWidth / 2 : 0;
+            }
+            else if (["even-large", "even-left"].includes(this.hexGridStyle)) {
+                return isEven ? 0 : this.hexWidth / 2;
+            }
+        },
+
+        isRowEven(rowIndex) {
+            return (rowIndex + 1) % 2 == 0;
         },
 
         /**
@@ -102,20 +172,34 @@ export default {
          */
         calcContentWidth(ncolumns) {
 
-            let mostRightValue;
-            
-            // The outer most right position would be the last element of the 2nd, 4th, ... row
-            // Check if that element exists
-            let lastElementSecondRowIndex = ncolumns * 2 - 1
-            if (this.$el.children.length >= lastElementSecondRowIndex){
-                mostRightValue = this.hexWidth * ncolumns + this.hexWidth / 2;
+            if (["even-small", "even-large"].includes(this.hexGridStyle)) {
+                return ncolumns * this.hexWidth;
             }
-            else {
-                let mostRightFirstRowIndex = Math.min(this.$el.children.length - 1, ncolumns - 1);
-                mostRightValue = this.hexWidth * (mostRightFirstRowIndex + 1);
+            else if (this.hexGridStyle === "even-right") {
+                
+                let mostRightValue;
+
+                // The outer most right position would be the last element of the 2nd, 4th, ... row
+                // Check if that element exists
+                let lastElementSecondRowIndex = ncolumns * 2 - 1
+                if (this.$el.children.length >= lastElementSecondRowIndex){
+                    mostRightValue = this.hexWidth * ncolumns + this.hexWidth / 2;
+                }
+                else {
+                    let mostRightFirstRowIndex = Math.min(this.$el.children.length - 1, ncolumns - 1);
+                    mostRightValue = this.hexWidth * (mostRightFirstRowIndex + 1);
+                }
+
+                return mostRightValue;
+            }
+            else if (this.hexGridStyle === "even-left") {
+
+                let mostRightChildColumn = Math.min(ncolumns - 1, this.$el.children.length - 1);
+
+                // Plus one since you have to take into account the width of the hex at the last column
+                return (mostRightChildColumn + 1) * this.hexWidth + this.hexWidth / 2;
             }
 
-            return mostRightValue;
         },
 
         /**
@@ -144,13 +228,12 @@ export default {
 
         setContainerHeight() {
 
-            let firstChild = this.$el.children[0];
-            let topFirstChild = firstChild.getBoundingClientRect().top;
+            let top = this.$el.getBoundingClientRect().top;
 
             let lastChild = this.$el.children[this.$el.children.length - 1];
             let bottomLast = lastChild.getBoundingClientRect().bottom;
 
-            this.$el.style.height = (bottomLast - topFirstChild) + "px";
+            this.$el.style.height = (bottomLast - top) + "px";
         },
 
         setElementPosition(el, x, y) {
