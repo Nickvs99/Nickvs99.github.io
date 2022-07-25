@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
 
 #home-section {
-    background-color: #f9f4ea;
+    background-color: $bg-color;
     padding-top: 150px;
     padding-bottom: 50px;
 

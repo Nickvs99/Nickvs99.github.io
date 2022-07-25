@@ -4,10 +4,8 @@
         <h2 class="project-doc-title"> {{ title }} </h2>
         <p class="project-description"> {{ description }} </p>
 
-        <div class="project-keyword-container">
-            <div v-for="keyword in keywords" :key="keyword" class="project-keyword">
-                {{ keyword }}
-            </div>
+        <div class="project-doc-keyword-container">
+            <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
         </div>
 
         <component :is="contentComponent"></component>
@@ -18,9 +16,10 @@
 <script>
 
 import { defineAsyncComponent } from 'vue'
+import ProjectKeyword from "@/components/projects/ProjectKeyword.vue"
 
 export default {
-
+    components: {ProjectKeyword},
     props: {
         title: String,
         keywords: Array,
@@ -64,6 +63,7 @@ export default {
         }
     }
 }
+
 </script>
 
 <style>
@@ -75,4 +75,5 @@ export default {
 
     background-color: white;
 }
+
 </style>
