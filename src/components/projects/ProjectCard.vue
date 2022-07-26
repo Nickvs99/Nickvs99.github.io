@@ -1,19 +1,16 @@
 <template>
 
-<div :id=containerID>
     
-    <div class="project-card" @click=showProjectDoc>
+<div :id=containerID class="project-card" @click=showProjectDoc>
         <h2 class="project-title"> {{ title }} </h2>
         <p class="project-description"> {{ description }} </p>
 
         <div class="project-card-keyword-container">
             <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
         </div>
-    </div>
-
     <ProjectDoc ref="doc" :title="title" :keywords="keywords" :description="description" :contentSrc="contentSrc"></ProjectDoc>
-
 </div>
+
 
 
 </template>
