@@ -1,6 +1,7 @@
 <template>
 
-    <div class="project-doc" :class="{hidden: this.disabled}">
+<div ref="background" class="project-doc-background" :class="{hidden: this.disabled}">
+    <div class="project-doc" >
         <h2 class="project-doc-title"> {{ title }} </h2>
         <p class="project-description"> {{ description }} </p>
 
@@ -10,6 +11,7 @@
 
         <component :is="contentComponent"></component>
     </div>
+</div>
 
 </template>
 
@@ -57,7 +59,7 @@ export default {
             }   
 
             // Disable component if the user clicked outside of the component and not on its associated project card
-            if(!(this.$el === event.target || this.$el.contains(event.target) || this.$el.previousElementSibling === event.target || this.$el.previousElementSibling.contains(event.target))) {
+            if(this.$refs.background === event.target) {
                 this.disabled = true;
             }
         }
@@ -66,14 +68,48 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
+
+.project-doc-background {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    height: 100vh;    
+    width: 100vw;
+
+    backdrop-filter: blur(4px);
+
+    /* The project doc is displayed over all other content. */
+    z-index: $foreground-index;
+
+    /* center project-doc on viewport */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-sizing: border-box;
+    padding: 5% 20%;
+    
+    @media(max-width: $lg-screen-width) {
+        padding: 5% 15%;
+    }
+    @media(max-width: $md-screen-width) {
+        padding: 5% 10%;
+    }
+    @media(max-width: $sm-screen-width){
+        padding: 5% 20px;
+    }
+}
 
 .project-doc {
-    position: fixed;
-    left:10px;
-    top: 10px;
 
     background-color: white;
+    overflow-y: auto;
+
+    width: 100%;
+    max-height: 100%;
 }
 
 </style>
