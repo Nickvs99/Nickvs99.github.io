@@ -1,15 +1,20 @@
 <template>
 
-<div class="project-card" @click=showProjectDoc>
-    <h2 class="project-title"> {{ title }} </h2>
-    <p class="project-description"> {{ description }} </p>
+<div :id=containerID>
+    
+    <div class="project-card" @click=showProjectDoc>
+        <h2 class="project-title"> {{ title }} </h2>
+        <p class="project-description"> {{ description }} </p>
 
-    <div class="project-card-keyword-container">
-        <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
+        <div class="project-card-keyword-container">
+            <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
+        </div>
     </div>
+
+    <ProjectDoc ref="doc" :title="title" :keywords="keywords" :description="description" :contentSrc="contentSrc"></ProjectDoc>
+
 </div>
 
-<ProjectDoc ref="doc" :id=projectDocId :title="title" :keywords="keywords" :description="description" :contentSrc="contentSrc"></ProjectDoc>
 
 </template>
 
@@ -29,7 +34,7 @@ export default {
 
     data() {
         return {
-            projectDocId: "project-doc-" + this.title,
+            containerID: "project-container-" + this.title,
         }
     },
 

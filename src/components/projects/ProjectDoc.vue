@@ -57,7 +57,7 @@ export default {
                 return;
             }   
 
-            // Disable component if the user clicked outside of the component and not on its associated project card
+            // Disable component if the user clicked outside of the project-doc
             if(this.$refs.background === event.target) {
                 this.disabled = true;
             }
@@ -91,6 +91,10 @@ export default {
     box-sizing: border-box;
     padding: 5% 20%;
     
+    &:hover {
+        cursor: auto;
+    }
+
     @media(max-width: $lg-screen-width) {
         padding: 5% 15%;
     }
