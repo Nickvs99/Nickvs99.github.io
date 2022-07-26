@@ -90,7 +90,7 @@ export default {
 
     box-sizing: border-box;
     padding: 5% 20%;
-    
+
     &:hover {
         cursor: auto;
     }
@@ -121,6 +121,8 @@ export default {
 
     width: 100%;
     max-height: 100%;
+
+    position: relative;
 }
 
 .project-doc-title {
