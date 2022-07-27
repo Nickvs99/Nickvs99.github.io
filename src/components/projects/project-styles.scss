@@ -2,5 +2,18 @@
 
 .project-img {
     margin: 10px;
-    max-width: 100%;
+    max-width: calc(min(100%, 400px));
+
+    float:right;
+
+    @media(max-width: $lg-screen-width) {
+        max-width: calc(min(60%, 400px));
+    }
+
+    @media(max-width: $md-screen-width) {
+        display: block;
+        float: none;
+        max-width: calc(min(100%, 400px));
+        margin: 0 auto;
+    }
 }

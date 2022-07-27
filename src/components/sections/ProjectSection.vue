@@ -38,13 +38,13 @@ export default {
             title: "Boids",
             description: "Simulate flocking behaviour of bird like objects.",
             keywords: ["C++"],
-            contentSrc: "components/projects/contents/ProjectTemp.vue",
+            contentSrc: "components/projects/contents/ProjectBoids.vue",
         },
         {
             title: "Mandelbrot set",
             description: "An interactive version of the Mandelbrot set",
             keywords: ["C++"],
-            contentSrc: "components/projects/contents/ProjectTemp.vue",
+            contentSrc: "components/projects/contents/ProjectMandelbrot.vue",
         },
         {
             title: "Amstelhaege",

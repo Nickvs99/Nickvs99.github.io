@@ -57,18 +57,4 @@ export default {
 
 @import "@/components/projects/project-styles.scss";
 
-#living-world-gif {
-    float:right;
-
-    @media(max-width: $lg-screen-width) {
-        max-width: 60%;
-    }
-
-    @media(max-width: $md-screen-width) {
-        display: block;
-        float: none;
-        max-width: 100%;
-        margin: 0 auto;
-    }
-}
 </style>
