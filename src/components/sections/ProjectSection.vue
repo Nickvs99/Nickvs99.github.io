@@ -97,6 +97,7 @@ export default {
   },
 
   mounted() {
+    this.sortProjects("title");
     this.displayedProjects = this.projects; // Display all projects at the start
     this.keywords = this.getKeywords();
   },
@@ -136,6 +137,22 @@ export default {
 
         // Check if the project title includes the search field text
         return project.title.toLowerCase().includes(this.filterString)
+    },
+
+    /**
+     * Sort the projects based on an attribute. Default is ascending order.
+     */
+    sortProjects(attr, ascending=true) {
+        if (ascending) {
+            this.projects.sort((a, b) => this.sortFunction(a, b, attr))
+        }
+        else {
+            this.projects.sort((a, b) => this.sortFunction(b, a, attr))
+        }
+    },
+
+    sortFunction(a, b, attr) {
+        return a[attr].toLowerCase() > b[attr].toLowerCase() ? 1 : -1;
     },
   }
 }
