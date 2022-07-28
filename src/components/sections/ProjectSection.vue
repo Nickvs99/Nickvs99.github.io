@@ -4,7 +4,21 @@
     <h1>Projects</h1>
 
     <div id="filter-project-cards-containter">
-        <input ref="filterTitle" type="text" placeholder="Search for project...">
+        <input type="text" placeholder="Search for project..." @input="updateListedProjects" v-model="filterString">
+        
+        <details id="keyword-filter">
+            <summary>
+                Keyword - filter
+            </summary>
+
+            <div v-for="keyword in keywords" :key="keyword">
+
+                {{ keyword }}
+                <input type="checkbox" :value=keyword v-model="checkedKeywords" :required='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+            </div>
+
+
+        </details>
     </div>  
 
     <div id="project-card-container">
@@ -75,20 +89,54 @@ export default {
             keywords: ["Processing"],
             contentSrc: "components/projects/contents/ProjectProcessing.vue",
         },
-      ]
+      ],
+      filterString: "",
+      keywords: [],
+      checkedKeywords: [],
     }
   },
 
   mounted() {
-    this.$refs.filterTitle.addEventListener("input", this.onFilterTitleChange);
     this.displayedProjects = this.projects; // Display all projects at the start
+    this.keywords = this.getKeywords();
   },
  
   methods: {
-    onFilterTitleChange(event) {
-        let value = event.currentTarget.value;
-        this.displayedProjects = this.projects.filter(project => project.title.toLowerCase().includes(value.toLowerCase()))
-    }
+
+    getKeywords() {
+        
+        let keywords = []
+        for(let project of this.projects) {
+            for(let keyword of project.keywords) {
+
+                if( keywords.includes(keyword) ) {
+                    continue;
+                }
+
+                keywords.push(keyword);
+            }
+        }
+
+        return keywords;
+    },
+
+    updateListedProjects() {
+
+        this.displayedProjects = this.projects.filter(project => this.isProjectValid(project))
+    },
+
+    isProjectValid(project) {
+
+        // Check if project satisfies all checked keywords
+        for (let keyword of this.checkedKeywords) {
+            if (!project.keywords.includes(keyword)) {
+                return false;
+            }
+        }
+
+        // Check if the project title includes the search field text
+        return project.title.toLowerCase().includes(this.filterString)
+    },
   }
 }
 
