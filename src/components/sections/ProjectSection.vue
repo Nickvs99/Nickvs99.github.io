@@ -3,8 +3,12 @@
 <GenericSection id="project-section">
     <h1>Projects</h1>
 
+    <div id="filter-project-cards-containter">
+        <input ref="filterTitle" type="text" placeholder="Search for project...">
+    </div>  
+
     <div id="project-card-container">
-        <ProjectCard v-for="project in projects" :key="project" :title="project.title" :description="project.description" :keywords="project.keywords" :contentSrc="project.contentSrc"></ProjectCard>
+        <ProjectCard v-for="project in displayedProjects" :key="project" :title="project.title" :description="project.description" :keywords="project.keywords" :contentSrc="project.contentSrc"></ProjectCard>
     </div>
 
 </GenericSection>
@@ -21,6 +25,7 @@ export default {
   
   data() {
     return {
+      displayedProjects: [],
       projects: [
         {
             title: "MusicMatch",
@@ -71,6 +76,18 @@ export default {
             contentSrc: "components/projects/contents/ProjectProcessing.vue",
         },
       ]
+    }
+  },
+
+  mounted() {
+    this.$refs.filterTitle.addEventListener("input", this.onFilterTitleChange);
+    this.displayedProjects = this.projects; // Display all projects at the start
+  },
+ 
+  methods: {
+    onFilterTitleChange(event) {
+        let value = event.currentTarget.value;
+        this.displayedProjects = this.projects.filter(project => project.title.toLowerCase().includes(value.toLowerCase()))
     }
   }
 }
