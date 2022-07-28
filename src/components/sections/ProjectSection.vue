@@ -56,7 +56,19 @@ export default {
             title: "MCRT",
             description: "Simulating photons through an atmosphere with Monte Carlo Radiative Transfer simulation.",
             keywords: ["C#"],
-            contentSrc: "components/projects/contents/ProjectTemp.vue",
+            contentSrc: "components/projects/contents/ProjectMCRT.vue",
+        },
+        {
+            title: "Portfolio website",
+            description: "A portfolio website of me :)",
+            keywords: ["Vue", "js", "css", "html"],
+            contentSrc: "components/projects/contents/ProjectPortfolio.vue",
+        },
+        {
+            title: "Processing projects",
+            description: "A selection of my earliest projects created with Processing.",
+            keywords: ["Processing"],
+            contentSrc: "components/projects/contents/ProjectProcessing.vue",
         },
       ]
     }
