@@ -2,7 +2,10 @@
 
 <div ref="background" class="project-doc-background" :class="{hidden: this.disabled}">
     <div class="project-doc" >
-        <h2 class="project-doc-title"> {{ title }} </h2>
+        <div class="project-doc-title-container">
+            <h2 class="project-doc-title"> {{ title }} </h2>
+            <div class="project-year">, {{ year }} </div>
+        </div>
 
         <div class="project-doc-keyword-container">
             <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
@@ -26,6 +29,7 @@ export default {
         keywords: Array,
         description: String,
         contentSrc: String, 
+        year: Number
     },
 
     data() {

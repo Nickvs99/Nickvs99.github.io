@@ -20,12 +20,23 @@
 
         <div id="sort-projects-alphabetical">
             A-Z
-            <input type="checkbox" v-model="sortAZ" @change="sortProjects('title', sortAZ)"/>
+            <input type="checkbox" v-model="sortAZ" @change="sortProjectsByString('title', sortAZ)"/>
+        </div>
+        
+        <div id="sort-projects-alphabetical">
+            Year
+            <input type="checkbox" v-model="sortYear" @change="sortProjectsByInt('year', sortYear)"/>
         </div>
     </div>  
 
     <div id="project-card-container">
-        <ProjectCard v-for="project in displayedProjects" :key="project" :title="project.title" :description="project.description" :keywords="project.keywords" :contentSrc="project.contentSrc"></ProjectCard>
+        <ProjectCard v-for="project in displayedProjects" :key="project" 
+            :title="project.title" 
+            :description="project.description" 
+            :keywords="project.keywords" 
+            :contentSrc="project.contentSrc"
+            :year="project.year">
+        </ProjectCard>
     </div>
 
 </GenericSection>
@@ -49,54 +60,63 @@ export default {
             description: "A web app that provides the ability to easily compare music tastes between people.",
             keywords: ["Python", "Django", "js", "css", "html"],
             contentSrc: "components/projects/contents/ProjectMusicMatch.vue",
+            year: 2012,
         },
         {
             title: "Living World",
             description: "A procedurally generated tile-based world inhabited by cars and boats.",
             keywords: ["Unity", "C#"],
             contentSrc: "components/projects/contents/ProjectLivingWorld.vue",
+            year: 0,
         },
         {
             title: "Boids",
             description: "Simulate flocking behaviour of bird like objects.",
             keywords: ["C++"],
             contentSrc: "components/projects/contents/ProjectBoids.vue",
+            year: 83,
         },
         {
             title: "Mandelbrot set",
             description: "An interactive version of the Mandelbrot set",
             keywords: ["C++"],
             contentSrc: "components/projects/contents/ProjectMandelbrot.vue",
+            year: 2929,
         },
         {
             title: "Amstelhaege",
             description: "Solving the unsolvable. Applying several optimalization techniques to find an optimal neighbourhood.",
             keywords: ["Python"],
             contentSrc: "components/projects/contents/ProjectTemp.vue",
+            year: 183838,
         },
         {
             title: "MCRT",
             description: "Simulating photons through an atmosphere with Monte Carlo Radiative Transfer simulation.",
             keywords: ["C#"],
             contentSrc: "components/projects/contents/ProjectMCRT.vue",
+            year: 2929,
         },
         {
             title: "Portfolio website",
             description: "A portfolio website of me :)",
             keywords: ["Vue", "js", "css", "html"],
             contentSrc: "components/projects/contents/ProjectPortfolio.vue",
+            year: 91928384,
         },
         {
             title: "Processing projects",
             description: "A selection of my earliest projects created with Processing.",
             keywords: ["Processing"],
             contentSrc: "components/projects/contents/ProjectProcessing.vue",
+            year: 12345678,
         },
       ],
       filterString: "",
       keywords: [],
       checkedKeywords: [],
       sortAZ: false,
+      sortYear: false,
     }
   },
 
@@ -142,22 +162,41 @@ export default {
     },
 
     /**
-     * Sort the projects based on an attribute. Default is ascending order.
-     * Update the displayed projects with the changes.
+     * Sort the projects based on an attribute. This value should be a string.
+     * Default is ascending order. Update the displayed projects with the changes.
      */
-    sortProjects(attr, ascending=true) {
+    sortProjectsByString(attr, ascending=true) {
         if (ascending) {
-            this.projects.sort((a, b) => this.sortFunction(a, b, attr))
+            this.projects.sort((a, b) => this.sortFunctionString(a, b, attr))
         }
         else {
-            this.projects.sort((a, b) => this.sortFunction(b, a, attr))
+            this.projects.sort((a, b) => this.sortFunctionString(b, a, attr))
         }
 
         this.updateListedProjects();
     },
 
-    sortFunction(a, b, attr) {
+    sortFunctionString(a, b, attr) {
         return a[attr].toLowerCase() > b[attr].toLowerCase() ? 1 : -1;
+    },
+
+    /**
+     * Sort the projects based on an attribute. This value should be an number.
+     * Default is ascending order. Update the displayed projects with the changes.
+     */
+    sortProjectsByInt(attr, ascending=true) {
+        if (ascending) {
+            this.projects.sort((a, b) => this.sortFunctionInt(a, b, attr))
+        }
+        else {
+            this.projects.sort((a, b) => this.sortFunctionInt(b, a, attr))
+        }
+
+        this.updateListedProjects();
+    },
+
+    sortFunctionInt(a, b, attr) {
+        return a[attr] - b[attr];
     },
   }
 }

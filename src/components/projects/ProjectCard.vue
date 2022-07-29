@@ -2,16 +2,26 @@
 
     
 <div :id=containerID class="project-card" @click=showProjectDoc>
+
+    <div class="title-container">
         <h2 class="project-title"> {{ title }} </h2>
-        <p class="project-description"> {{ description }} </p>
+        <div class="project- year">, {{ year }} </div>
+    </div>
 
-        <div class="project-card-keyword-container">
-            <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
-        </div>
-    <ProjectDoc ref="doc" :title="title" :keywords="keywords" :description="description" :contentSrc="contentSrc"></ProjectDoc>
+    <p class="project-description"> {{ description }} </p>
+
+    <div class="project-card-keyword-container">
+        <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
+    </div>
+
+    <ProjectDoc ref="doc" 
+        :title="title" 
+        :keywords="keywords" 
+        :description="description" 
+        :contentSrc="contentSrc"
+        :year="year">
+    </ProjectDoc>
 </div>
-
-
 
 </template>
 
@@ -27,6 +37,7 @@ export default {
         keywords: Array,
         description: String,
         contentSrc: String,
+        year: Number,
     },
 
     data() {
