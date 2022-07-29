@@ -14,11 +14,14 @@
             <div v-for="keyword in keywords" :key="keyword">
 
                 {{ keyword }}
-                <input type="checkbox" :value=keyword v-model="checkedKeywords" :required='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+                <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
             </div>
-
-
         </details>
+
+        <div id="sort-projects-alphabetical">
+            A-Z
+            <input type="checkbox" v-model="sortAZ" @change="sortProjects('title', sortAZ)"/>
+        </div>
     </div>  
 
     <div id="project-card-container">
@@ -93,12 +96,12 @@ export default {
       filterString: "",
       keywords: [],
       checkedKeywords: [],
+      sortAZ: false,
     }
   },
 
   mounted() {
-    this.sortProjects("title");
-    this.displayedProjects = this.projects; // Display all projects at the start
+    this.displayedProjects = this.projects;
     this.keywords = this.getKeywords();
   },
  
@@ -122,7 +125,6 @@ export default {
     },
 
     updateListedProjects() {
-
         this.displayedProjects = this.projects.filter(project => this.isProjectValid(project))
     },
 
@@ -141,6 +143,7 @@ export default {
 
     /**
      * Sort the projects based on an attribute. Default is ascending order.
+     * Update the displayed projects with the changes.
      */
     sortProjects(attr, ascending=true) {
         if (ascending) {
@@ -149,6 +152,8 @@ export default {
         else {
             this.projects.sort((a, b) => this.sortFunction(b, a, attr))
         }
+
+        this.updateListedProjects();
     },
 
     sortFunction(a, b, attr) {
