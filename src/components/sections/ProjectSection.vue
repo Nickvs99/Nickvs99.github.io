@@ -4,26 +4,28 @@
     <h1>Projects</h1>
 
     <div id="filter-project-cards-containter">
-        <input type="text" placeholder="Search for project..." @input="updateListedProjects" v-model="filterString">
+        <input id="filter-project-cards-input" class="filter-project-cards-item" type="text" placeholder="Search for project..." @input="updateListedProjects" v-model="filterString">
         
-        <details id="keyword-filter">
-            <summary>
-                Keyword - filter
-            </summary>
+        <div class="filter-project-box filter-project-cards-item">
+            <details id="keyword-filter" >
+                <summary>
+                    Keyword - filter
+                </summary>
 
-            <div v-for="keyword in keywords" :key="keyword">
+                <div v-for="keyword in keywords" :key="keyword">
 
-                {{ keyword }}
-                <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
-            </div>
-        </details>
+                    {{ keyword }}
+                    <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+                </div>
+            </details>
+        </div>
 
-        <div id="sort-projects-alphabetical">
+        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
             A-Z
             <input type="checkbox" v-model="sortAZ" @change="sortProjectsByString('title', sortAZ)"/>
         </div>
         
-        <div id="sort-projects-alphabetical">
+        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
             Year
             <input type="checkbox" v-model="sortYear" @change="sortProjectsByInt('year', sortYear)"/>
         </div>
@@ -219,6 +221,53 @@ h1 {
     gap: 10px;
 
     margin: 20px 0;
+}
+
+#filter-project-cards-containter {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter-project-cards-item {
+    height: 40px;
+
+    border: 2px solid $primary-color-dark;
+    border-radius: 5px;
+}
+
+#filter-project-cards-input {
+    flex-grow: 1;
+
+    color: $primary-color;
+    font-size: $md-font-size;
+
+    padding: 5px 10px;
+
+    &::placeholder{
+        color: $primary-color;
+    }
+
+    @media(max-width: $md-screen-width) {
+        width: 100%;
+    }
+}
+
+.filter-project-box {
+    background-color: $primary-color;
+    color: $bg-color;
+
+    display: flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    width: auto;
+
+    &:hover {
+        background-color: $primary-color-dark;
+    }
 }
 
 </style>

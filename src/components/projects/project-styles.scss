@@ -17,3 +17,13 @@
         margin: 0 auto;
     }
 }
+
+.project-title {
+    display: inline-block;
+    margin: 5px 0 10px 0;
+}
+
+.project-year {
+    display: inline-block;
+    font-size: $sm-font-size;
+}

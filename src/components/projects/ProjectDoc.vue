@@ -2,8 +2,8 @@
 
 <div ref="background" class="project-doc-background" :class="{hidden: this.disabled}">
     <div class="project-doc" >
-        <div class="project-doc-title-container">
-            <h2 class="project-doc-title"> {{ title }} </h2>
+        <div class="project-title-container">
+            <h2 class="project-title"> {{ title }} </h2>
             <div class="project-year">, {{ year }} </div>
         </div>
 
@@ -71,7 +71,9 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+@import "@/components/projects/project-styles.scss";
 
 .project-doc-background {
 
@@ -129,12 +131,9 @@ export default {
     position: relative;
 }
 
-.project-doc-title {
-    margin: 15px 0;
-}
-
 .project-doc-keyword-container {
     margin: 15px 0;
 }
+
 
 </style>

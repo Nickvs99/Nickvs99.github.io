@@ -3,9 +3,9 @@
     
 <div :id=containerID class="project-card" @click=showProjectDoc>
 
-    <div class="title-container">
-        <h2 class="project-title"> {{ title }} </h2>
-        <div class="project- year">, {{ year }} </div>
+    <div class="project-title-container">
+        <h2 class="project-title"> {{ title }}</h2>
+        <div class="project-year">, {{ year }} </div>
     </div>
 
     <p class="project-description"> {{ description }} </p>
@@ -55,7 +55,9 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+@import "@/components/projects/project-styles.scss";
 
 .project-card {
     background-color: $primary-color;
@@ -73,10 +75,6 @@ export default {
         background-color: $primary-color-dark;
         cursor: pointer;
     }
-}
-
-.project-title {
-    margin: 5px 0 10px 0;
 }
 
 .project-description {
