@@ -9,14 +9,16 @@
         <div class="filter-project-box filter-project-cards-item">
             <details id="keyword-filter" >
                 <summary>
-                    Keyword - filter
+                    Keywords
                 </summary>
 
-                <div v-for="keyword in keywords" :key="keyword">
-                    <label>
-                        {{ keyword }}
-                        <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
-                    </label>
+                <div id="keyword-container">
+                    <div v-for="keyword in keywords" :key="keyword">
+                        <label>
+                            <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+                            {{ keyword }}
+                        </label>
+                    </div>
                 </div>
             </details>
         </div>
@@ -266,6 +268,8 @@ h1 {
     display: flex;
     align-items: center;
 
+    position: relative;
+
     padding: 5px 10px;
 
     width: auto;
@@ -274,8 +278,6 @@ h1 {
         background-color: $primary-color-dark;
     }
 }
-
-
 
 .checkbox-sort {
     visibility: hidden; // Hide default checkbox
@@ -300,6 +302,27 @@ h1 {
         color: $bg-color;
         visibility: visible;
     }
+}
+
+#keyword-container {
+    background-color: $primary-color;
+    
+    width: max-content;
+    
+    position: absolute;
+    top: 63px;
+    left: 0px;
+    
+    padding: 10px;
+  
+    border: 2px solid $primary-color-dark;
+    border-radius: 5px;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    z-index: 1;
 }
 
 </style>
