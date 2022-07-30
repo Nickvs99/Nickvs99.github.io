@@ -167,7 +167,7 @@ export default {
         }
 
         // Check if the project title includes the search field text
-        return project.title.toLowerCase().includes(this.filterString)
+        return project.title.toLowerCase().includes(this.filterString.toLowerCase())
     },
 
     /**
@@ -308,7 +308,7 @@ h1 {
     background-color: $primary-color;
     
     width: max-content;
-    
+
     position: absolute;
     top: 63px;
     left: 0px;
