@@ -13,21 +13,26 @@
                 </summary>
 
                 <div v-for="keyword in keywords" :key="keyword">
-
-                    {{ keyword }}
-                    <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+                    <label>
+                        {{ keyword }}
+                        <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+                    </label>
                 </div>
             </details>
         </div>
 
         <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
-            A-Z
-            <input class="checkbox-sort" type="checkbox" v-model="sortAZ" @change="sortProjectsByString('title', sortAZ)"/>
+            <label>
+                A-Z
+                <input class="checkbox-sort" type="checkbox" v-model="sortAZ" @change="sortProjectsByString('title', sortAZ)">
+            </label>
         </div>
         
         <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
-            Year
-            <input class="checkbox-sort" type="checkbox" v-model="sortYear" @change="sortProjectsByInt('year', sortYear)"/>
+            <label>
+                Year
+                <input class="checkbox-sort" type="checkbox" v-model="sortYear" @change="sortProjectsByInt('year', sortYear)"/>
+            </label>
         </div>
     </div>  
 
