@@ -22,12 +22,12 @@
 
         <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
             A-Z
-            <input type="checkbox" v-model="sortAZ" @change="sortProjectsByString('title', sortAZ)"/>
+            <input class="checkbox-sort" type="checkbox" v-model="sortAZ" @change="sortProjectsByString('title', sortAZ)"/>
         </div>
         
         <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
             Year
-            <input type="checkbox" v-model="sortYear" @change="sortProjectsByInt('year', sortYear)"/>
+            <input class="checkbox-sort" type="checkbox" v-model="sortYear" @change="sortProjectsByInt('year', sortYear)"/>
         </div>
     </div>  
 
@@ -267,6 +267,33 @@ h1 {
 
     &:hover {
         background-color: $primary-color-dark;
+    }
+}
+
+
+
+.checkbox-sort {
+    visibility: hidden; // Hide default checkbox
+
+    &:not(:checked) {
+        --content: "\1F81B"; // Down-arrow
+    }    
+
+    &:checked {
+        --content: "\1F819"; //Up-arrow
+    }
+    
+    &:after {
+        content: var(--content);
+
+        position: relative;
+        bottom: 10px;
+
+        font-size: 24px;
+        font-weight: 200;
+        
+        color: $bg-color;
+        visibility: visible;
     }
 }
 
