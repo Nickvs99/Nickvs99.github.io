@@ -281,22 +281,23 @@ h1 {
 
 .checkbox-sort {
     visibility: hidden; // Hide default checkbox
+    margin: 0;
 
     &:not(:checked) {
-        --content: "\1F81B"; // Down-arrow
+        --content: "⬇"; // Down-arrow
     }    
 
     &:checked {
-        --content: "\1F819"; //Up-arrow
+        --content: "⬆"; // Up-arrow
     }
     
     &:after {
         content: var(--content);
 
         position: relative;
-        bottom: 10px;
+        bottom: 12px;
 
-        font-size: 24px;
+        font-size: 28px;
         font-weight: 200;
         
         color: $bg-color;
