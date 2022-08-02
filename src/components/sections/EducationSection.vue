@@ -88,7 +88,17 @@ export default {
     padding-bottom: calc(var(--padding) - var(--bottom-border));
 
     &.active {
+        font-weight: bold;
         border-bottom: var(--bottom-border) solid $secondary-color-dark;
     }
 }
+
+#school-content-container {
+    background-color: $primary-color-dark;
+    color: $bg-color;
+
+    margin: 10px;
+    padding: 10px;
+}
+
 </style>
