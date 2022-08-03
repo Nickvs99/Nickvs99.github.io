@@ -5,10 +5,14 @@
 }
 
 .course-container {
-    background-color: yellow;
-    padding: 10px;
+    padding: 0 10px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    column-gap: 10px;
+    row-gap: 15px;
 }
 
 .course-item {
-    background-color: red;
+    list-style-position: inside;
 }

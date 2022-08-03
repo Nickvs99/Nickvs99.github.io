@@ -2,7 +2,7 @@
 
 <div>
     <div class="education-quote">
-        " Observing the world through a computational and mathematical lens. "
+        “ Observing the world through a computational and mathematical lens. “
     </div>
 
     <p>
@@ -16,9 +16,9 @@
 
     <details>
         <summary>View all courses</summary>
-        <div class="course-container">
-            <div v-for="course in courses" :key="course" class="course-item">{{ course }}</div>
-        </div>
+        <ul class="course-container">
+            <li v-for="course in courses" :key="course" class="course-item">{{ course }}</li>
+        </ul>
     </details>
 </div>
 
@@ -29,7 +29,18 @@
 export default {
     data() {
         return {
-            courses: ["Computational Finance", "Computational Biology"]
+            courses: [
+                "Introduction Computational Science",
+                "Evolutionary Computing",
+                "Seminars Computational Science",
+                "Numerical Algorithms",
+                "Stochastic Simulation",
+                "Agent-Based Modelling",
+                "Computational Finance",
+                "Scientific Computing",
+                "Computational Biology",
+                "Complex System Simulation",
+            ], 
         }
     },
 

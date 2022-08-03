@@ -9,11 +9,16 @@
         Physics and Astronomy not only gave me a better grasp on reality itself, but it also developed my problem-solving and maths skills which are universally applicable. 
     </p>
 
+    <p>
+        My bachelor thesis was about the vertical structure of protoplanetary disks and especially on reconciling the mismatch between observed and simulated grain radii within the disk.
+        You can read more about the project on my <a href="./docs/Thesis - Nick van Santen.pdf" download>thesis</a>.
+    </p>
+
     <details>
         <summary> View all physics courses </summary>
-        <div class="course-container">
-            <div v-for="course in physicsCourses" :key="course" class="course-item">{{ course }}</div>
-        </div>
+        <ul id="physics-container" class="course-container">
+            <li v-for="course in physicsCourses" :key="course" class="course-item">{{ course }}</li>
+        </ul>
     </details>
 
     <h2>Minor programming &amp; extracurricular courses</h2>
@@ -27,9 +32,9 @@
 
     <details>
         <summary> View all extracurricular courses </summary>
-        <div class="course-container">
-            <div v-for="course in extraCourses" :key="course" class="course-item">{{ course }}</div>
-        </div>
+        <ul class="course-container">
+            <li v-for="course in extraCourses" :key="course" class="course-item">{{ course }}</li>
+        </ul>
     </details>
 
 </div>
@@ -42,8 +47,44 @@ export default {
     
     data() {
         return {
-            physicsCourses: ["Klassieke mechanica", "Black holes"],
-            extraCourses: ["Web app studio", "Programmeren 1"],
+            physicsCourses: [
+                "Academische Vaardigheden en Tutoraat",
+                "Speciale Relativiteitstheorie / Klassieke Mechanica 1",
+                "Wiskunde 1A",
+                "Practicum 1A",
+                "Sterrenkunde 1",
+                "Wiskunde 1B",
+                "Inleiding Programmeren voor Natuurkunde / Sterrenkunde 1",
+                "Trillingen, Golven en Optica",
+                "Practicum 1B",
+                "Wiskunde 1D",
+                "Elektriciteit en Magnetisme",
+                "Quantumfysica 1",
+                "Project Natuurkunde / Sterrenkunde 1",
+                "Gecondenseerde Materie 1",
+                "Thermische Fysica", 
+                "Project Natuurkunde / Sterrenkunde 2",
+                "Wiskunde 1C",
+                "Planetary Systems",
+                "Statistische fysica",
+                "Research practicum",
+                "Inleiding Programmeren voor Natuurkunde / Sterrenkunde 2",
+                "Wiskunde N2",
+                "Klassieke Mechanica / Quantummechanica 2",
+                "Speciale Relativiteitstheorie / Elektrodynamica",
+                "Black Holes and Compact Stars",
+                "Introduction to Cosmology",
+                "Quantum Mechanica: Structuur der Materie",
+                "Bachelor Thesis",
+            ],
+            extraCourses: [
+                "Fulltime Programmeren 1",
+                "Fulltime Programmeren 2",
+                "Fulltime Web App Studio",
+                "Programmeertheorie",
+                "Algoritmen en Complexiteit",
+                "Modelling and Simulation",
+            ],
         }
     },
 
@@ -62,4 +103,9 @@ export default {
 <style lang="scss" scoped>
 @import "@/components/education/education-styles.scss";
 
+
+#physics-container { 
+    // Unique minsize due to the very long course names
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+}
 </style>

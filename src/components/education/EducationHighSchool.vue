@@ -2,22 +2,20 @@
 
 <div>
 
-    <h2>Not sure whether to include high school. </h2>
-
     <div class="education-quote">
         “ All stories start from small beginnings. “
     </div>
 
     <p>
         In high school, I developed my interest in STEM-related fields. 
-        I achieved my atheneum diploma in 20XX.
+        I achieved my atheneum diploma in 2017.
     </p>
 
     <details>
         <summary>View courses</summary>
-        <div class="course-container">
-            <div v-for="course in courses" :key="course" class="course-item">{{ course }}</div>
-        </div>
+        <ul class="course-container">
+            <li v-for="course in courses" :key="course" class="course-item">{{ course }}</li>
+        </ul>
     </details>
 </div>
 
@@ -28,7 +26,20 @@
 export default {
     data() {
         return {
-            courses: ["Physics", "Chemistry", "English"]
+            courses: [
+                "Engels",
+                "Nederlands",
+                "Rekenen",
+                "Culturele en Kunstzinnige Vorming",
+                "Biologie",
+                "Natuurkunde",
+                "Scheikunde",
+                "Wiskunde B",
+                "Wiskunde D",
+                "Economie",
+                "Algemene Natuurwetenschappen",
+                "Maatschappijleer",
+            ],
         }
     },
 

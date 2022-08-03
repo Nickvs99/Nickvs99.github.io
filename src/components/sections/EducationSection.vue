@@ -97,7 +97,7 @@ export default {
     background-color: $primary-color-dark;
     color: $bg-color;
 
-    margin: 10px;
+    margin: 10px 0;
     padding: 10px;
 }
 
