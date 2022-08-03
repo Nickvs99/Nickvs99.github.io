@@ -7,7 +7,12 @@
 /* Removes the default margin from vue */
 body { 
     margin: 0;
-  }
+}
+
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
 
 .hidden {
     display: none !important;

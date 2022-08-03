@@ -1,58 +1,35 @@
 <template>
 
 <GenericSection id="contact-section">
-    <h1>Contact</h1>
+    <h1>Get in touch!</h1>
 
     <form class="gform" method="POST" 
         action="https://script.google.com/macros/s/AKfycbwRSKg41eBdC3XX2BihwRH-EdzZlqQx4Yqqsus_sXwHNDzcziimJ6ByyTg3T7zZa74G6g/exec"
     >
         <div class="form-elements">
 
-            <div>
-                <label for="name">Name: </label>
-                <input id="name" name="name" placeholder="What your Mom calls you" />
-            </div>
+            <input id="name" class="form-input" name="name" placeholder="Your name" />
 
-            <div>
-                <label for="message">Message: </label>
-                <textarea id="message" name="message" rows="10"
-                    placeholder="Tell us what's on your mind..."></textarea>
-            </div>
+            <textarea id="message" class="form-input" name="message" rows="10"
+                placeholder="Your message"></textarea>
+            
+            <input id="email" class="form-input" name="email" type="email" value=""
+                required placeholder="your.name@email.com"/>
 
-            <div>
-                <label for="email"><em>Your</em> Email Address:</label>
-                <input id="email" name="email" type="email" value=""
-                    required placeholder="your.name@email.com"/>
-            </div>
+            <input class="hidden" id="honeypot" type="text" name="honeypot" value="" />
 
-            <div>
-                <label for="color">Favourite Color: </label>
-                <input id="color" name="color" placeholder="green" />
-            </div>
-
-            <div class="honeypot-field">
-                <label for="honeypot">To help avoid spam, utilize a Honeypot technique with a hidden text field; must be empty to submit the form! Otherwise, we assume the user is a spam bot.</label>
-                <input id="honeypot" type="text" name="honeypot" value="" />
-            </div>
-
-            <button>
-                &nbsp;Send
+            <button class="form-button" type="submit">
+                Submit
             </button>
         </div>
 
         <div style="display:none" class="thankyou_message">
-            <!-- You can customize the thankyou message by editing the code below -->
-            <h2><em>Thanks</em> for contacting us! We will get back to you soon!
+
+            <h2><i>Thank you</i> for your message! I will get back to you soon!
             </h2>
         </div>
 
     </form>
-
-
-
-
-
-
 </GenericSection>
 
 </template>
@@ -66,10 +43,58 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss" scoped>
 
 #contact-section {
-    background-color: yellow;
+    background-color: $bg-color;
+    color: $primary-color;
+}
+
+.form-elements {
+    width: 500px;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    margin: 10px 0;
+}
+
+
+.form-input { 
+    background-color: $bg-color;
+
+    color: $primary-color;
+    font-size: 16px;
+    padding: 5px 10px;
+
+    height: 40px;
+    
+    border: 2px solid $primary-color-dark;
+    border-radius: 5px;
+
+    &::placeholder{
+        color: $primary-color;
+    }
+}
+
+textarea.form-input {
+    height: 200px;
+    padding-top: 15px;
+}
+
+.form-button {
+    background-color: $primary-color;
+    color: $bg-color;
+
+    height: 40px;
+    font-size: 16px;
+
+    padding: 5px 10px;
+    
+    border: 2px solid $primary-color-dark;
+    border-radius: 5px;
 }
 
 </style>
