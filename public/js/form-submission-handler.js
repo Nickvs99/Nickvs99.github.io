@@ -1,3 +1,5 @@
+// Originated from https://github.com/dwyl/learn-to-send-email-via-google-script-html-no-server
+
 (function() {
   // get all data in form and return object
   function getFormData(form) {
