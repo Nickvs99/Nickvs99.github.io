@@ -113,9 +113,7 @@ export default {
 }
 
 .project-doc {
-
-    border: 2px solid $primary-color-darkest;
-    border-radius: 20px;
+    @extend %border-md;
 
     padding: 10px 10px;
 

@@ -230,10 +230,9 @@ export default {
 }
 
 .filter-project-cards-item {
-    height: 40px;
+    @extend %border-sm;
 
-    border: 2px solid $primary-color-dark;
-    border-radius: 5px;
+    height: 40px;
 }
 
 #filter-project-cards-input {
@@ -243,10 +242,6 @@ export default {
     font-size: $md-font-size;
 
     padding: 5px 10px;
-
-    &::placeholder{
-        color: $primary-color;
-    }
 
     @media(max-width: $md-screen-width) {
         width: 100%;
@@ -295,6 +290,8 @@ export default {
 }
 
 #keyword-container {
+    @extend %border-sm;
+
     background-color: $primary-color;
     
     width: max-content;
@@ -304,9 +301,6 @@ export default {
     left: 0px;
     
     padding: 10px;
-  
-    border: 2px solid $primary-color-dark;
-    border-radius: 5px;
     
     display: flex;
     flex-direction: column;

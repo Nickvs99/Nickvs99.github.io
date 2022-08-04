@@ -58,6 +58,7 @@ export default {
 
 .form-button {
     @extend %clickable-primary;
+    @extend %border-sm;
 
     color: $light-color;
 
@@ -65,9 +66,6 @@ export default {
     font-size: 16px;
 
     padding: 5px 10px;
-    
-    border: 2px solid $primary-color-dark;
-    border-radius: 5px;
 }
 
 </style>

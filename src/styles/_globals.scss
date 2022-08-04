@@ -25,7 +25,6 @@ $lg-screen-width: 1200px;
 /********** Z indices **************/
 $foreground-index: 999;
 
-
 /*********** Mixins ***************/
 
 @mixin clickable($default-color: $primary-color, $is-svg: false) {
@@ -67,4 +66,17 @@ $foreground-index: 999;
 
 %clickable-secondary {
     @include clickable($secondary-color);
+}
+
+@mixin border($border-radius) {
+    border: 2px solid $primary-color-dark;
+    border-radius: $border-radius;
+}
+
+%border-sm {
+    @include border(5px)
+}
+
+%border-md {
+    @include border(20px);
 }

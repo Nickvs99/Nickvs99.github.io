@@ -61,9 +61,7 @@ export default {
 
 .project-card {
     @extend %clickable-primary;
-
-    border: 2px solid $primary-color-darkest;
-    border-radius: 20px;
+    @extend %border-md; 
 
     padding: 5px 10px;
 
