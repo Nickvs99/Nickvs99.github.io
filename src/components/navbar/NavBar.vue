@@ -100,29 +100,24 @@ export default {
 #navbar-collapsable-content {
     display: flex;
     justify-content: flex-end;
-}
 
-#navbar-collapsable-content.collapsed {
-    display: block;
-    position: absolute;
-    overflow: hidden;
-}
+    &.collapsed {
+        display: block;
+        position: absolute;
+        overflow: hidden;
 
-#navbar-collapsable-content.collapsed.menu-active {
-    max-height: 240px; /* TODO Ideally set through js, works for now */
-    transition: max-height 0.5s ease-out;
-}
-
-#navbar-collapsable-content.collapsed:not(.menu-active) { 
-    max-height: 0px;
-    transition: max-height 0.25s ease-out;
+        &.menu-active {
+            max-height: 240px; /* TODO Ideally set through js, works for now */
+            transition: max-height 0.5s ease-out;
+        }
+        &:not(.menu-active) {
+            max-height: 0px;
+            transition: max-height 0.25s ease-out;            
+        }
+    }
 }
 
 #menu-button {
-    display: inline-block;
-}
-
-#menu-button.active {
     display: inline-block;
 }
 

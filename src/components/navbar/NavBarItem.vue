@@ -62,7 +62,6 @@ export default {
 
 <style lang="scss">
 
-/* TEMP styling */
 .navbar-item {
     @extend %clickable-primary;
 
@@ -73,11 +72,11 @@ export default {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-}
 
-.navbar-item.collapsed {
-    width: 100%;
-    text-align: left;
+    &.collapsed {
+        width: 100%;
+        text-align: left;     
+    }
 }
 
 </style>
