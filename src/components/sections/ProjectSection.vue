@@ -254,7 +254,8 @@ export default {
 }
 
 .filter-project-box {
-    background-color: $primary-color;
+    @extend %clickable-primary;
+
     color: $light-color;
 
     display: flex;
@@ -265,10 +266,6 @@ export default {
     padding: 5px 10px;
 
     width: auto;
-
-    &:hover {
-        background-color: $primary-color-dark;
-    }
 }
 
 .checkbox-sort {

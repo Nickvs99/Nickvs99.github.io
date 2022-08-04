@@ -60,6 +60,7 @@ export default {
 @import "@/components/projects/project-styles.scss";
 
 .project-card {
+    @extend %clickable-primary;
 
     border: 2px solid $primary-color-darkest;
     border-radius: 20px;
@@ -68,11 +69,6 @@ export default {
 
     display: flex;
     flex-direction: column;
-
-    &:hover {
-        background-color: $primary-color-dark;
-        cursor: pointer;
-    }
 }
 
 .project-description {

@@ -64,23 +64,15 @@ export default {
 
 /* TEMP styling */
 .navbar-item {
-    background-color: $primary-color;  
+    @extend %clickable-primary;
+
     border: none;
-    color: white;
+    color: $light-color;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-}
-
-.navbar-item:hover {
-    background-color: $primary-color-dark;
-}
-
-/* On click */
-.navbar-item:active {
-    background-color: $primary-color-darkest;
 }
 
 .navbar-item.active {

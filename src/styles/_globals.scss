@@ -24,3 +24,47 @@ $lg-screen-width: 1200px;
 
 /********** Z indices **************/
 $foreground-index: 999;
+
+
+/*********** Mixins ***************/
+
+@mixin clickable($default-color: $primary-color, $is-svg: false) {
+    $dark-color: darken($default-color, 10%);
+    $darkest-color: darken($default-color, 20%);
+
+    @if not($is-svg) {
+
+        background-color: $default-color;
+
+        &:hover {
+            background-color: $dark-color;
+            cursor: pointer;
+        }
+
+        &:active {
+            background-color: $darkest-color;
+        }
+    }
+    
+    @else {
+        // svg's need the fill attribute as opposed to background-color
+        fill: $default-color;
+
+        &:hover {
+            fill: $dark-color;
+            cursor: pointer;
+        }
+    
+        &:active {
+            fill: $darkest-color;
+        }
+    }
+}
+
+%clickable-primary {
+    @include clickable($primary-color);
+}
+
+%clickable-secondary {
+    @include clickable($secondary-color);
+}

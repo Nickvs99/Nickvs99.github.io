@@ -57,7 +57,8 @@ export default {
 }
 
 .form-button {
-    background-color: $primary-color;
+    @extend %clickable-primary;
+
     color: $light-color;
 
     height: 40px;

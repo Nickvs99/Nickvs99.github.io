@@ -73,6 +73,7 @@ export default {
 }
 
 .school-navbar-item {
+    @extend %clickable-secondary;
 
     // For easy prototyping
     --padding: 10px;
