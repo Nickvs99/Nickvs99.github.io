@@ -17,3 +17,18 @@ textarea {
 .hidden {
     display: none !important;
 }
+
+input[type="text"], input[type="email"], textarea {
+    font-size: 16px;
+    padding: 5px 10px;
+
+    height: 40px;
+    
+    border: 2px solid;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 200px;
+    padding-top: 15px;
+}

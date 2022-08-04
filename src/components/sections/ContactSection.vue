@@ -8,7 +8,7 @@
     >
         <div class="form-elements">
 
-            <input id="name" class="form-input" name="name" placeholder="Your name" />
+            <input id="name" class="form-input" name="name" placeholder="Your name" type="text"/>
 
             <textarea id="message" class="form-input" name="message" rows="10"
                 placeholder="Your message"></textarea>
@@ -54,29 +54,6 @@ export default {
     gap: 10px;
     
     margin: 10px 0;
-}
-
-
-.form-input { 
-    background-color: $light-color;
-
-    color: $primary-color;
-    font-size: 16px;
-    padding: 5px 10px;
-
-    height: 40px;
-    
-    border: 2px solid $primary-color-dark;
-    border-radius: 5px;
-
-    &::placeholder{
-        color: $primary-color;
-    }
-}
-
-textarea.form-input {
-    height: 200px;
-    padding-top: 15px;
 }
 
 .form-button {

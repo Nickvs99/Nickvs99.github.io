@@ -7,6 +7,16 @@
     h1, h2, h3, h4, h5, h6 {
         color: $primary-color;
     }
+
+    input, textarea {
+        background-color: $light-color;
+        color: $primary-color;
+        border-color: $primary-color-dark;
+
+        &::placeholder{
+            color: $primary-color;
+        }
+    }
 }
 
 .dark-theme {
@@ -15,5 +25,9 @@
 
     h1, h2, h3, h4, h5, h6 {
         color: $light-color;
+    }
+
+    input, textarea {
+        // Neiter input nor textarea currently have a style for the dark theme
     }
 }
