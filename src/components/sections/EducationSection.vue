@@ -75,18 +75,7 @@ export default {
 .school-navbar-item {
     @extend %clickable-secondary;
 
-    // For easy prototyping
-    --padding: 10px;
-    --bottom-border: 5px;
-
-    background-color: $secondary-color;
     padding: 10px;
-    padding-bottom: calc(var(--padding) - var(--bottom-border));
-
-    &.active {
-        font-weight: bold;
-        border-bottom: var(--bottom-border) solid $secondary-color-dark;
-    }
 }
 
 #school-content-container {

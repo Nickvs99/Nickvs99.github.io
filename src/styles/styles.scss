@@ -14,10 +14,6 @@ textarea {
     font-size: inherit;
 }
 
-.hidden {
-    display: none !important;
-}
-
 input[type="text"], input[type="email"], textarea {
     font-size: 16px;
     padding: 5px 10px;
@@ -31,4 +27,15 @@ input[type="text"], input[type="email"], textarea {
 textarea {
     height: 200px;
     padding-top: 15px;
+}
+
+.active {
+    font-weight: bold;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+}
+
+.hidden {
+    display: none !important;
 }

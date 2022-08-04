@@ -75,13 +75,6 @@ export default {
     font-size: 16px;
 }
 
-.navbar-item.active {
-    font-weight: bold;
-    text-decoration: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: 2px;
-}
-
 .navbar-item.collapsed {
     width: 100%;
     text-align: left;
