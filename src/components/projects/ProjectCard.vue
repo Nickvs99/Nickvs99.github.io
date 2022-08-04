@@ -1,7 +1,7 @@
 <template>
 
     
-<div :id=containerID class="project-card" @click=showProjectDoc>
+<div :id=containerID class="project-card dark-theme" @click=showProjectDoc>
 
     <div class="project-title-container">
         <h2 class="project-title"> {{ title }}</h2>
@@ -60,8 +60,6 @@ export default {
 @import "@/components/projects/project-styles.scss";
 
 .project-card {
-    background-color: $primary-color;
-    color: $bg-color;
 
     border: 2px solid $primary-color-darkest;
     border-radius: 20px;

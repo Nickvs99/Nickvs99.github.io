@@ -214,14 +214,6 @@ export default {
 
 <style scoped lang="scss">
 
-#project-section {
-    background-color: $bg-color;
-}
-
-h1 {
-    color: $primary-color;
-}
-
 #project-card-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -263,7 +255,7 @@ h1 {
 
 .filter-project-box {
     background-color: $primary-color;
-    color: $bg-color;
+    color: $light-color;
 
     display: flex;
     align-items: center;
@@ -300,7 +292,7 @@ h1 {
         font-size: 28px;
         font-weight: 200;
         
-        color: $bg-color;
+        color: $light-color;
         visibility: visible;
     }
 }

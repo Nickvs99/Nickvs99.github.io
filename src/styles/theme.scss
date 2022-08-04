@@ -1,0 +1,19 @@
+// Applies different styling depending on wheter it is inside a light or dark theme
+
+.light-theme {
+    background-color: $light-color;
+    color: $font-color-dark;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $primary-color;
+    }
+}
+
+.dark-theme {
+    background-color: $primary-color;
+    color: $font-color-light;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $light-color;
+    }
+}

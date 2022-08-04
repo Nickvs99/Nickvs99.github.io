@@ -1,7 +1,7 @@
 <template>
 
 <div ref="background" class="project-doc-background" :class="{hidden: this.disabled}">
-    <div class="project-doc" >
+    <div class="project-doc dark-theme" >
         <div class="project-title-container">
             <h2 class="project-title"> {{ title }} </h2>
             <div class="project-year">, {{ year }} </div>
@@ -114,10 +114,6 @@ export default {
 
 .project-doc {
 
-    /* Styling is identical to .project-card for now */
-    background-color: $primary-color;
-    color: $bg-color;
-
     border: 2px solid $primary-color-darkest;
     border-radius: 20px;
 
@@ -134,6 +130,5 @@ export default {
 .project-doc-keyword-container {
     margin: 15px 0;
 }
-
 
 </style>

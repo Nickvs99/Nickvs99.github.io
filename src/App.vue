@@ -1,10 +1,10 @@
 <template>
   <NavBar/>
-  <HomeSection/>
-  <AboutMeSection/>
-  <ProjectSection/>
-  <EducationSection/>
-  <ContactSection/>
+  <HomeSection class="light-theme"/>
+  <AboutMeSection class="dark-theme"/>
+  <ProjectSection class="light-theme"/>
+  <EducationSection class="dark-theme"/>
+  <ContactSection class="light-theme"/>
 </template>
 
 <script>

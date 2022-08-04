@@ -39,7 +39,6 @@ export default {
 <style lang="scss">
 
 #home-section {
-    background-color: $bg-color;
     padding-top: 150px;
     padding-bottom: 50px;
 
@@ -78,7 +77,6 @@ export default {
 }
 
 #title-greeting {
-    color: $primary-color;
     margin: 0 0 30px 0;
 }
 

@@ -65,11 +65,6 @@ export default {
 
 <style lang="scss" scoped>
 
-#education-section {
-    background-color: $primary-color;
-    color: $bg-color;
-}
-
 #school-navbar {
     display: flex;
     flex-direction: row;
@@ -95,7 +90,6 @@ export default {
 
 #school-content-container {
     background-color: $primary-color-dark;
-    color: $bg-color;
 
     margin: 10px 0;
     padding: 10px;

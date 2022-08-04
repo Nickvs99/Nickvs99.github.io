@@ -17,8 +17,4 @@ export default {
 
 <style>
 
-#aboutme-section {
-    background-color: green;
-}
-
 </style>

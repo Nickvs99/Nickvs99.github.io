@@ -7,11 +7,14 @@ $primary-color-darkest: darken($primary-color, 20%);
 $secondary-color: tomato;
 $secondary-color-dark: darken($secondary-color, 10%);
 
-$bg-color: #f9f4ea;
+$light-color: #f9f4ea;
 
 /********* Fonts *********/
 $sm-font-size: 13px;
 $md-font-size: 16px;
+
+$font-color-dark: black;
+$font-color-light: $light-color;
 
 /********* Media queries ***********/
 $sm-screen-width: 480px;

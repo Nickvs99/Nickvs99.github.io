@@ -45,11 +45,6 @@ export default {
 
 <style lang="scss" scoped>
 
-#contact-section {
-    background-color: $bg-color;
-    color: $primary-color;
-}
-
 .form-elements {
     width: 500px;
     max-width: 100%;
@@ -63,7 +58,7 @@ export default {
 
 
 .form-input { 
-    background-color: $bg-color;
+    background-color: $light-color;
 
     color: $primary-color;
     font-size: 16px;
@@ -86,7 +81,7 @@ textarea.form-input {
 
 .form-button {
     background-color: $primary-color;
-    color: $bg-color;
+    color: $light-color;
 
     height: 40px;
     font-size: 16px;
