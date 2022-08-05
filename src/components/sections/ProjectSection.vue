@@ -6,8 +6,10 @@
     <div id="filter-project-cards-containter">
         <input id="filter-project-cards-input" class="filter-project-cards-item" type="text" placeholder="Search for project..." @input="updateListedProjects" v-model="filterString">
         
-        <div class="filter-project-box filter-project-cards-item">
-            <details id="keyword-filter" >
+        <div class="filter-project-box filter-project-cards-item" @click="toggleDetails">
+
+            <!-- Cancel default behaviour of details by toggling the open attribute again -->
+            <details id="keyword-filter" ref="details" @click="toggleDetails">
                 <summary>
                     Keywords
                 </summary>
@@ -23,18 +25,18 @@
             </details>
         </div>
 
-        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
-            <label>
-                A-Z
-                <input class="checkbox-sort" type="checkbox" v-model="sortAZ" @change="sortProjectsByString('title', sortAZ)">
-            </label>
+        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
+            :class="{ascending: sortAZ}"
+            @click="toggleSortAZ"
+        >
+            A-Z
         </div>
         
-        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item">
-            <label>
-                Year
-                <input class="checkbox-sort" type="checkbox" v-model="sortYear" @change="sortProjectsByInt('year', sortYear)"/>
-            </label>
+        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
+            :class="{ascending: sortYear}"
+            @click="toggleSortYear"
+        >    
+            Year
         </div>
     </div>  
 
@@ -211,6 +213,28 @@ export default {
             project.keywords.sort(sortByString);
         }
     },
+
+    toggleSortAZ() {
+        this.sortAZ = !this.sortAZ;
+        this.sortProjectsByString('title', this.sortAZ);
+    },
+
+    toggleSortYear() {
+        this.sortYear = !this.sortYear;
+        this.sortProjectsByInt('year', this.sortYear);
+    },
+
+    toggleDetails() {
+        let el = this.$refs.details;
+
+        if(el.hasAttribute("open")) {
+            el.removeAttribute("open")
+        }
+        else {
+            el.setAttribute("open", "");
+        }
+    },
+
   }
 }
 
@@ -267,15 +291,13 @@ export default {
     width: auto;
 }
 
-.checkbox-sort {
-    visibility: hidden; // Hide default checkbox
-    margin: 0;
+.arrow-sort {
 
-    &:not(:checked) {
+    &:not(.ascending) {
         --content: "⬇"; // Down-arrow
     }    
 
-    &:checked {
+    &.ascending {
         --content: "⬆"; // Up-arrow
     }
     
@@ -283,13 +305,11 @@ export default {
         content: var(--content);
 
         position: relative;
-        bottom: 12px;
-
+        bottom: 1px;
+        left: 1px;
+        
         font-size: 28px;
         font-weight: 200;
-        
-        color: $light-color;
-        visibility: visible;
     }
 }
 
