@@ -132,7 +132,11 @@ export default {
 
   mounted() {
     this.displayedProjects = this.projects;
+
+    this.sortProjectKeyWords();
+
     this.keywords = this.getKeywords();
+    this.keywords.sort(sortByString);
   },
  
   methods: {
@@ -199,6 +203,13 @@ export default {
         }
 
         this.updateListedProjects();
+    },
+
+    sortProjectKeyWords() {
+
+        for (let project of this.projects) {
+            project.keywords.sort(sortByString);
+        }
     },
   }
 }
