@@ -56,6 +56,7 @@
 
 import GenericSection from "./GenericSection.vue"
 import ProjectCard from "@/components/projects/ProjectCard.vue"
+import { sortByInt, sortByString } from "@/js/sort.js"
 
 export default {
   components: { GenericSection, ProjectCard },
@@ -176,17 +177,13 @@ export default {
      */
     sortProjectsByString(attr, ascending=true) {
         if (ascending) {
-            this.projects.sort((a, b) => this.sortFunctionString(a, b, attr))
+            this.projects.sort((a, b) => sortByString(a[attr], b[attr]))
         }
         else {
-            this.projects.sort((a, b) => this.sortFunctionString(b, a, attr))
+            this.projects.sort((a, b) => sortByString(b[attr], a[attr]))
         }
 
         this.updateListedProjects();
-    },
-
-    sortFunctionString(a, b, attr) {
-        return a[attr].toLowerCase() > b[attr].toLowerCase() ? 1 : -1;
     },
 
     /**
@@ -195,17 +192,13 @@ export default {
      */
     sortProjectsByInt(attr, ascending=true) {
         if (ascending) {
-            this.projects.sort((a, b) => this.sortFunctionInt(a, b, attr))
+            this.projects.sort((a, b) => sortByInt(a[attr], b[attr]))
         }
         else {
-            this.projects.sort((a, b) => this.sortFunctionInt(b, a, attr))
+            this.projects.sort((a, b) => sortByInt(b[attr], a[attr]))
         }
 
         this.updateListedProjects();
-    },
-
-    sortFunctionInt(a, b, attr) {
-        return a[attr] - b[attr];
     },
   }
 }

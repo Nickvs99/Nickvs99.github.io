@@ -23,6 +23,8 @@
 
 <script>
 
+import { sortByString } from "@/js/sort.js";
+
 export default {
     data() {
         return {
@@ -44,9 +46,7 @@ export default {
     },
 
     mounted() {
-        this.courses.sort((a, b) => {
-            return a.toLowerCase() > b.toLowerCase() ? 1 : -1;
-        });
+        this.courses.sort(sortByString);
     },
 }
 
