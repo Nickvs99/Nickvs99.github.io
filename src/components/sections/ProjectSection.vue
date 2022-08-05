@@ -48,6 +48,10 @@
             :contentSrc="project.contentSrc"
             :year="project.year">
         </ProjectCard>
+
+        <div id="no-projects-message" :class="{hidden: isProjectMessageHidden}">
+            All projects have been filtered out
+        </div>
     </div>
 
 </GenericSection>
@@ -130,6 +134,12 @@ export default {
       sortAZ: false,
       sortYear: false,
     }
+  },
+
+  computed: {
+    isProjectMessageHidden() {
+        return this.displayedProjects.length != 0;
+    } 
   },
 
   mounted() {
@@ -331,6 +341,14 @@ export default {
     gap: 5px;
 
     z-index: 1;
+}
+
+#no-projects-message {
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 </style>
