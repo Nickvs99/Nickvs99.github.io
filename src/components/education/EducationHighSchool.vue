@@ -3,7 +3,7 @@
 <div>
 
     <div class="education-quote">
-        “ All stories start from small beginnings. “
+        &ldquo;&nbsp;All stories start from small beginnings.&nbsp;&rdquo;
     </div>
 
     <p>

@@ -2,7 +2,7 @@
 
 <div>
     <div class="education-quote">
-        “ Understanding the inner workings of the universe. “
+        &ldquo;&nbsp;Understanding the inner workings of the universe.&nbsp;&rdquo;
     </div>
 
     <p>

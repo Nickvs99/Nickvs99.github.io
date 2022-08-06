@@ -2,7 +2,7 @@
 
 <div>
     <div class="education-quote">
-        “ Observing the world through a computational and mathematical lens. “
+        &ldquo;&nbsp;Observing the world through a computational and mathematical lens.&nbsp;&rdquo;
     </div>
 
     <p>
