@@ -12,13 +12,6 @@ export default {
             isActive: false,
         }
     },
-    
-    mounted() {
-        window.addEventListener("scroll", this.onScroll);
-    },
-    unmounted() {
-        window.removeEventListener("scroll", this.onScroll);
-    },
 
     methods: {
         
@@ -34,26 +27,6 @@ export default {
             let offsetPosition = targetPosition + window.pageYOffset - offset;
 
             window.scrollTo({top: offsetPosition, behavior: "smooth"});
-        },
-
-        /**
-         * Checks if the associated section is at the top of the viewport
-         */
-        isAtTopOfViewport() { 
-            let navbarBottomPosition = document.getElementById("navbar").getBoundingClientRect().bottom;
-
-            let els = document.elementsFromPoint(window.innerWidth / 2, navbarBottomPosition);
-
-            for (let el of els){
-                if (el.id === this.section_id) {
-                    return true;
-                }
-            }
-            return false;
-        },
-
-        onScroll() {
-            this.isActive = this.isAtTopOfViewport();
         },
     }   
 }

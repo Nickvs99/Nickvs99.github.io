@@ -10,11 +10,14 @@
     </button>
 
     <div id="navbar-collapsable-content" :class="{'menu-active': isCollapsed && menuActive, collapsed: isCollapsed}">
-        <NavBarItem content="Home" section_id="home-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
-        <NavBarItem content="About me" section_id="aboutme-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
-        <NavBarItem content="Projects" section_id="project-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
-        <NavBarItem content="Education" section_id="education-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
-        <NavBarItem content="Contact" section_id="contact-section" :class="{collapsed: isCollapsed}" @click="deactivateMenu"/>
+
+        <NavBarItem v-for="item in  navbarItems" :key="item.content"
+            :class="{collapsed: isCollapsed, active: item.section_id === currentActiveSection}"
+            @click="deactivateMenu"
+            :content="item.content"
+            :section_id="item.section_id"
+        />
+
     </div>
 </div>
 
@@ -31,6 +34,14 @@ export default {
             isCollapsed: false,
             menuActive: false,
             navbarItemsWidth: 0,
+            navbarItems: [
+                {"content": "Home", "section_id": "home-section"},
+                {"content": "About me", "section_id": "aboutme-section"},
+                {"content": "Projects", "section_id": "project-section"},
+                {"content": "Education", "section_id": "education-section"},
+                {"content": "Contact", "section_id": "contact-section"},
+            ],
+            currentActiveSection: "",
         }
     },
 
@@ -39,11 +50,16 @@ export default {
         // Compute width of all navbar items before the items might be collapsed
         this.navbarItemsWidth = this.computeNavbarItemsWidth();
         
-        window.addEventListener("resize", () => {
-            this.isCollapsed = this.checkCollapse();
-        });
+        window.addEventListener("resize", this.onResize);
+        window.addEventListener("scroll", this.onScroll);
 
         this.isCollapsed = this.checkCollapse();
+        this.setCurrentActiveSection();
+    },
+
+    unmounted() {
+        window.removeEventListener("resize", this.onResize);
+        window.removeEventListener("scroll", this.onScroll);
     },
 
     methods: {
@@ -82,6 +98,28 @@ export default {
         deactivateMenu() {
             this.menuActive = false;
         },
+
+        setCurrentActiveSection() {
+            
+            let els = document.elementsFromPoint(window.innerWidth / 2, window.innerHeight / 4);
+
+            for (let el of els){
+                if (el.classList.contains("section")) {
+                    this.currentActiveSection = el.id;
+                    return;
+                }
+            }
+
+            console.error("No element with class 'section' found.")
+        },
+
+        onResize() {
+            this.isCollapsed = this.checkCollapse();
+        },
+
+        onScroll() {
+            this.setCurrentActiveSection();
+        },
     }
 }
 
@@ -99,7 +137,7 @@ export default {
 
 #navbar-collapsable-content {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
 
     &.collapsed {
         display: block;
