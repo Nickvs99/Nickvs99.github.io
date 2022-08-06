@@ -90,7 +90,6 @@ export default {
     max-width: 500px;
 
     @media (max-width: $md-screen-width) {
-        margin: auto;
         width: 100%;
     }
 }
