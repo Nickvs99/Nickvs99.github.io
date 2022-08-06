@@ -3,7 +3,7 @@
 <a :href="`${href}`" class="anchor hexagon-icon"  target=”_blank” :style="cssProps"> 
 
     <EquilateralShape n="6" :radius=radius offset="30"/>
-    <img :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img">
+    <img ref="img" :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img">
 
 </a>
 
@@ -21,15 +21,36 @@ export default {
     data () {
         return {
             radius: 50,
-            maxRadius: 50,
+            iconWidth: 50,
+            iconHeight: 50,
+        }
+    },
+
+    mounted() {
+
+        // Rescale img while maintaining original aspect ratio
+        let img = this.$refs.img;
+        let aspectRatio = img.naturalWidth / img.naturalHeight;
+
+        if(img.naturalWidth > img.naturalHeight) {
+            this.iconWidth = this.radius;
+            this.iconHeight = this.iconWidth / aspectRatio;
+        }
+        else {
+            this.iconHeight = this.radius;
+            this.iconWidth = this.iconHeight / aspectRatio;
         }
     },
 
     computed: {
         cssProps() {
             return {
-                '--icon-width': this.radius + "px",
-                '--icon-offset': (this.radius / 2) + "px", // Places icon at the center
+                '--icon-width': this.iconWidth + "px",
+                '--icon-height': this.iconHeight + "px",
+
+                // Center icon
+                '--icon-offset-left': (this.radius - this.iconWidth / 2) + "px",
+                '--icon-offset-bottom': (this.radius - this.iconHeight / 2) + "px",
             }
         }
     },
@@ -52,13 +73,12 @@ export default {
 
 .icon-img {
     position: absolute;
-    transform-origin: center;
 
-    bottom: var(--icon-offset);
-    left: var(--icon-offset);
+    bottom: var(--icon-offset-bottom);
+    left: var(--icon-offset-left);
 
     width: var(--icon-width);
-    height: var(--icon-width);
+    height: var(--icon-height);
 }
 
 </style>
