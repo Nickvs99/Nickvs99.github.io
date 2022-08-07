@@ -1,6 +1,9 @@
 <template>
 
-<img src="@/assets/projects/Living_world.gif" alt="Image shows the build and live phase of the world." class="project-img" id="living-world-gif"/>
+<video class="project-img" autoplay muted loop>
+    <source src="@/assets/projects/Living_world.mp4" type="video/mp4">
+    Image shows the creation and inhabitons of the world.
+</video>
 
 <p> Living World is a procedural generated tile-based world inhabited by boats and cars.</p>
 
