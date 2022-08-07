@@ -43,7 +43,7 @@
     </div>  
 
     <div id="project-card-container">
-        <ProjectCard v-for="project in displayedProjects" :key="project" 
+        <ProjectCard v-for="project in displayedProjects" :key="project.title" 
             :title="project.title" 
             :description="project.description" 
             :keywords="project.keywords" 
