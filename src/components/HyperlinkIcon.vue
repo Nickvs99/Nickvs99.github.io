@@ -30,15 +30,19 @@ export default {
 
         // Rescale img while maintaining original aspect ratio
         let img = this.$refs.img;
-        let aspectRatio = img.naturalWidth / img.naturalHeight;
 
-        if(img.naturalWidth > img.naturalHeight) {
-            this.iconWidth = this.radius;
-            this.iconHeight = this.iconWidth / aspectRatio;
-        }
-        else {
-            this.iconHeight = this.radius;
-            this.iconWidth = this.iconHeight / aspectRatio;
+        // naturalWidth and naturalHeight have their values set once img has loaded
+        img.onload = () => {
+            let aspectRatio = img.naturalWidth / img.naturalHeight;
+
+            if(img.naturalWidth > img.naturalHeight) {
+                this.iconWidth = this.radius;
+                this.iconHeight = this.iconWidth / aspectRatio;
+            }
+            else {
+                this.iconHeight = this.radius;
+                this.iconWidth = this.iconHeight / aspectRatio;
+            }
         }
     },
 
