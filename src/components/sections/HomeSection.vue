@@ -17,7 +17,7 @@
 
         </div>
         
-        <img src="@/assets/me.jpg" alt="Picture of me" id="profile-img">
+        <img src="@/assets/me.jpg" alt="Picture of me" id="profile-img" width="275" height="275">
     </div>    
 
 </GenericSection>
@@ -97,7 +97,6 @@ export default {
 #profile-img {
     border-radius: 30px;
     margin: auto;
-    width: 275px;
 
     @media (max-width: $md-screen-width) {
         display: none !important;
