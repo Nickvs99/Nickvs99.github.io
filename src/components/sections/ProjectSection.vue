@@ -6,37 +6,39 @@
     <div id="filter-project-cards-containter">
         <input id="filter-project-cards-input" class="filter-project-cards-item" type="text" placeholder="Search for project..." @input="updateListedProjects" v-model="filterString">
         
-        <div class="filter-project-box filter-project-cards-item" @click="toggleDetails">
+        <div class="filter-boxxes">
+            <div class="filter-project-box filter-project-cards-item" @click="toggleDetails">
 
-            <!-- Cancel default behaviour of details by toggling the open attribute again -->
-            <details id="keyword-filter" ref="details" @click="toggleDetails">
-                <summary>
-                    Keywords
-                </summary>
+                <!-- Cancel default behaviour of details by toggling the open attribute again -->
+                <details id="keyword-filter" ref="details" @click="toggleDetails">
+                    <summary>
+                        Keywords
+                    </summary>
 
-                <div id="keyword-container">
-                    <div v-for="keyword in keywords" :key="keyword">
-                        <label>
-                            <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
-                            {{ keyword }}
-                        </label>
+                    <div id="keyword-container">
+                        <div v-for="keyword in keywords" :key="keyword">
+                            <label>
+                                <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+                                {{ keyword }}
+                            </label>
+                        </div>
                     </div>
-                </div>
-            </details>
-        </div>
+                </details>
+            </div>
 
-        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
-            :class="{ascending: sortAZ}"
-            @click="toggleSortAZ"
-        >
-            A-Z
-        </div>
-        
-        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
-            :class="{ascending: sortYear}"
-            @click="toggleSortYear"
-        >    
-            Year
+            <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
+                :class="{ascending: sortAZ}"
+                @click="toggleSortAZ"
+            >
+                A-Z
+            </div>
+            
+            <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
+                :class="{ascending: sortYear}"
+                @click="toggleSortYear"
+            >    
+                Year
+            </div>
         </div>
     </div>  
 
@@ -274,16 +276,16 @@ export default {
 }
 
 #filter-project-cards-input {
-    flex-grow: 1;
+    flex-grow: 9999; //https://stackoverflow.com/a/33174685
 
     color: $primary-color;
-    font-size: $md-font-size;
+}
 
-    padding: 5px 10px;
+.filter-boxxes {
+    display: flex;
+    flex-grow: 1;
 
-    @media(max-width: $md-screen-width) {
-        width: 100%;
-    }
+    gap: inherit;
 }
 
 .filter-project-box {
@@ -293,6 +295,8 @@ export default {
 
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-grow: 1;
 
     position: relative;
 
