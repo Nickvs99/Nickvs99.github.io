@@ -12,10 +12,10 @@
 <p>The world is generated through a few simple steps: </p>
 
 <ol>
-    <li>Initialize a grass world with size n by n</li>
+    <li>Initialize a grass world with size \( n_x \) by \( n_y \)</li>
     <li>Generate a non-crossing bezier curve with a width representing the river.</li>
-    <li>Populate the world with x cities.</li>
-    <li>Connect all cities with highways through a minimum spanning tree computed with Prim’s algorithm.</li>
+    <li>Populate the world with \( n \) cities.</li>
+    <li>Connect all cities with highways through a minimum spanning tree computed with Prim's algorithm.</li>
     <li>Place houses alongside the road.</li>
     <li>Trees are placed if they have sufficient distance to the nearest neighbourhood.</li>
 </ol>
