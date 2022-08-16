@@ -17,10 +17,14 @@
 
                     <div id="keyword-container">
                         <div v-for="keyword in keywords" :key="keyword">
-                            <label>
+                            <label class="keyword-label">
                                 <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
                                 {{ keyword }}
                             </label>
+                        </div>
+                        
+                        <div id="no-keywords" :class="{hidden: isKeywordMessageHidden}">
+                            No keywords available
                         </div>
                     </div>
                 </details>
@@ -141,7 +145,11 @@ export default {
   computed: {
     isProjectMessageHidden() {
         return this.displayedProjects.length != 0;
-    } 
+    } ,
+
+    isKeywordMessageHidden() {
+        return this.keywords != 0;
+    }
   },
 
   mounted() {
@@ -149,31 +157,30 @@ export default {
 
     this.sortProjectKeyWords();
 
-    this.keywords = this.getKeywords();
-    this.keywords.sort(sortByString);
+    this.setKeywords();
   },
  
   methods: {
 
-    getKeywords() {
+    setKeywords() {
         
-        let keywords = []
-        for(let project of this.projects) {
+        this.keywords = []
+        for(let project of this.displayedProjects) {
             for(let keyword of project.keywords) {
 
-                if( keywords.includes(keyword) ) {
+                if (this.keywords.includes(keyword)) {
                     continue;
                 }
 
-                keywords.push(keyword);
+                this.keywords.push(keyword);
             }
         }
-
-        return keywords;
+        this.keywords.sort(sortByString);
     },
 
     updateListedProjects() {
-        this.displayedProjects = this.projects.filter(project => this.isProjectValid(project))
+        this.displayedProjects = this.projects.filter(project => this.isProjectValid(project));
+        this.setKeywords();
     },
 
     isProjectValid(project) {
@@ -334,6 +341,8 @@ export default {
     
     width: max-content;
 
+    cursor: auto;
+
     position: absolute;
     top: 63px;
     left: 0px;
@@ -345,6 +354,10 @@ export default {
     gap: 5px;
 
     z-index: 1;
+}
+
+.keyword-label {
+    cursor: pointer;
 }
 
 #no-projects-message {

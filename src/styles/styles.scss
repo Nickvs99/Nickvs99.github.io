@@ -28,6 +28,10 @@ input[type="text"], input[type="email"], textarea {
     height: 40px;
 }
 
+input[type="checkbox"] {
+    cursor: pointer;
+}
+
 textarea {
     height: 200px;
     padding-top: 15px;
