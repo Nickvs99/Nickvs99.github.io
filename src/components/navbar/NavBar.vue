@@ -52,6 +52,7 @@ export default {
         
         window.addEventListener("resize", this.onResize);
         window.addEventListener("scroll", this.onScroll);
+        window.addEventListener("click", this.onClick);
 
         this.isCollapsed = this.checkCollapse();
         this.setCurrentActiveSection();
@@ -60,6 +61,7 @@ export default {
     unmounted() {
         window.removeEventListener("resize", this.onResize);
         window.removeEventListener("scroll", this.onScroll);
+        window.removeEventListener("click", this.onClick);
     },
 
     methods: {
@@ -119,6 +121,17 @@ export default {
 
         onScroll() {
             this.setCurrentActiveSection();
+        },
+
+        onClick() {
+
+            if (!this.menuActive) return;
+
+            // Collapse menu when clicked outside of menu
+            let target = event.target;
+            if (!(target === this.$el || this.$el.contains(target))) {
+                this.menuActive = false;
+            }
         },
     }
 }

@@ -7,7 +7,7 @@
         <input id="filter-project-cards-input" class="filter-project-cards-item" type="text" placeholder="Search for project..." @input="updateListedProjects" v-model="filterString">
         
         <div class="filter-boxxes">
-            <div class="filter-project-box filter-project-cards-item" @click="toggleDetails">
+            <div class="filter-project-box filter-project-cards-item" @click="toggleDetails" ref="filterBox">
 
                 <!-- Cancel default behaviour of details by toggling the open attribute again -->
                 <details id="keyword-filter" ref="details" @click="toggleDetails">
@@ -154,10 +154,14 @@ export default {
 
   mounted() {
     this.displayedProjects = this.projects;
-
     this.sortProjectKeyWords();
-
     this.setKeywords();
+
+    window.addEventListener("click", this.onClick);
+  },
+
+  unmounted() {
+    window.removeEventListener("click", this.onClick);
   },
  
   methods: {
@@ -254,6 +258,18 @@ export default {
         }
     },
 
+    onClick() {
+
+        let details = this.$refs.details;
+        if (!details.hasAttribute("open")) return;
+
+        let filterBox = this.$refs.filterBox;
+        // Collapse menu when clicked outside of menu
+        let target = event.target;
+        if (!(target === filterBox || filterBox.contains(target))) {
+            details.removeAttribute("open");
+        }
+    },
   }
 }
 
