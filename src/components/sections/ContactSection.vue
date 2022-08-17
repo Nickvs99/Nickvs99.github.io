@@ -55,7 +55,7 @@ export default {
         "message message"
         "submit submit";
 
-    margin: 10px 0;
+    margin: 10px auto;
     gap: 10px;
 
     @media(max-width: $md-screen-width) {
