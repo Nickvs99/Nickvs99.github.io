@@ -109,7 +109,7 @@ export default {
             title: "Amstelhaege",
             description: "Solving the unsolvable. Applying several optimalization techniques to find an optimal neighbourhood.",
             keywords: ["Python"],
-            contentSrc: "components/projects/contents/ProjectTemp.vue",
+            contentSrc: "components/projects/contents/ProjectAmstelhaege.vue",
             year: 2020,
         },
         {
