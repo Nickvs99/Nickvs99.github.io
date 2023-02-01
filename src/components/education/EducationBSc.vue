@@ -17,7 +17,7 @@
     <details>
         <summary> View all physics courses </summary>
         <ul id="physics-container" class="course-container">
-            <li v-for="course in physicsCourses" :key="course" class="course-item">{{ course }}</li>
+            <HexLi v-for="course in physicsCourses" :key="course" :content=course></HexLi>
         </ul>
     </details>
 
@@ -33,7 +33,7 @@
     <details>
         <summary> View all extracurricular courses </summary>
         <ul class="course-container">
-            <li v-for="course in extraCourses" :key="course" class="course-item">{{ course }}</li>
+            <HexLi v-for="course in extraCourses" :key="course" :content=course></HexLi>
         </ul>
     </details>
 
@@ -44,9 +44,10 @@
 <script>
 
 import { sortByString } from "@/js/sort.js";
+import HexLi from "@/components/HexLi.vue"
 
 export default {
-    
+    components: {HexLi},
     data() {
         return {
             physicsCourses: [

@@ -17,7 +17,7 @@
     <details>
         <summary>View all courses</summary>
         <ul class="course-container">
-            <li v-for="course in courses" :key="course" class="course-item">{{ course }}</li>
+                <HexLi v-for="course in courses" :key="course" :content=course></HexLi>
         </ul>
     </details>
 </div>
@@ -27,8 +27,10 @@
 <script>
 
 import { sortByString } from "@/js/sort.js";
+import HexLi from "@/components/HexLi.vue"
 
 export default {
+    components: {HexLi},
     data() {
         return {
             courses: [
