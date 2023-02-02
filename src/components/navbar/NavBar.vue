@@ -1,6 +1,6 @@
 <template>
 
-<div id="navbar" :class="{collapsed: isCollapsed}">
+<GenericSection id="navbar" :class="{collapsed: isCollapsed}">
 
     <button id="menu-button" class="navbar-item" 
             :class="{hidden: !isCollapsed, active: menuActive}"
@@ -12,22 +12,23 @@
     <div id="navbar-collapsable-content" :class="{'menu-active': isCollapsed && menuActive, collapsed: isCollapsed}">
 
         <NavBarItem v-for="item in  navbarItems" :key="item.content"
-            :class="{collapsed: isCollapsed, active: item.section_id === currentActiveSection}"
+            :class="{collapsed: isCollapsed, active: item.section_id === currentActiveSection && !isCollapsed}"
             @click="deactivateMenu"
             :content="item.content"
             :section_id="item.section_id"
         />
 
     </div>
-</div>
+</GenericSection>
 
 </template>
 
 <script>
-
 import NavBarItem from "@/components/navbar/NavBarItem.vue"
+import GenericSection from "@/components/sections/GenericSection.vue"
+
 export default {
-    components: {NavBarItem},
+    components: {NavBarItem, GenericSection},
 
     data() {
         return {
@@ -67,12 +68,17 @@ export default {
     methods: {
 
         /**
-         * Checks if the navbar should be collapsed. It does this by comparing the width
+         * Checks if the navbar should be collapsed. It does this by comparing the available width
          * of the app div to the total width of the navbar items.
          */
         checkCollapse() {
     
-            return document.getElementById("app").offsetWidth <= this.navbarItemsWidth;
+            let app = document.getElementById("app");
+            
+            let navbar = document.getElementById("navbar")
+            let paddingLeft = parseFloat(getComputedStyle(navbar).paddingLeft);
+
+            return this.navbarItemsWidth >= (app.offsetWidth - paddingLeft);
         },
 
         /**
@@ -150,12 +156,9 @@ export default {
 
 #navbar-collapsable-content {
     display: flex;
-    justify-content: center;
 
     &.collapsed {
         display: block;
-        position: absolute;
-        overflow: hidden;
 
         &.menu-active {
             max-height: 240px; /* TODO Ideally set through js, works for now */

@@ -38,6 +38,10 @@ export default {
 .navbar-item {
     @extend %clickable-primary;
 
+    // Align items due to padding
+    position: relative;
+    left: -16px;
+
     border: none;
     color: $light-color;
     padding: 15px 32px;
