@@ -3,5 +3,6 @@ import App from "./App.vue";
 
 import "@/styles/styles.scss";
 import "@/styles/theme.scss";
+import router from "./router";
 
-createApp(App).mount("#app");
+createApp(App).use(router).mount("#app");
