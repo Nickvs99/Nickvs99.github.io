@@ -12,7 +12,7 @@
 
 <script>
 
-import EquilateralShape from "@/components/shapes/EquilateralShape.vue"
+import EquilateralShape from "@/components/shapes/EquilateralShape.vue";
 
 export default {
     props: ["href", "src_icon", "src_alt"],
@@ -23,7 +23,7 @@ export default {
             radius: 50,
             iconWidth: 50,
             iconHeight: 50,
-        }
+        };
     },
 
     mounted() {
@@ -43,22 +43,22 @@ export default {
                 this.iconHeight = this.radius;
                 this.iconWidth = this.iconHeight / aspectRatio;
             }
-        }
+        };
     },
 
     computed: {
         cssProps() {
             return {
-                '--icon-width': this.iconWidth + "px",
-                '--icon-height': this.iconHeight + "px",
+                "--icon-width": this.iconWidth + "px",
+                "--icon-height": this.iconHeight + "px",
 
                 // Center icon
-                '--icon-offset-left': (this.radius - this.iconWidth / 2) + "px",
-                '--icon-offset-bottom': (this.radius - this.iconHeight / 2) + "px",
-            }
+                "--icon-offset-left": (this.radius - this.iconWidth / 2) + "px",
+                "--icon-offset-bottom": (this.radius - this.iconHeight / 2) + "px",
+            };
         }
     },
-}
+};
 
 </script>
 

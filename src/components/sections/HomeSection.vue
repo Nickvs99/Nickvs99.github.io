@@ -26,9 +26,9 @@
 
 <script>
 
-import GenericSection from "@/components/sections/GenericSection.vue"
-import HexagonGrid from "@/components/grid/HexagonGrid.vue"
-import HyperlinkIcon from "@/components/HyperlinkIcon.vue"
+import GenericSection from "@/components/sections/GenericSection.vue";
+import HexagonGrid from "@/components/grid/HexagonGrid.vue";
+import HyperlinkIcon from "@/components/HyperlinkIcon.vue";
 
 export default {
     components: { GenericSection, HexagonGrid, HyperlinkIcon },
@@ -65,7 +65,7 @@ export default {
             this.resizeHexGrid();
         },
     }
-}
+};
 
 </script>
 

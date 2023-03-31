@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import NavBarItem from "@/components/navbar/NavBarItem.vue"
-import GenericSection from "@/components/sections/GenericSection.vue"
+import NavBarItem from "@/components/navbar/NavBarItem.vue";
+import GenericSection from "@/components/sections/GenericSection.vue";
 
 export default {
     components: {NavBarItem, GenericSection},
@@ -43,7 +43,7 @@ export default {
                 {"content": "Contact", "section_id": "contact-section"},
             ],
             currentActiveSection: "",
-        }
+        };
     },
 
     mounted() {
@@ -75,7 +75,7 @@ export default {
     
             let app = document.getElementById("app");
             
-            let navbar = document.getElementById("navbar")
+            let navbar = document.getElementById("navbar");
             let paddingLeft = parseFloat(getComputedStyle(navbar).paddingLeft);
 
             return this.navbarItemsWidth >= (app.offsetWidth - paddingLeft);
@@ -118,7 +118,7 @@ export default {
                 }
             }
 
-            console.error("No element with class 'section' found.")
+            console.error("No element with class 'section' found.");
         },
 
         onResize() {
@@ -140,7 +140,7 @@ export default {
             }
         },
     }
-}
+};
 
 </script>
 

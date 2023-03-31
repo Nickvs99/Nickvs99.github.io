@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             isActive: false,
-        }
+        };
     },
 
     methods: {
@@ -29,7 +29,7 @@ export default {
             window.scrollTo({top: offsetPosition, behavior: "smooth"});
         },
     }   
-}
+};
 
 </script>
 

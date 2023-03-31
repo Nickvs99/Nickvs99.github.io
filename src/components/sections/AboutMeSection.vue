@@ -8,10 +8,10 @@
 
 <script>
 
-import GenericSection from "./GenericSection.vue"
+import GenericSection from "./GenericSection.vue";
 export default {
-  components: { GenericSection }
-}
+    components: { GenericSection }
+};
 
 </script>
 

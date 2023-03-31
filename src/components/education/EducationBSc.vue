@@ -44,7 +44,7 @@
 <script>
 
 import { sortByString } from "@/js/sort.js";
-import HexLi from "@/components/HexLi.vue"
+import HexLi from "@/components/HexLi.vue";
 
 export default {
     components: {HexLi},
@@ -88,14 +88,14 @@ export default {
                 "Algoritmen en Complexiteit",
                 "Modelling and Simulation",
             ],
-        }
+        };
     },
 
     mounted() {
         this.physicsCourses.sort(sortByString);
         this.extraCourses.sort(sortByString);
     },
-}
+};
 
 </script>
 

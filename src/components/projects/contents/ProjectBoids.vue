@@ -30,11 +30,11 @@
 
 <script>
 
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue"
+import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 
 export default {
     components: {ProjectGithubLink},
-}
+};
 
 </script>
 

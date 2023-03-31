@@ -95,7 +95,7 @@ export default {
          * Calculates the position of element i. Returns the x-coordinate and y-coordinate.
          */
         calcPosition(i) {
-            let [row, column] = this.determineRowAndColumn(i)
+            let [row, column] = this.determineRowAndColumn(i);
 
             let rowOffset = this.calcRowOffset(row);
             let positionOffsetX = this.marginX + rowOffset;
@@ -153,10 +153,10 @@ export default {
 
         calcRowOffset(row) {
 
-            let isEven = this.isRowEven(row)
+            let isEven = this.isRowEven(row);
 
             if(["even-small", "even-right"].includes(this.hexGridStyle)) {
-                return isEven ?  this.hexWidth / 2 : 0;
+                return isEven ? this.hexWidth / 2 : 0;
             }
             else if (["even-large", "even-left"].includes(this.hexGridStyle)) {
                 return isEven ? 0 : this.hexWidth / 2;
@@ -181,7 +181,7 @@ export default {
 
                 // The outer most right position would be the last element of the 2nd, 4th, ... row
                 // Check if that element exists
-                let lastElementSecondRowIndex = ncolumns * 2 - 1
+                let lastElementSecondRowIndex = ncolumns * 2 - 1;
                 if (this.$el.children.length >= lastElementSecondRowIndex){
                     mostRightValue = this.hexWidth * ncolumns + this.hexWidth / 2;
                 }
@@ -222,7 +222,7 @@ export default {
                 return diff;
             }
             else {
-                console.error("Invalid value for hexGridAlign.")
+                console.error("Invalid value for hexGridAlign.");
             }
         },
 
@@ -241,7 +241,7 @@ export default {
             el.style.top = y + "px";
         },
     }
-}
+};
 
 </script>
 

@@ -66,212 +66,212 @@
 
 <script>
 
-import GenericSection from "./GenericSection.vue"
-import ProjectCard from "@/components/projects/ProjectCard.vue"
-import { sortByInt, sortByString } from "@/js/sort.js"
+import GenericSection from "./GenericSection.vue";
+import ProjectCard from "@/components/projects/ProjectCard.vue";
+import { sortByInt, sortByString } from "@/js/sort.js";
 
 export default {
-  components: { GenericSection, ProjectCard },
+    components: { GenericSection, ProjectCard },
   
-  data() {
-    return {
-      displayedProjects: [],
-      projects: [
-        {
-            title: "MusicMatch",
-            description: "A web app that provides the ability to easily compare music tastes between people.",
-            keywords: ["Python", "Django", "Javascript", "SCSS", "HTML"],
-            contentSrc: "components/projects/contents/ProjectMusicMatch.vue",
-            year: 2020,
-        },
-        {
-            title: "Living World",
-            description: "A procedurally generated tile-based world inhabited by cars and boats.",
-            keywords: ["Unity", "C#"],
-            contentSrc: "components/projects/contents/ProjectLivingWorld.vue",
-            year: 2019,
-        },
-        {
-            title: "Boids",
-            description: "Simulate flocking behaviour of bird like objects.",
-            keywords: ["C++", "SFML"],
-            contentSrc: "components/projects/contents/ProjectBoids.vue",
-            year: 2021,
-        },
-        {
-            title: "Mandelbrot set",
-            description: "An interactive version of the Mandelbrot set",
-            keywords: ["C++", "SFML"],
-            contentSrc: "components/projects/contents/ProjectMandelbrot.vue",
-            year: 2021,
-        },
-        {
-            title: "Amstelhaege",
-            description: "Solving the unsolvable. Applying several optimalization techniques to find an optimal neighbourhood.",
-            keywords: ["Python"],
-            contentSrc: "components/projects/contents/ProjectAmstelhaege.vue",
-            year: 2020,
-        },
-        {
-            title: "MCRT",
-            description: "Simulating photons through an atmosphere with Monte Carlo Radiative Transfer simulation.",
-            keywords: ["C#"],
-            contentSrc: "components/projects/contents/ProjectMCRT.vue",
-            year: 2021,
-        },
-        {
-            title: "Portfolio website",
-            description: "A portfolio website of me :)",
-            keywords: ["Vue", "Javascript", "SCSS", "HTML"],
-            contentSrc: "components/projects/contents/ProjectPortfolio.vue",
-            year: 2022,
-        },
-        {
-            title: "Processing projects",
-            description: "A selection of my earliest projects created with Processing.",
-            keywords: ["Processing"],
-            contentSrc: "components/projects/contents/ProjectProcessing.vue",
-            year: 2016,
-        },
-      ],
-      filterString: "",
-      keywords: [],
-      checkedKeywords: [],
-      sortAZ: false,
-      sortYear: false,
-    }
-  },
-
-  computed: {
-    isProjectMessageHidden() {
-        return this.displayedProjects.length != 0;
-    } ,
-
-    isKeywordMessageHidden() {
-        return this.keywords != 0;
-    }
-  },
-
-  mounted() {
-    this.displayedProjects = this.projects;
-    this.sortProjectKeyWords();
-    this.setKeywords();
-
-    window.addEventListener("click", this.onClick);
-  },
-
-  unmounted() {
-    window.removeEventListener("click", this.onClick);
-  },
- 
-  methods: {
-
-    setKeywords() {
-        
-        this.keywords = []
-        for(let project of this.displayedProjects) {
-            for(let keyword of project.keywords) {
-
-                if (this.keywords.includes(keyword)) {
-                    continue;
-                }
-
-                this.keywords.push(keyword);
-            }
-        }
-        this.keywords.sort(sortByString);
+    data() {
+        return {
+            displayedProjects: [],
+            projects: [
+                {
+                    title: "MusicMatch",
+                    description: "A web app that provides the ability to easily compare music tastes between people.",
+                    keywords: ["Python", "Django", "Javascript", "SCSS", "HTML"],
+                    contentSrc: "components/projects/contents/ProjectMusicMatch.vue",
+                    year: 2020,
+                },
+                {
+                    title: "Living World",
+                    description: "A procedurally generated tile-based world inhabited by cars and boats.",
+                    keywords: ["Unity", "C#"],
+                    contentSrc: "components/projects/contents/ProjectLivingWorld.vue",
+                    year: 2019,
+                },
+                {
+                    title: "Boids",
+                    description: "Simulate flocking behaviour of bird like objects.",
+                    keywords: ["C++", "SFML"],
+                    contentSrc: "components/projects/contents/ProjectBoids.vue",
+                    year: 2021,
+                },
+                {
+                    title: "Mandelbrot set",
+                    description: "An interactive version of the Mandelbrot set",
+                    keywords: ["C++", "SFML"],
+                    contentSrc: "components/projects/contents/ProjectMandelbrot.vue",
+                    year: 2021,
+                },
+                {
+                    title: "Amstelhaege",
+                    description: "Solving the unsolvable. Applying several optimalization techniques to find an optimal neighbourhood.",
+                    keywords: ["Python"],
+                    contentSrc: "components/projects/contents/ProjectAmstelhaege.vue",
+                    year: 2020,
+                },
+                {
+                    title: "MCRT",
+                    description: "Simulating photons through an atmosphere with Monte Carlo Radiative Transfer simulation.",
+                    keywords: ["C#"],
+                    contentSrc: "components/projects/contents/ProjectMCRT.vue",
+                    year: 2021,
+                },
+                {
+                    title: "Portfolio website",
+                    description: "A portfolio website of me :)",
+                    keywords: ["Vue", "Javascript", "SCSS", "HTML"],
+                    contentSrc: "components/projects/contents/ProjectPortfolio.vue",
+                    year: 2022,
+                },
+                {
+                    title: "Processing projects",
+                    description: "A selection of my earliest projects created with Processing.",
+                    keywords: ["Processing"],
+                    contentSrc: "components/projects/contents/ProjectProcessing.vue",
+                    year: 2016,
+                },
+            ],
+            filterString: "",
+            keywords: [],
+            checkedKeywords: [],
+            sortAZ: false,
+            sortYear: false,
+        };
     },
 
-    updateListedProjects() {
-        this.displayedProjects = this.projects.filter(project => this.isProjectValid(project));
+    computed: {
+        isProjectMessageHidden() {
+            return this.displayedProjects.length != 0;
+        } ,
+
+        isKeywordMessageHidden() {
+            return this.keywords != 0;
+        }
+    },
+
+    mounted() {
+        this.displayedProjects = this.projects;
+        this.sortProjectKeyWords();
         this.setKeywords();
+
+        window.addEventListener("click", this.onClick);
     },
 
-    isProjectValid(project) {
+    unmounted() {
+        window.removeEventListener("click", this.onClick);
+    },
+ 
+    methods: {
 
-        // Check if project satisfies all checked keywords
-        for (let keyword of this.checkedKeywords) {
-            if (!project.keywords.includes(keyword)) {
-                return false;
+        setKeywords() {
+        
+            this.keywords = [];
+            for(let project of this.displayedProjects) {
+                for(let keyword of project.keywords) {
+
+                    if (this.keywords.includes(keyword)) {
+                        continue;
+                    }
+
+                    this.keywords.push(keyword);
+                }
             }
-        }
+            this.keywords.sort(sortByString);
+        },
 
-        // Check if the project title includes the search field text
-        return project.title.toLowerCase().includes(this.filterString.toLowerCase())
-    },
+        updateListedProjects() {
+            this.displayedProjects = this.projects.filter(project => this.isProjectValid(project));
+            this.setKeywords();
+        },
 
-    /**
+        isProjectValid(project) {
+
+            // Check if project satisfies all checked keywords
+            for (let keyword of this.checkedKeywords) {
+                if (!project.keywords.includes(keyword)) {
+                    return false;
+                }
+            }
+
+            // Check if the project title includes the search field text
+            return project.title.toLowerCase().includes(this.filterString.toLowerCase());
+        },
+
+        /**
      * Sort the projects based on an attribute. This value should be a string.
      * Default is ascending order. Update the displayed projects with the changes.
      */
-    sortProjectsByString(attr, ascending=true) {
-        if (ascending) {
-            this.projects.sort((a, b) => sortByString(a[attr], b[attr]))
-        }
-        else {
-            this.projects.sort((a, b) => sortByString(b[attr], a[attr]))
-        }
+        sortProjectsByString(attr, ascending=true) {
+            if (ascending) {
+                this.projects.sort((a, b) => sortByString(a[attr], b[attr]));
+            }
+            else {
+                this.projects.sort((a, b) => sortByString(b[attr], a[attr]));
+            }
 
-        this.updateListedProjects();
-    },
+            this.updateListedProjects();
+        },
 
-    /**
+        /**
      * Sort the projects based on an attribute. This value should be an number.
      * Default is ascending order. Update the displayed projects with the changes.
      */
-    sortProjectsByInt(attr, ascending=true) {
-        if (ascending) {
-            this.projects.sort((a, b) => sortByInt(a[attr], b[attr]))
-        }
-        else {
-            this.projects.sort((a, b) => sortByInt(b[attr], a[attr]))
-        }
+        sortProjectsByInt(attr, ascending=true) {
+            if (ascending) {
+                this.projects.sort((a, b) => sortByInt(a[attr], b[attr]));
+            }
+            else {
+                this.projects.sort((a, b) => sortByInt(b[attr], a[attr]));
+            }
 
-        this.updateListedProjects();
-    },
+            this.updateListedProjects();
+        },
 
-    sortProjectKeyWords() {
+        sortProjectKeyWords() {
 
-        for (let project of this.projects) {
-            project.keywords.sort(sortByString);
-        }
-    },
+            for (let project of this.projects) {
+                project.keywords.sort(sortByString);
+            }
+        },
 
-    toggleSortAZ() {
-        this.sortAZ = !this.sortAZ;
-        this.sortProjectsByString('title', this.sortAZ);
-    },
+        toggleSortAZ() {
+            this.sortAZ = !this.sortAZ;
+            this.sortProjectsByString("title", this.sortAZ);
+        },
 
-    toggleSortYear() {
-        this.sortYear = !this.sortYear;
-        this.sortProjectsByInt('year', this.sortYear);
-    },
+        toggleSortYear() {
+            this.sortYear = !this.sortYear;
+            this.sortProjectsByInt("year", this.sortYear);
+        },
 
-    toggleDetails() {
-        let el = this.$refs.details;
+        toggleDetails() {
+            let el = this.$refs.details;
 
-        if(el.hasAttribute("open")) {
-            el.removeAttribute("open")
-        }
-        else {
-            el.setAttribute("open", "");
-        }
-    },
+            if(el.hasAttribute("open")) {
+                el.removeAttribute("open");
+            }
+            else {
+                el.setAttribute("open", "");
+            }
+        },
 
-    onClick() {
+        onClick() {
 
-        let details = this.$refs.details;
-        if (!details.hasAttribute("open")) return;
+            let details = this.$refs.details;
+            if (!details.hasAttribute("open")) return;
 
-        let filterBox = this.$refs.filterBox;
-        // Collapse menu when clicked outside of menu
-        let target = event.target;
-        if (!(target === filterBox || filterBox.contains(target))) {
-            details.removeAttribute("open");
-        }
-    },
-  }
-}
+            let filterBox = this.$refs.filterBox;
+            // Collapse menu when clicked outside of menu
+            let target = event.target;
+            if (!(target === filterBox || filterBox.contains(target))) {
+                details.removeAttribute("open");
+            }
+        },
+    }
+};
 
 </script>
 

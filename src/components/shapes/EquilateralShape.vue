@@ -18,8 +18,8 @@ export default {
     computed: {
         cssProps() {
             return {
-                '--width': (2 * this.radius) + "px",
-            }
+                "--width": (2 * this.radius) + "px",
+            };
         }
     },
 
@@ -31,7 +31,7 @@ export default {
             return shape.points.join(" ");
         }
     },
-}
+};
 
 </script>
 

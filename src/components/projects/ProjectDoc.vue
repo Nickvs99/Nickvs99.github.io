@@ -19,8 +19,8 @@
 
 <script>
 
-import { defineAsyncComponent } from 'vue'
-import ProjectKeyword from "@/components/projects/ProjectKeyword.vue"
+import { defineAsyncComponent } from "vue";
+import ProjectKeyword from "@/components/projects/ProjectKeyword.vue";
 
 export default {
     components: {ProjectKeyword},
@@ -35,7 +35,7 @@ export default {
     data() {
         return {
             disabled: true,
-        }
+        };
     },
 
     mounted() {
@@ -49,7 +49,7 @@ export default {
     computed: {
         // Load dynamic component https://stackoverflow.com/a/64570209 
         contentComponent () {
-            return defineAsyncComponent(() => import(`@/${this.contentSrc}`))
+            return defineAsyncComponent(() => import(`@/${this.contentSrc}`));
         }
     },
 
@@ -67,7 +67,7 @@ export default {
             }
         }
     }
-}
+};
 
 </script>
 

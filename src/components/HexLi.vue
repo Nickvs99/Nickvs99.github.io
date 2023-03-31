@@ -9,7 +9,7 @@
 
 <script>
 
-import EquilateralShape from "@/components/shapes/EquilateralShape.vue"
+import EquilateralShape from "@/components/shapes/EquilateralShape.vue";
 
 export default {
     components: {EquilateralShape},
@@ -19,9 +19,9 @@ export default {
     data() {
         return {
             radius: 10
-        }
+        };
     }
-}
+};
 
 </script>
 

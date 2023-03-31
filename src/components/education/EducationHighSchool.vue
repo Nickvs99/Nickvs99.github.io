@@ -24,7 +24,7 @@
 <script>
 
 import { sortByString } from "@/js/sort.js";
-import HexLi from "@/components/HexLi.vue"
+import HexLi from "@/components/HexLi.vue";
 
 export default {
     components: {HexLi},
@@ -44,13 +44,13 @@ export default {
                 "Algemene Natuurwetenschappen",
                 "Maatschappijleer",
             ],
-        }
+        };
     },
 
     mounted() {
         this.courses.sort(sortByString);
     },
-}
+};
 
 
 </script>

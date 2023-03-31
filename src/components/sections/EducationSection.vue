@@ -21,10 +21,10 @@
 
 <script>
 
-import EducationHighSchool from "@/components/education/EducationHighSchool.vue"
-import EducationBSc from "@/components/education/EducationBSc.vue"
-import EducationMSc from "@/components/education/EducationMSc.vue"
-import GenericSection from "./GenericSection.vue"
+import EducationHighSchool from "@/components/education/EducationHighSchool.vue";
+import EducationBSc from "@/components/education/EducationBSc.vue";
+import EducationMSc from "@/components/education/EducationMSc.vue";
+import GenericSection from "./GenericSection.vue";
 
 export default {
     components: { EducationHighSchool, EducationBSc, EducationMSc, GenericSection },
@@ -59,7 +59,7 @@ export default {
             schoolContent.classList.remove("hidden");
         },
     },
-}
+};
 
 </script>
 

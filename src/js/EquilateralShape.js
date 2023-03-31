@@ -72,4 +72,4 @@ class EquilateralShape {
 
 module.exports = {
     EquilateralShape: EquilateralShape,
-}
+};

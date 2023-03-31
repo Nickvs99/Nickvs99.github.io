@@ -135,7 +135,7 @@ export default {
     mounted() {
         document.getElementById("tree-tent-puzzle-video").playbackRate = 0.1;
     }
-}
+};
 
 </script>
 

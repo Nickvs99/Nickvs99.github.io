@@ -48,11 +48,11 @@ See for yourself at <a href="https://github.com/Nickvs99/Living_World" target="_
 
 <script>
 
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue"
+import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 
 export default {
     components: {ProjectGithubLink},
-}
+};
 
 </script>
 

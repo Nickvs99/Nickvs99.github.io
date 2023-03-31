@@ -27,8 +27,8 @@
 
 <script>
 
-import ProjectDoc from "@/components/projects/ProjectDoc.vue"
-import ProjectKeyword from "@/components/projects/ProjectKeyword.vue"
+import ProjectDoc from "@/components/projects/ProjectDoc.vue";
+import ProjectKeyword from "@/components/projects/ProjectKeyword.vue";
 
 export default {
     components: {ProjectDoc, ProjectKeyword},
@@ -43,7 +43,7 @@ export default {
     data() {
         return {
             containerID: "project-container-" + this.title,
-        }
+        };
     },
 
     methods: {
@@ -51,7 +51,7 @@ export default {
             this.$refs.doc.disabled = false;
         }
     },
-}
+};
 
 </script>
 
