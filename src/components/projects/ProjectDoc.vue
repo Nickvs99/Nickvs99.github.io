@@ -1,18 +1,16 @@
 <template>
 
-<div ref="background" class="project-doc-background" :class="{hidden: this.disabled}">
-    <div class="project-doc dark-theme" >
-        <div class="project-title-container">
-            <h2 class="project-title"> {{ title }} </h2>
-            <div class="project-year">, {{ year }} </div>
-        </div>
-
-        <div class="project-doc-keyword-container">
-            <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
-        </div>
-
-        <component :is="contentComponent"></component>
+<div class="project-doc-container dark-theme" >
+    <div class="project-title-container">
+        <h2 class="project-title"> {{ title }} </h2>
+        <div class="project-year">, {{ year }} </div>
     </div>
+
+    <div class="project-doc-keyword-container">
+        <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
+    </div>
+
+    <component :is="contentComponent"></component>
 </div>
 
 </template>
@@ -20,26 +18,25 @@
 <script>
 
 import { defineAsyncComponent } from "vue";
+
 import ProjectKeyword from "@/components/projects/ProjectKeyword.vue";
+import { projects } from "./projects.js";
 
 export default {
     components: {ProjectKeyword},
-    props: {
-        title: String,
-        keywords: Array,
-        description: String,
-        contentSrc: String, 
-        year: Number
-    },
 
     data() {
         return {
-            disabled: true,
+            title: "",
+            keywords: [],
+            contentSrc: "",
+            year: 0,            
         };
     },
 
     mounted() {
         window.addEventListener("click", this.onClick);
+        this.initProjectDoc();
     },
 
     unmounted() {
@@ -49,23 +46,22 @@ export default {
     computed: {
         // Load dynamic component https://stackoverflow.com/a/64570209 
         contentComponent () {
+            if(this.contentSrc === "") return;
             return defineAsyncComponent(() => import(`@/${this.contentSrc}`));
         }
     },
 
     methods: {
 
-        onClick(event) {
+        initProjectDoc() {
+            let project = projects.find(item => item.title == this.$route.params.project);
 
-            if(this.disabled) {
-                return;
-            }   
+            this.title = project.title;
+            this.keywords = project.keywords;
+            this.contentSrc = project.contentSrc;
+            this.year = project.year;
+        },
 
-            // Disable component if the user clicked outside of the project-doc
-            if(this.$refs.background === event.target) {
-                this.disabled = true;
-            }
-        }
     }
 };
 
@@ -75,54 +71,26 @@ export default {
 
 @import "@/components/projects/project-styles.scss";
 
-.project-doc-background {
 
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    height: 100vh;    
-    width: 100vw;
-
-    backdrop-filter: blur(4px);
-
-    /* The project doc is displayed over all other content. */
-    z-index: $foreground-index;
-
-    /* center project-doc on viewport */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    box-sizing: border-box;
-    padding: 5% 20%;
-
-    &:hover {
-        cursor: auto;
-    }
-
-    @media(max-width: $lg-screen-width) {
-        padding: 5% 15%;
-    }
-    @media(max-width: $md-screen-width) {
-        padding: 5% 10%;
-    }
-    @media(max-width: $sm-screen-width){
-        padding: 5% 20px;
-    }
-}
-
-.project-doc {
+.project-doc-container {
     @extend %border-md;
 
+    position: relative;
+
+
+    margin: 5% 20%;
     padding: 10px 10px;
 
-    overflow-y: auto;
 
-    width: 100%;
-    max-height: 100%;
-
-    position: relative;
+    @media(max-width: $lg-screen-width) {
+        margin: 5% 15%;
+    }
+    @media(max-width: $md-screen-width) {
+        margin: 5% 10%;
+    }
+    @media(max-width: $sm-screen-width){
+        margin: 5% 20px;
+    }
 }
 
 .project-doc-keyword-container {

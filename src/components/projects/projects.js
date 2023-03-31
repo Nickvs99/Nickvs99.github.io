@@ -1,0 +1,58 @@
+export const projects = [
+    {
+        title: "MusicMatch",
+        description: "A web app that provides the ability to easily compare music tastes between people.",
+        keywords: ["Python", "Django", "Javascript", "SCSS", "HTML"],
+        contentSrc: "components/projects/contents/ProjectMusicMatch.vue",
+        year: 2020,
+    },
+    {
+        title: "Living World",
+        description: "A procedurally generated tile-based world inhabited by cars and boats.",
+        keywords: ["Unity", "C#"],
+        contentSrc: "components/projects/contents/ProjectLivingWorld.vue",
+        year: 2019,
+    },
+    {
+        title: "Boids",
+        description: "Simulate flocking behaviour of bird like objects.",
+        keywords: ["C++", "SFML"],
+        contentSrc: "components/projects/contents/ProjectBoids.vue",
+        year: 2021,
+    },
+    {
+        title: "Mandelbrot set",
+        description: "An interactive version of the Mandelbrot set",
+        keywords: ["C++", "SFML"],
+        contentSrc: "components/projects/contents/ProjectMandelbrot.vue",
+        year: 2021,
+    },
+    {
+        title: "Amstelhaege",
+        description: "Solving the unsolvable. Applying several optimalization techniques to find an optimal neighbourhood.",
+        keywords: ["Python"],
+        contentSrc: "components/projects/contents/ProjectAmstelhaege.vue",
+        year: 2020,
+    },
+    {
+        title: "MCRT",
+        description: "Simulating photons through an atmosphere with Monte Carlo Radiative Transfer simulation.",
+        keywords: ["C#"],
+        contentSrc: "components/projects/contents/ProjectMCRT.vue",
+        year: 2021,
+    },
+    {
+        title: "Portfolio website",
+        description: "A portfolio website of me :)",
+        keywords: ["Vue", "Javascript", "SCSS", "HTML"],
+        contentSrc: "components/projects/contents/ProjectPortfolio.vue",
+        year: 2022,
+    },
+    {
+        title: "Processing projects",
+        description: "A selection of my earliest projects created with Processing.",
+        keywords: ["Processing"],
+        contentSrc: "components/projects/contents/ProjectProcessing.vue",
+        year: 2016,
+    },
+];

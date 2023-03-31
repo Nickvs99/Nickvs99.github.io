@@ -13,25 +13,16 @@
     <div class="project-card-keyword-container">
         <ProjectKeyword v-for="keyword in keywords" :key="keyword" :keyword="keyword"></ProjectKeyword>
     </div>
-
-    <ProjectDoc ref="doc" 
-        :title="title" 
-        :keywords="keywords" 
-        :description="description" 
-        :contentSrc="contentSrc"
-        :year="year">
-    </ProjectDoc>
 </div>
 
 </template>
 
 <script>
 
-import ProjectDoc from "@/components/projects/ProjectDoc.vue";
 import ProjectKeyword from "@/components/projects/ProjectKeyword.vue";
 
 export default {
-    components: {ProjectDoc, ProjectKeyword},
+    components: { ProjectKeyword },
     props: {
         title: String,
         keywords: Array,
@@ -48,7 +39,7 @@ export default {
 
     methods: {
         showProjectDoc() {
-            this.$refs.doc.disabled = false;
+            this.$router.push(`/projects/${this.title}`);
         }
     },
 };
