@@ -4,16 +4,10 @@
     
     <h1>Education</h1>
     <div id="school-navbar">
-        <div class="school-navbar-item" id="school-navbar-item-msc" @click="showEducationSection('msc')">MSc Computational science</div>
-        <div class="school-navbar-item" id="school-navbar-item-bsc" @click="showEducationSection('bsc')">BSc Physics and Astronomy</div>
-        <div class="school-navbar-item" id="school-navbar-item-high-school" @click="showEducationSection('high-school')">High school</div>
+        <div v-for="educationObj in educationObjs" :key="educationObj.title" @click="goTo(educationObj.title)" class="school-navbar-item"> {{ educationObj.title }} </div>
     </div>
 
-    <div id="school-content-container">
-        <EducationMSc class="school-content" id="school-content-msc"></EducationMSc>
-        <EducationBSc class="school-content" id="school-content-bsc"></EducationBSc>
-        <EducationHighSchool class="school-content" id="school-content-high-school"></EducationHighSchool>
-    </div>
+    <router-view name="education" />
 
 </GenericSection>
 
@@ -21,44 +15,37 @@
 
 <script>
 
-import EducationHighSchool from "@/components/education/EducationHighSchool.vue";
-import EducationBSc from "@/components/education/EducationBSc.vue";
-import EducationMSc from "@/components/education/EducationMSc.vue";
 import GenericSection from "./GenericSection.vue";
 
+import { educations } from "@/components/education/educations.js";
+
 export default {
-    components: { EducationHighSchool, EducationBSc, EducationMSc, GenericSection },
-
+    components: { GenericSection },
+    data() {
+        return {
+            educationObjs: null,
+        };
+    },
     mounted() {
-        this.showEducationSection("msc");
+        this.educationObjs = educations;
     },
-
     methods: {
-
-        hideAllSections() {
-            let navbarItems = document.getElementsByClassName("school-navbar-item");
-            let schoolContents = document.getElementsByClassName("school-content");
-
-            for(let navbarItem of navbarItems) {
-                navbarItem.classList.remove("active");
+        goTo(educationTitle) {
+            
+            let name;  
+            let params = {education: educationTitle};
+            if(this.$route.params.project) {
+                name = "project-education",
+                params["project"] = this.$route.params.project;
+            }
+            else {
+                name = "education";
             }
 
-            for(let schoolContent of schoolContents) {
-                schoolContent.classList.add("hidden");
-            }
-        },
+            this.$router.push({name: name, params: params});
 
-        showEducationSection(section) {
-
-            this.hideAllSections();
-
-            let navbarItem = document.getElementById("school-navbar-item-" + section);
-            let schoolContent = document.getElementById("school-content-" + section);   
-
-            navbarItem.classList.add("active");
-            schoolContent.classList.remove("hidden");
-        },
-    },
+        }
+    }
 };
 
 </script>

@@ -39,7 +39,18 @@ export default {
 
     methods: {
         showProjectDoc() {
-            this.$router.push(`/projects/${this.title}`);
+
+            let name;  
+            let params = {project: this.title};
+            if(this.$route.params.education) {
+                name = "project-education",
+                params["education"] = this.$route.params.education;
+            }
+            else {
+                name = "project";
+            }
+
+            this.$router.push({name: name, params: params});
         }
     },
 };
