@@ -14,11 +14,6 @@ import { educations } from "./educations.js";
 
 export default {
 
-    props: {
-        educationObj: {
-            type: Object,
-        }
-    },
     data() {
         return {
             title: "",
@@ -26,16 +21,10 @@ export default {
         };
     },
     mounted() {
-        this.education = this.educationObj;
-        if(!this.education) {
-            this.education = this.getEducationFromParam();
-        }
-
         this.initComponent();
     },
     watch: {
         $route() {
-            this.education = this.getEducationFromParam();
             this.initComponent();
         }
     },
@@ -49,11 +38,13 @@ export default {
 
     methods: {
         initComponent() {
+            this.education = this.getEducationFromParam();
             this.title = this.education.title;
             this.componentPath = this.education.componentPath;
         },
 
         getEducationFromParam() {
+            
             if(!this.$route.params.education) return educations[0];
             
             return educations.find(item => item.title == this.$route.params.education);

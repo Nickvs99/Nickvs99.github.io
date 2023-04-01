@@ -7,7 +7,7 @@
         <div v-for="educationObj in educationObjs" :key="educationObj.title" @click="goTo(educationObj.title)" class="school-navbar-item"> {{ educationObj.title }} </div>
     </div>
 
-    <router-view name="education" />
+    <EducationContent />
 
 </GenericSection>
 
@@ -17,10 +17,11 @@
 
 import GenericSection from "./GenericSection.vue";
 
+import EducationContent from "@/components/education/EducationContent.vue";
 import { educations } from "@/components/education/educations.js";
 
 export default {
-    components: { GenericSection },
+    components: { EducationContent, GenericSection },
     data() {
         return {
             educationObjs: null,

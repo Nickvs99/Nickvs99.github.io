@@ -2,7 +2,7 @@
 <GenericSection id="project-section">
         
     <h1>Projects</h1>
-    <router-view name="projects"/>
+    <router-view />
     
 </GenericSection>
 </template>

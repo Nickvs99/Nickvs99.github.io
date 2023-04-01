@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import { educations } from "@/components/education/educations.js";
-import EducationComponent from "@/components/education/EducationComponent.vue";
 import ProjectDoc from "@/components/projects/ProjectDoc.vue";
 import ProjectOverview from "@/components/projects/ProjectOverview.vue";
 
@@ -9,24 +8,12 @@ const routes = [
     {
         path: "/",
         name: "index",
-        components: {
-            projects: ProjectOverview,
-            education: EducationComponent,
-        },
-        props: {
-            education: {educationObj: educations[0]},
-        }
+        component: ProjectOverview
     },
     {
         path: "/projects/:project",
         name: "project",
-        components: {
-            projects: ProjectDoc,
-            education: EducationComponent
-        },
-        props: {
-            education: {educationObj: educations[0]}
-        },
+        component: ProjectDoc,
         beforeEnter: (to, from) => {
             console.log(to, from);
 
@@ -39,18 +26,20 @@ const routes = [
     {
         path: "/education/:education",
         name: "education",
-        components: {
-            projects: ProjectOverview,
-            education: EducationComponent,
+        component: ProjectOverview,
+        beforeEnter: (to, from) => {
+            console.log(to, from, educations);
+
+            //TODO check if education exists
+
+            // reject the navigation
+            // return false;
         },
     },
     {
         path: "/projects/:project/education/:education",
         name: "project-education",
-        components: {
-            projects: ProjectDoc,
-            education: EducationComponent,
-        },
+        component: ProjectDoc,
     }
 ];
 
