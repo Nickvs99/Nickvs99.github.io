@@ -10,7 +10,7 @@
 
 import { defineAsyncComponent } from "vue";
 
-import { educations } from "./educations.js";
+import { getEducationFromParams } from "./educations.js";
 
 export default {
 
@@ -38,17 +38,10 @@ export default {
 
     methods: {
         initComponent() {
-            this.education = this.getEducationFromParam();
+            this.education = getEducationFromParams(this.$route.params.education);
             this.title = this.education.title;
             this.componentPath = this.education.componentPath;
         },
-
-        getEducationFromParam() {
-            
-            if(!this.$route.params.education) return educations[0];
-            
-            return educations.find(item => item.title == this.$route.params.education);
-        }
     }
 };
 

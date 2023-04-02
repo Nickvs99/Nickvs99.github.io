@@ -12,3 +12,9 @@ export const educations = [
         componentPath: "components/education/EducationHighSchool.vue",
     },
 ];
+
+export function getEducationFromParams(paramValue) {
+
+    if(!paramValue) return educations[0];        
+    return educations.find(item => item.title == paramValue);
+}

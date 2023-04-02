@@ -4,7 +4,12 @@
     
     <h1>Education</h1>
     <div id="school-navbar">
-        <div v-for="educationObj in educationObjs" :key="educationObj.title" @click="goTo(educationObj.title)" class="school-navbar-item"> {{ educationObj.title }} </div>
+        <div v-for="educationObj in educationObjs" :key="educationObj.title" 
+            @click="goTo(educationObj.title)" 
+            :class="['school-navbar-item', {active: isActive(educationObj.title)}]"
+        > 
+            {{ educationObj.title }} 
+        </div>
     </div>
 
     <EducationContent />
@@ -18,7 +23,7 @@
 import GenericSection from "./GenericSection.vue";
 
 import EducationContent from "@/components/education/EducationContent.vue";
-import { educations } from "@/components/education/educations.js";
+import { educations, getEducationFromParams } from "@/components/education/educations.js";
 
 export default {
     components: { EducationContent, GenericSection },
@@ -44,7 +49,10 @@ export default {
             }
 
             this.$router.push({name: name, params: params});
+        },
 
+        isActive(educationTitle) {
+            return getEducationFromParams(this.$route.params.education).title == educationTitle;
         }
     }
 };
