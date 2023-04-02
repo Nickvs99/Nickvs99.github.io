@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import { educations } from "@/components/education/educations.js";
+import { isValidEducation, isValidProject } from "./validation.js";
 import ProjectDoc from "@/components/projects/ProjectDoc.vue";
 import ProjectOverview from "@/components/projects/ProjectOverview.vue";
 
@@ -14,32 +14,35 @@ const routes = [
         path: "/projects/:project",
         name: "project",
         component: ProjectDoc,
-        beforeEnter: (to, from) => {
-            console.log(to, from);
-
-            //TODO check if project exists
-
-            // reject the navigation
-            // return false;
+        beforeEnter: to => {
+            if (!isValidProject(to.params.project)) return {name: "index"};
         },
     },
     {
         path: "/education/:education",
         name: "education",
         component: ProjectOverview,
-        beforeEnter: (to, from) => {
-            console.log(to, from, educations);
-
-            //TODO check if education exists
-
-            // reject the navigation
-            // return false;
+        beforeEnter: to => {
+            if (!isValidEducation(to.params.education)) return {name: "index"};
         },
     },
     {
         path: "/projects/:project/education/:education",
         name: "project-education",
         component: ProjectDoc,
+        beforeEnter: to => {
+            let validEducation = isValidEducation(to.params.education);
+            let validProject = isValidProject(to.params.project);
+
+            if(validEducation && validProject) return true;
+            if(validEducation && !validProject) return {name: "education", params: {education: to.params.education}};
+            if(!validEducation && validProject) return {name: "project", params: {project: to.params.project}};
+            if(!(validEducation && validProject)) return {name: "index"};
+        },
+    },
+    {
+        path: "/:catchAll(.*)",
+        redirect: {name: "index"},
     }
 ];
 
