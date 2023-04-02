@@ -1,7 +1,7 @@
 <template>
 
 <a :href=href target="_blank" class="github-link">
-    <img alt=href src="@/assets/hyperlink-logos/github-logo.png" class="github-link-img">
+    <img alt=href src="@/assets/icons/github-logo.png" class="github-link-img">
 </a>
 
 </template>
