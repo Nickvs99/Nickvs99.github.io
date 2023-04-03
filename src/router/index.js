@@ -51,4 +51,17 @@ const router = createRouter({
     routes
 });
 
+/**
+ * Since this is a SPA and is published on github pages, directly going to any (besides the index) would not work.
+ * Instead github pages would throw a 404 error. This then displays the 404.html in the public directory. 
+ * This file redirects to the index page with a string query. This string query is catched here and the user is redirected
+ * to its desire page.
+ */
+router.beforeEach(to => {
+
+    if (to.query.redirect) {
+        router.replace(to.query.redirect.replace(" ", "%20"));
+    }
+});
+
 export default router;
