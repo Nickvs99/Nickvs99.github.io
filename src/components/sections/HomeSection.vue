@@ -83,6 +83,8 @@ export default {
 #home-content {
     position: relative;
     display: flex;
+    flex-direction: row;
+    gap: 1rem;
 }
 
 #home-content-left {
@@ -90,6 +92,7 @@ export default {
     max-width: 500px;
 
     @media (max-width: $md-screen-width) {
+        max-width: none;
         width: 100%;
     }
 }
