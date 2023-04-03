@@ -1,6 +1,6 @@
 <template>
 
-<div class="project-doc-container dark-theme" >
+<div class="project-doc-container" >
     <div class="project-title-container">
         <h2 class="project-title"> {{ title }} </h2>
         <div class="project-year">, {{ year }} </div>
@@ -73,28 +73,15 @@ export default {
 
 
 .project-doc-container {
-    @extend %border-md;
-
     position: relative;
 
-
-    margin: 5% 20%;
-    padding: 10px 10px;
-
-
-    @media(max-width: $lg-screen-width) {
-        margin: 5% 15%;
-    }
-    @media(max-width: $md-screen-width) {
-        margin: 5% 10%;
-    }
-    @media(max-width: $sm-screen-width){
-        margin: 5% 20px;
-    }
+    // Creates new Block formatting context, making sure that all
+    // margins are within the content-wrapper
+    overflow: auto;
 }
 
 .project-doc-keyword-container {
-    margin: 15px 0;
+    margin: 0.5em 0;
 }
 
 </style>

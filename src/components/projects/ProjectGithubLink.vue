@@ -19,8 +19,6 @@ export default {
 <style lang="scss" scoped>
 
 .github-link {
-    @extend %clickable-primary;
-
     position:absolute;
     top: 10px;
     right: 10px;

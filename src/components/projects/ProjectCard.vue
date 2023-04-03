@@ -63,7 +63,7 @@ export default {
 
 .project-card {
     @extend %clickable-primary;
-    @extend %border-md; 
+    @include border(10px); // Same value as the project card gap
 
     padding: 5px 10px;
 
