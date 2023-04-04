@@ -99,9 +99,9 @@
         </p>
 
         <ul>
-            <li>Each tree needs a tent adjacent to it. This is a one to one relation.</li>
-            <li>Tents can not touch each other horizontally, vertically, or diagonally.</li>
-            <li>Each row and column can only have a fixed number of tents as displayed by the number next to the grid.</li>
+            <HexLi>Each tree needs a tent adjacent to it. This is a one to one relation.</HexLi>
+            <HexLi>Tents can not touch each other horizontally, vertically, or diagonally.</HexLi>
+            <HexLi>Each row and column can only have a fixed number of tents as displayed by the number next to the grid.</HexLi>
         </ul>
 
         <p>
@@ -131,7 +131,10 @@
 
 <script>
 
+import HexLi from "@/components/HexLi.vue";
+
 export default {
+    components: { HexLi },
     mounted() {
         document.getElementById("tree-tent-puzzle-video").playbackRate = 0.1;
     }

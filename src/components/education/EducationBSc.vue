@@ -17,7 +17,7 @@
     <details>
         <summary> View all physics courses </summary>
         <ul id="physics-container" class="course-container">
-            <HexLi v-for="course in physicsCourses" :key="course" :content=course></HexLi>
+            <HexLi v-for="course in physicsCourses" :key="course">{{ course }}</HexLi>
         </ul>
     </details>
 
@@ -33,7 +33,7 @@
     <details>
         <summary> View all extracurricular courses </summary>
         <ul class="course-container">
-            <HexLi v-for="course in extraCourses" :key="course" :content=course></HexLi>
+            <HexLi v-for="course in extraCourses" :key="course">{{ course }}</HexLi>
         </ul>
     </details>
 

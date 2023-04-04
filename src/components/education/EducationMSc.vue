@@ -17,7 +17,7 @@
     <details>
         <summary>View all courses</summary>
         <ul class="course-container">
-                <HexLi v-for="course in courses" :key="course" :content=course></HexLi>
+            <HexLi v-for="course in courses" :key="course">{{ course }}</HexLi>
         </ul>
     </details>
 </div>

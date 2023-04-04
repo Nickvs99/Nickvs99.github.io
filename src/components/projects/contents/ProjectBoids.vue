@@ -15,9 +15,9 @@
 
 
 <ul>
-    <li>Align with boids within your awareness radii (Alignment force)</li>
-    <li>Try to fly to the centre of your flock (Cohesion force)</li>
-    <li>Don't crash into each other (Separation force)</li>
+    <HexLi>Align with boids within your awareness radii (Alignment force)</HexLi>
+    <HexLi>Try to fly to the centre of your flock (Cohesion force)</HexLi>
+    <HexLi>Don't crash into each other (Separation force)</HexLi>
 </ul>
 
 
@@ -30,10 +30,11 @@
 
 <script>
 
+import HexLi from "@/components/HexLi.vue";
 import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 
 export default {
-    components: {ProjectGithubLink},
+    components: { HexLi, ProjectGithubLink },
 };
 
 </script>
