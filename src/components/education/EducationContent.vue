@@ -53,7 +53,7 @@ export default {
 .education-content {
     background-color: $primary-color-dark;
 
-    margin: 10px 0;
+    margin-top: 10px;
     padding: 10px;
 }
 

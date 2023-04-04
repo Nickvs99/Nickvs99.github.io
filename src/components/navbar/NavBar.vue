@@ -152,6 +152,8 @@ export default {
     top: 0px;
     width: 100%;
     z-index: $foreground-index;
+
+    padding-bottom: 0;
 }
 
 #navbar-collapsable-content {

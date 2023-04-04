@@ -16,11 +16,11 @@
 
 .section {
     overflow: hidden;
-    padding: 0 10%;
+    padding: 0 10% 1em 10%;
     position: relative;
 
     @media(max-width: $sm-screen-width){
-        padding: 0 10px;
+        padding: 0 10px 1em 10px;
     }
 }
 

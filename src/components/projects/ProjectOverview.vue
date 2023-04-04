@@ -220,7 +220,7 @@ export default {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 10px;
 
-    margin: 20px 0;
+    margin-top: 20px;
 }
 
 #filter-project-cards-containter {
