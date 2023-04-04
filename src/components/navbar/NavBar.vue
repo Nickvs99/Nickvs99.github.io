@@ -47,16 +47,16 @@ export default {
     },
 
     mounted() {
-
-        // Compute width of all navbar items before the items might be collapsed
-        this.navbarItemsWidth = this.computeNavbarItemsWidth();
-        
         window.addEventListener("resize", this.onResize);
         window.addEventListener("scroll", this.onScroll);
         window.addEventListener("click", this.onClick);
 
-        this.isCollapsed = this.checkCollapse();
         this.setCurrentActiveSection();
+
+        // Compute width of all navbar items before the items might be collapsed, but after the active item is styled
+        this.navbarItemsWidth = this.computeNavbarItemsWidth();
+
+        this.isCollapsed = this.checkCollapse();
     },
 
     unmounted() {
@@ -76,9 +76,10 @@ export default {
             let app = document.getElementById("app");
             
             let navbar = document.getElementById("navbar");
-            let paddingLeft = parseFloat(getComputedStyle(navbar).paddingLeft);
+            let paddingLeft = Math.ceil(parseFloat(getComputedStyle(navbar).paddingLeft));
 
-            return this.navbarItemsWidth >= (app.offsetWidth - paddingLeft);
+            // minus 1 for some reason, otherwise there is a 1px range at which the items are not correctly collapsed
+            return this.navbarItemsWidth >= (app.offsetWidth - paddingLeft - 1);
         },
 
         /**
@@ -150,10 +151,10 @@ export default {
     background-color: $primary-color; 
     position: sticky;
     top: 0px;
-    width: 100%;
     z-index: $foreground-index;
 
     padding-bottom: 0;
+    padding-right: 0;
 }
 
 #navbar-collapsable-content {
