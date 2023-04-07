@@ -3,18 +3,26 @@
 <GenericSection id="contact-section">
     <h1>Get in touch!</h1>
 
+
     <form class="gform" method="POST" 
         action="https://script.google.com/macros/s/AKfycbwRSKg41eBdC3XX2BihwRH-EdzZlqQx4Yqqsus_sXwHNDzcziimJ6ByyTg3T7zZa74G6g/exec"
     >
+        <div style="display:none" class="error-message">
+            <h2>Whoops. Something went wrong</h2>
+            <p>We are sorry for the inconvenience. Please sent an email to <a href="mailto:vansantennick@gmail.com">vansantennick@gmail.com</a></p>
+        </div>
+
         <div class="form-elements">
 
-            <input id="name" class="form-input" name="name" placeholder="Your name" type="text" required/>
+            <input id="name" class="form-input" name="name" placeholder="Your name" type="text" required
+                value="Mr. Test"/>
             
-            <input id="email" class="form-input" name="email" type="email" value=""
-                required placeholder="your.name@email.com"/>
+            <input id="email" class="form-input" name="email" type="email"
+                required placeholder="your.name@email.com"
+                value="test@gmail.com"/>
             
             <textarea id="message" class="form-input" name="message" rows="10"
-                required placeholder="Your message"></textarea>
+                required placeholder="Your message">This is a test messge</textarea>
             
             <input class="hidden" id="honeypot" type="text" name="honeypot" value="" />
 
@@ -23,10 +31,11 @@
             </button>
         </div>
 
+        <LoadIcon style="display:none" class="load-element"/>
+
         <div style="display:none" class="thankyou_message">
             <h2><i>Thank you</i> for your message! I will get back to you soon!</h2>
         </div>
-
     </form>
 </GenericSection>
 
@@ -34,9 +43,10 @@
 
 <script>
 
+import LoadIcon from "@/components/LoadIcon.vue";
 import GenericSection from "./GenericSection.vue";
 export default {
-    components: { GenericSection }
+    components: { GenericSection, LoadIcon }
 };
 
 </script>
@@ -95,6 +105,10 @@ export default {
 
 #form-submit {
     grid-area: submit;
+}
+
+.load-icon {
+    width: 10rem;
 }
 
 </style>
