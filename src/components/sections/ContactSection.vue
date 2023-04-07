@@ -14,15 +14,13 @@
 
         <div class="form-elements">
 
-            <input id="name" class="form-input" name="name" placeholder="Your name" type="text" required
-                value="Mr. Test"/>
+            <input id="name" class="form-input" name="name" placeholder="Your name" type="text" required />
             
             <input id="email" class="form-input" name="email" type="email"
-                required placeholder="your.name@email.com"
-                value="test@gmail.com"/>
+                required placeholder="your.name@email.com" />
             
             <textarea id="message" class="form-input" name="message" rows="10"
-                required placeholder="Your message">This is a test messge</textarea>
+                required placeholder="Your message"></textarea>
             
             <input class="hidden" id="honeypot" type="text" name="honeypot" value="" />
 
@@ -37,6 +35,7 @@
             <h2><i>Thank you</i> for your message! I will get back to you soon!</h2>
         </div>
     </form>
+    
 </GenericSection>
 
 </template>
@@ -45,8 +44,13 @@
 
 import LoadIcon from "@/components/LoadIcon.vue";
 import GenericSection from "./GenericSection.vue";
+
 export default {
-    components: { GenericSection, LoadIcon }
+    components: { GenericSection, LoadIcon },
+    mounted() {
+        // Set min height, such that the section does not shrink during loading, or on a success message
+        this.$el.style.minHeight = this.$el.offsetHeight + "px";
+    }
 };
 
 </script>
@@ -69,6 +73,7 @@ export default {
     gap: 10px;
 
     @media(max-width: $md-screen-width) {
+
         grid-template-columns: 100%;
         grid-template-rows: auto;
         grid-template-areas:
@@ -107,8 +112,8 @@ export default {
     grid-area: submit;
 }
 
-.load-icon {
-    width: 10rem;
+.load-element {
+    color: $primary-color;
 }
 
 </style>
