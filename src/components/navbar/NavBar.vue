@@ -148,10 +148,10 @@ export default {
 <style lang="scss">
 
 #navbar {
-    background-color: $primary-color; 
+    background-color: var(--clr-primary);
     position: sticky;
     top: 0px;
-    z-index: $foreground-index;
+    z-index: var(--index-foreground);
 
     padding-bottom: 0;
     padding-right: 0;

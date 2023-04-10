@@ -1,34 +1,34 @@
 // Applies different styling depending on wheter it is inside a light or dark theme
 
 .light-theme {
-    background-color: $light-color;
-    color: $font-color-dark;
+    background-color: var(--clr-light);
+    color: var(--font-clr-dark);
 
     h1, h2, h3, h4, h5, h6 {
-        color: $primary-color;
+        color: var(--clr-primary);
     }
 
     input, textarea {
-        background-color: $light-color;
-        color: $primary-color;
-        border-color: $primary-color-dark;
+        background-color: var(--clr-light);
+        color: var(--clr-primary);
+        border-color: var(--clr-primary-dark);
 
         &::placeholder{
-            color: $primary-color;
+            color: var(--clr-primary)
         }
     }
 
     .polygon-container {
-        fill: $primary-color;
+        fill: var(--clr-primary)
     }
 }
 
 .dark-theme {
-    background-color: $primary-color;
-    color: $font-color-light;
+    background-color: var(--clr-primary);
+    color: var(--font-clr-light);
 
     h1, h2, h3, h4, h5, h6 {
-        color: $light-color;
+        color: var(--clr-light);
     }
 
     input, textarea {
@@ -36,6 +36,6 @@
     }
 
     .polygon-container {
-        fill: $font-color-light;
+        fill: var(--font-clr-light);
     }
 }

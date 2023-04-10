@@ -75,7 +75,7 @@ export default {
 }
 
 #school-content-container {
-    background-color: $primary-color-dark;
+    background-color: var(--clr-primary-dark);
 
     margin: 10px 0;
     padding: 10px;

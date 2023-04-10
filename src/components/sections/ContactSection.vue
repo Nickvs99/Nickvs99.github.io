@@ -72,7 +72,7 @@ export default {
     margin-top: 10px;
     gap: 10px;
 
-    @media(max-width: $md-screen-width) {
+    @media(max-width: --screen-width-md) {
 
         grid-template-columns: 100%;
         grid-template-rows: auto;
@@ -88,7 +88,7 @@ export default {
     @extend %clickable-primary;
     @extend %border-sm;
 
-    color: $light-color;
+    color: var(--clr-light);
 
     height: 40px;
     font-size: 16px;
@@ -113,7 +113,7 @@ export default {
 }
 
 .load-element {
-    color: $primary-color;
+    color: var(--clr-primary)
 }
 
 </style>

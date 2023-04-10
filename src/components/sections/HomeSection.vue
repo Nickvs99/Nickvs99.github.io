@@ -75,7 +75,7 @@ export default {
     padding-top: 150px;
     padding-bottom: 50px;
 
-    @media (max-width: $sm-screen-width) {
+    @media (max-width: --screen-width-sm) {
         padding-top: 50px;
     }
 }
@@ -91,7 +91,7 @@ export default {
     width: 50%;
     max-width: 500px;
 
-    @media (max-width: $md-screen-width) {
+    @media (max-width: --screen-width-md) {
         max-width: none;
         width: 100%;
     }
@@ -101,7 +101,7 @@ export default {
     border-radius: 30px;
     margin: auto;
 
-    @media (max-width: $md-screen-width) {
+    @media (max-width: --screen-width-md) {
         display: none !important;
     }
 }

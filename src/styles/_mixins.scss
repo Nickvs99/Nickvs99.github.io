@@ -1,0 +1,50 @@
+
+@mixin clickable($clr, $clr-hover, $clr-active, $is-svg: false) {
+
+    $property: "background-color";
+    
+    // Target different properties depending on if it is a svg
+    @if $is-svg {
+        $property: "fill";
+    }
+
+    #{$property}: $clr;
+
+    &:hover {
+        #{$property}: $clr-hover;
+        cursor: pointer;
+    }
+
+    &:active {
+        #{$property}: $clr-active;
+    }
+}
+
+%clickable-primary {
+    @include clickable(var(--clr-primary), var(--clr-primary-dark), var(--clr-primary-darkest));
+}
+
+%clickable-secondary {
+    @include clickable(var(--clr-secondary), var(--clr-secondary-dark), var(--clr-secondary-darkest));
+}
+
+%clickable-primary-svg {
+    @include clickable(var(--clr-primary), var(--clr-primary-dark), var(--clr-primary-darkest), $is-svg: true);
+}
+
+%clickable-secondary-svg {
+    @include clickable(var(--clr-secondary), var(--clr-secondary-dark), var(--clr-secondary-darkest), $is-svg: true);
+}
+
+@mixin border($border-radius) {
+    border: 2px solid var(--clr-primary-dark);
+    border-radius: $border-radius;
+}
+
+%border-sm {
+    @include border(5px)
+}
+
+%border-md {
+    @include border(20px);
+}

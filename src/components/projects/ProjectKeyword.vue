@@ -19,8 +19,8 @@ export default {
 <style lang="scss">
 
 .project-keyword {
-    background-color: $secondary-color;
-    color: $light-color;
+    background-color: var(--clr-secondary);
+    color: var(--clr-light);
     border-radius: 10px;
     display: inline-block;
     margin: 0 10px 5px 0;

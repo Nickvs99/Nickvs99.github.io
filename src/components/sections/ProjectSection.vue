@@ -59,7 +59,7 @@ export default {
     justify-content: space-between;
 
     svg {
-        @include clickable($primary-color, $is-svg: true);
+        @extend %clickable-primary-svg;
 
         width: 2em;
     }

@@ -1,8 +1,8 @@
 <template>
 
-<a :href="`${href}`" class="anchor hexagon-icon"  target=”_blank” :style="cssProps"> 
+<a :href="`${href}`" class="anchor"  target=”_blank” :style="cssProps"> 
 
-    <EquilateralShape n="6" :radius=radius offset="30"/>
+    <EquilateralShape class="hexagon" n="6" :radius=radius offset="30"/>
     <img ref="img" :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img">
 
 </a>
@@ -68,10 +68,10 @@ export default {
     position: absolute;
 }
 
-.hexagon-icon {
-    @include clickable($primary-color, $is-svg: true);
+.hexagon {
+    @extend %clickable-primary-svg;
 
-    stroke: $primary-color-dark;
+    stroke: var(--clr-primary-dark);
     stroke-width: 2px;
 }
 

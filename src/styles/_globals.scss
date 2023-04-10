@@ -1,82 +1,22 @@
-/******* Colors **********/
+#app {
+    --clr-primary: #4CAF50;
+    --clr-primary-dark: #3d8b40;
+    --clr-primary-darkest: #2d682f;
 
-$primary-color: #4CAF50;
-$primary-color-dark: darken($primary-color, 10%);
-$primary-color-darkest: darken($primary-color, 20%);
+    --clr-secondary: tomato;
+    --clr-secondary-dark: #ff3814;
+    --clr-secondary-darkest: #e02200;
 
-$secondary-color: tomato;
-$secondary-color-dark: darken($secondary-color, 10%);
+    --clr-light: #f9f4ea;
 
-$light-color: #f9f4ea;
+    --font-clr-light: var(--clr-light);
+    --font-clr-dark: black;
 
-/********* Fonts *********/
-$sm-font-size: 13px;
-$md-font-size: 16px;
+    --font-size-sm: 13px;
 
-$font-color-dark: black;
-$font-color-light: $light-color;
+    --screen-width-sm: 480px;
+    --screen-width-md: 768px;
+    --screen-width-lg: 1200px;
 
-/********* Media queries ***********/
-$sm-screen-width: 480px;
-$md-screen-width: 768px;
-$lg-screen-width: 1200px;
-
-
-/********** Z indices **************/
-$foreground-index: 999;
-
-/*********** Mixins ***************/
-
-@mixin clickable($default-color: $primary-color, $is-svg: false) {
-    $dark-color: darken($default-color, 10%);
-    $darkest-color: darken($default-color, 20%);
-
-    @if not($is-svg) {
-
-        background-color: $default-color;
-
-        &:hover {
-            background-color: $dark-color;
-            cursor: pointer;
-        }
-
-        &:active {
-            background-color: $darkest-color;
-        }
-    }
-    
-    @else {
-        // svg's need the fill attribute as opposed to background-color
-        fill: $default-color;
-
-        &:hover {
-            fill: $dark-color;
-            cursor: pointer;
-        }
-    
-        &:active {
-            fill: $darkest-color;
-        }
-    }
-}
-
-%clickable-primary {
-    @include clickable($primary-color);
-}
-
-%clickable-secondary {
-    @include clickable($secondary-color);
-}
-
-@mixin border($border-radius) {
-    border: 2px solid $primary-color-dark;
-    border-radius: $border-radius;
-}
-
-%border-sm {
-    @include border(5px)
-}
-
-%border-md {
-    @include border(20px);
+    --index-foreground: 999;
 }

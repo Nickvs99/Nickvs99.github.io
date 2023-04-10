@@ -239,7 +239,7 @@ export default {
 #filter-project-cards-input {
     flex-grow: 9999; //https://stackoverflow.com/a/33174685
 
-    color: $primary-color;
+    color: var(--clr-primary);
 }
 
 .filter-boxxes {
@@ -252,7 +252,7 @@ export default {
 .filter-project-box {
     @extend %clickable-primary;
 
-    color: $light-color;
+    color: var(--clr-light);
 
     display: flex;
     align-items: center;
@@ -291,7 +291,7 @@ export default {
 #keyword-container {
     @extend %border-sm;
 
-    background-color: $primary-color;
+    background-color: var(--clr-primary);
     
     width: max-content;
 

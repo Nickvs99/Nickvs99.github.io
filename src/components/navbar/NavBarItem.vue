@@ -43,7 +43,7 @@ export default {
     left: -16px;
 
     border: none;
-    color: $light-color;
+    color: var(--clr-light);
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;

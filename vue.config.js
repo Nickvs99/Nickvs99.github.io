@@ -4,7 +4,10 @@ module.exports = defineConfig({
     pluginOptions: {
         "style-resources-loader": {
             preProcessor: "scss",
-            patterns: ["./src/styles/_globals.scss"]
+            patterns: [
+                "./src/styles/_globals.scss",
+                "./src/styles/_mixins.scss"
+            ],
         }
     }
 });
