@@ -1,8 +1,11 @@
 <template>
    
-<div class="education-content">
-    <component :is="component"></component>
-</div>
+<FadeTransition>
+    <div class="education-content" :key="$route.params.education">
+        <component :is="component"></component>
+    </div>
+</FadeTransition>
+
 
 </template>
 
@@ -10,10 +13,13 @@
 
 import { defineAsyncComponent } from "vue";
 
+import FadeTransition from "@/components/transitions/FadeTransition.vue";
+
 import { getEducationFromParams } from "./educations.js";
 
 export default {
 
+    components: { FadeTransition },
     data() {
         return {
             title: "",

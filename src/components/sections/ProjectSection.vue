@@ -3,21 +3,33 @@
     
     <div class="project-title-row">
         <h1>Projects</h1>
+        
         <ArrowBackIcon v-if="showGoBackIcon" @click="goToOverview()"/>
     </div>
-    <router-view />
+
+    <router-view v-slot="{Component}">
+        <FadeTransition>
+            <div :key="$route.params.project">
+                <component :is="Component"></component>
+            </div>
+        </FadeTransition>
+    </router-view>
     
 </GenericSection>
+
 </template>
 
 <script>
 
 import ArrowBackIcon from "@/assets/icons/ArrowBackIcon.vue";
-import GenericSection from "./GenericSection.vue";
+import FadeTransition from "../transitions/FadeTransition.vue";
 import router from "@/router";
+
+import GenericSection from "./GenericSection.vue";
+
 export default {
     name: "ProjectSection",
-    components: { GenericSection, ArrowBackIcon },
+    components: { FadeTransition, GenericSection, ArrowBackIcon },
     data() {
         return {
             showGoBackIcon: true,
