@@ -72,7 +72,7 @@ export default {
     margin-top: 10px;
     gap: 10px;
 
-    @media(max-width: --screen-width-md) {
+    @media(max-width: $screen-width-md) {
 
         grid-template-columns: 100%;
         grid-template-rows: auto;

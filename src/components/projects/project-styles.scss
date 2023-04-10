@@ -6,11 +6,11 @@
 
     float:right;
 
-    @media(max-width: --screen-width-lg) {
+    @media(max-width: $screen-width-lg) {
         max-width: calc(min(60%, 400px));
     }
 
-    @media(max-width: --screen-width-md) {
+    @media(max-width: $screen-width-md) {
         display: block;
         float: none;
         max-width: calc(min(100%, 400px));

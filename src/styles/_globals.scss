@@ -14,9 +14,10 @@
 
     --font-size-sm: 13px;
 
-    --screen-width-sm: 480px;
-    --screen-width-md: 768px;
-    --screen-width-lg: 1200px;
-
     --index-foreground: 999;
 }
+
+// CSS variables do not work on media queries, therefore, they remain as SCSS variables
+$screen-width-sm: 480px;
+$screen-width-md: 768px;
+$screen-width-lg: 1200px;
