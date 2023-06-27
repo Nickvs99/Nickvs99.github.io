@@ -1,8 +1,8 @@
 <template>
 
-<a :href="`${href}`" class="anchor"  target=”_blank” :style="cssProps"> 
+<a :href="`${href}`" class="anchor"  target=”_blank” > 
 
-    <EquilateralShape class="hexagon" n="6" :radius=radius offset="30"/>
+    <EquilateralShape class="hexagon" n="6"/>
     <img ref="img" :src="require(`@/${src_icon}`)" :alt="`${src_alt}`" class="icon-img">
 
 </a>
@@ -20,7 +20,6 @@ export default {
 
     data () {
         return {
-            radius: 50,
             iconWidth: 50,
             iconHeight: 50,
         };
@@ -36,27 +35,18 @@ export default {
             let aspectRatio = img.naturalWidth / img.naturalHeight;
 
             if(img.naturalWidth > img.naturalHeight) {
-                this.iconWidth = this.radius;
+                this.iconWidth = this.$el.offsetWidth / 2;
                 this.iconHeight = this.iconWidth / aspectRatio;
             }
             else {
-                this.iconHeight = this.radius;
+                this.iconHeight = this.$el.offsetWidth / 2;
                 this.iconWidth = this.iconHeight / aspectRatio;
             }
         };
     },
 
     computed: {
-        cssProps() {
-            return {
-                "--icon-width": this.iconWidth + "px",
-                "--icon-height": this.iconHeight + "px",
 
-                // Center icon
-                "--icon-offset-left": (this.radius - this.iconWidth / 2) + "px",
-                "--icon-offset-bottom": (this.radius - this.iconHeight / 2) + "px",
-            };
-        }
     },
 };
 
@@ -71,6 +61,8 @@ export default {
 .hexagon {
     @extend %clickable-primary-svg;
 
+    width: 100%;
+
     stroke: var(--clr-primary-dark);
     stroke-width: 2px;
 }
@@ -78,11 +70,9 @@ export default {
 .icon-img {
     position: absolute;
 
-    bottom: var(--icon-offset-bottom);
-    left: var(--icon-offset-left);
-
-    width: var(--icon-width);
-    height: var(--icon-height);
+    width: 50%;
+    top: 25%;
+    left: 25%;
 }
 
 </style>

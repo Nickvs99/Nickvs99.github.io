@@ -1,7 +1,7 @@
 <template>
 
 <div class="hex-li-container">
-    <EquilateralShape n="6" :radius=radius offset="0" />
+    <EquilateralShape n="6" />
     <li class="hex-li">
         <slot/>
     </li>
@@ -18,11 +18,6 @@ export default {
     props: {
         content: String,
     },
-    data() {
-        return {
-            radius: 10
-        };
-    }
 };
 
 </script>

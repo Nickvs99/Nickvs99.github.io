@@ -2,8 +2,8 @@
 
 <template>
 
-    <svg class="polygon-container" :style="cssProps">
-        <polygon :points="SetPoints()" />
+    <svg viewBox="0 0 1000 1000" class="polygon-container">
+        <path :d="SetPath()" />
     </svg>
 
 </template>
@@ -13,33 +13,26 @@
 let { EquilateralShape } = require("@/js/EquilateralShape.js");
 
 export default {
-    props: ["n", "radius", "offset"],
-
-    computed: {
-        cssProps() {
-            return {
-                "--width": (2 * this.radius) + "px",
-            };
-        }
-    },
+    props: ["n"],
 
     methods: {
 
-        SetPoints() {
+        SetPath() {
+            // The radius should be halve the viewBox width
+            let shape = new EquilateralShape(this.n, 500, 0);
 
-            let shape = new EquilateralShape(this.n, this.radius, this.offset);
-            return shape.points.join(" ");
+            return `M ${shape.points.join(" ")} Z`;
         }
     },
 };
 
 </script>
 
-<style>
+<style lang="scss">
 
-.polygon-container {
-    width: var(--width);
-    height: var(--width);
+.polygon-container { 
+    width: 1em;
+    aspect-ratio: 1/1;
 }
 
 </style>

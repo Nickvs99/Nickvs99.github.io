@@ -8,11 +8,11 @@
             <h1 id="title-greeting">Hi, I'm Nick</h1>
             <p id="summary-paragraph">A <b>Computational Science</b> master student with a bachelor level background in <b>Physics and Astronomy</b>. Loves a challenge and has a great interest in a wide range of fields, ranging from game development to finance, and from physics to web development. </p>
             
-            <HexagonGrid class="grid" ref="hexGrid" hexRadius="55" hexGridAlign="center" hexGridStyle="even-right">
-                <HyperlinkIcon href="mailto:vansantennick@gmail.com" src_icon="assets/icons/MailIcon.svg" src_alt="Email icon"/>
-                <HyperlinkIcon href="https://github.com/Nickvs99" src_icon="assets/icons/github-logo.png" src_alt="Github logo"/>
-                <HyperlinkIcon href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/icons/LinkedInIcon.png" src_alt="LinkedIn logo"/>
-                <HyperlinkIcon href="./docs/Resume - Nick van Santen.pdf" src_icon="assets/icons/cv-icon.jpg" src_alt="CV icon" download/>
+            <HexagonGrid id="hexGrid" ref="hexGrid" :hexRadius="hexRadius" hexGridAlign="center" hexGridStyle="even-right">
+                <HyperlinkIcon class="hyperlink-icon" href="mailto:vansantennick@gmail.com" src_icon="assets/icons/MailIcon.svg" src_alt="Email icon"/>
+                <HyperlinkIcon class="hyperlink-icon" href="https://github.com/Nickvs99" src_icon="assets/icons/github-logo.png" src_alt="Github logo"/>
+                <HyperlinkIcon class="hyperlink-icon" href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/icons/LinkedInIcon.png" src_alt="LinkedIn logo"/>
+                <HyperlinkIcon class="hyperlink-icon" href="./docs/Resume - Nick van Santen.pdf" src_icon="assets/icons/cv-icon.jpg" src_alt="CV icon" download/>
             </HexagonGrid>
 
         </div>
@@ -32,6 +32,11 @@ import HyperlinkIcon from "@/components/HyperlinkIcon.vue";
 
 export default {
     components: { GenericSection, HexagonGrid, HyperlinkIcon },
+    data() {
+        return {
+            hexRadius: "55",
+        };
+    },
 
     mounted() {
         window.addEventListener("resize", this.onResize);
@@ -114,8 +119,19 @@ export default {
     margin: 0 0 30px 0;
 }
 
-.grid {
+#hexGrid {
     margin: auto;
+
+    --cell-width: 100px;
+    --cell-margin: 5px;
+
+    .hyperlink-icon {
+        width: var(--cell-width);
+
+        svg {
+            rotate: 30deg;
+        }
+    }
 }
 
 </style>
