@@ -41,12 +41,33 @@ export default {
     mounted() {
         window.addEventListener("resize", this.onResize);
         this.resizeHexGrid();
+        this.initListener();
     },
     unmounted() {
         window.removeEventListener("resize", this.onResize);
     },
 
     methods: {
+
+        // TODO this should be on the HexagonGrid component
+        initListener() {
+            let observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    let cellWidth = parseFloat(window.getComputedStyle(mutation.target).getPropertyValue("--cell-width"));
+
+                    this.hexRadius = cellWidth / 2;
+                    this.$refs.hexGrid.initializeGrid();        
+
+                });
+            });
+
+            let observerConfig = { 
+                attributes: true,
+            };
+
+            let targetNode = this.$refs.hexGrid.$el;
+            observer.observe(targetNode, observerConfig);
+        },
 
         resizeHexGrid() {
             let container = this.$refs.contentContainer;    
