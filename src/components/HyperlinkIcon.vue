@@ -73,6 +73,8 @@ export default {
     width: 50%;
     top: 25%;
     left: 25%;
+
+    pointer-events: none;
 }
 
 </style>
