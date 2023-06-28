@@ -8,7 +8,7 @@
             <h1 id="title-greeting">Hi, I'm Nick</h1>
             <p id="summary-paragraph">A <b>Computational Science</b> master student with a bachelor level background in <b>Physics and Astronomy</b>. Loves a challenge and has a great interest in a wide range of fields, ranging from game development to finance, and from physics to web development. </p>
             
-            <HexagonGrid id="hexGrid" ref="hexGrid" :hexRadius="hexRadius" hexGridAlign="center" hexGridStyle="even-right">
+            <HexagonGrid id="hexGrid" ref="hexGrid" hexGridAlign="center" hexGridStyle="even-right">
                 <HyperlinkIcon class="hyperlink-icon" href="mailto:vansantennick@gmail.com" src_icon="assets/icons/MailIcon.svg" src_alt="Email icon"/>
                 <HyperlinkIcon class="hyperlink-icon" href="https://github.com/Nickvs99" src_icon="assets/icons/github-logo.png" src_alt="Github logo"/>
                 <HyperlinkIcon class="hyperlink-icon" href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/icons/LinkedInIcon.png" src_alt="LinkedIn logo"/>
@@ -32,16 +32,10 @@ import HyperlinkIcon from "@/components/HyperlinkIcon.vue";
 
 export default {
     components: { GenericSection, HexagonGrid, HyperlinkIcon },
-    data() {
-        return {
-            hexRadius: "55",
-        };
-    },
 
     mounted() {
         window.addEventListener("resize", this.onResize);
         this.resizeHexGrid();
-        this.initListener();
     },
     unmounted() {
         window.removeEventListener("resize", this.onResize);
@@ -49,42 +43,19 @@ export default {
 
     methods: {
 
-        // TODO this should be on the HexagonGrid component
-        initListener() {
-            let observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    let cellWidth = parseFloat(window.getComputedStyle(mutation.target).getPropertyValue("--cell-width"));
-
-                    this.hexRadius = cellWidth / 2;
-                    this.$refs.hexGrid.initializeGrid();        
-
-                });
-            });
-
-            let observerConfig = { 
-                attributes: true,
-            };
-
-            let targetNode = this.$refs.hexGrid.$el;
-            observer.observe(targetNode, observerConfig);
-        },
-
         resizeHexGrid() {
             let container = this.$refs.contentContainer;    
             let availableWidth = container.getBoundingClientRect().width;
             
-            // Resize the grid for values between 286 and 382 pixels. For these values the hex grid takes
+            // Resize the grid for values between 260 and 347 pixels. For these values the hex grid takes
             // a 3, 1 shape, which looks horrendous. Therefore manually resize, such that the grid makes
             // a 2, 2 shape.
-            if(availableWidth <= 285 || availableWidth >= 382) {
+            if(availableWidth <= 260 || availableWidth >= 347) {
                 this.$refs.hexGrid.$el.style.width = 100 + "%";
             }
             else {
-                this.$refs.hexGrid.$el.style.width = 285 + "px";
-            }
-
-            // Recalculate grid positions based on new width
-            this.$refs.hexGrid.initializeGrid();        
+                this.$refs.hexGrid.$el.style.width = 259 + "px";
+            }    
         },
 
         onResize() {
@@ -147,7 +118,7 @@ export default {
     --cell-margin: 5px;
 
     .hyperlink-icon {
-        width: var(--cell-width);
+        width: calc(var(--cell-width) - var(--cell-margin));
 
         svg {
             rotate: 30deg;

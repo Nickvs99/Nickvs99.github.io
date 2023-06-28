@@ -2,9 +2,9 @@
 
 <template>
 
-    <div class="hexagon-grid">
-        <slot/>
-    </div>
+<div class="hexagon-grid">
+    <slot/>
+</div>
 
 </template>
 
@@ -18,7 +18,7 @@ export default {
      * Gets the available width and then tries to place as many hexagons inside that width.
      * If there is insufficient width for all hexagons then place another row underneath.
      */ 
-    props: ["hexRadius", "hexGridAlign", "hexGridStyle"],
+    props: ["hexGridAlign", "hexGridStyle"],
 
     /**
      * 4 hex grid styles:
@@ -33,20 +33,23 @@ export default {
      * current implementation uses a bunch of if statements.
      */
 
-    mounted() {
-        window.addEventListener("resize", this.initializeGrid);
+    mounted() {        
+        this.cellWidth = this.getCellWidth();
+        this.mutationObserver = this.initMutationObserver();
+        this.resizeObserver = this.initResizeObserver();
         this.initializeGrid();
     },
 
     unmounted() {
-        window.addEventListener("resize", this.initializeGrid);
+        this.mutationObserver.disconnect();
+        this.resizeObserver.unobserve(this.$el);
     },
 
     methods: {
 
         initializeGrid() {
 
-            let shape = new EquilateralShape(6, this.hexRadius, 30); //TODO variable offset
+            let shape = new EquilateralShape(6, this.cellWidth / 2, 30); //TODO variable offset
 
             this.hexWidth = shape.width;
 
@@ -64,6 +67,39 @@ export default {
             }
 
             this.setContainerHeight();
+        },
+
+        initMutationObserver() {
+            
+            let observer = new MutationObserver(() => {
+
+                let tempCellWidth = this.getCellWidth();
+                if (tempCellWidth == this.cellWidth) return;
+                
+                this.cellWidth = tempCellWidth;
+                this.initializeGrid();        
+            });
+
+            let observerConfig = { 
+                attributes: true,
+            };
+
+            let targetNode = this.$el;
+            observer.observe(targetNode, observerConfig);
+
+            return observer;
+        },
+
+        getCellWidth() {
+            return parseFloat(window.getComputedStyle(this.$el).getPropertyValue("--cell-width"));
+        },
+
+        initResizeObserver() {
+            
+            let resizeObserver = new ResizeObserver(this.initializeGrid);
+            resizeObserver.observe(this.$el);
+
+            return resizeObserver;
         },
 
         /**
@@ -245,11 +281,14 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 
 .hexagon-grid {
     position: relative;
     width: 100%;
+
+    // Default cell width
+    --cell-width: 50px;
 }
 
 </style>
