@@ -229,7 +229,7 @@ export default {
     flex-wrap: wrap;
     gap: 10px;
 
-    height: 40px;
+    min-height: 40px;
 }
 
 .filter-project-cards-item {
