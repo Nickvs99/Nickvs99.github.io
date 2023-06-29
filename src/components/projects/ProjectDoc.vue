@@ -37,6 +37,8 @@ export default {
     mounted() {
         window.addEventListener("click", this.onClick);
         this.initProjectDoc();
+
+        this.scrollInToView();
     },
 
     unmounted() {
@@ -60,6 +62,17 @@ export default {
             this.keywords = project.keywords;
             this.contentSrc = project.contentSrc;
             this.year = project.year;
+        },
+
+        scrollInToView() {
+
+            let target = document.getElementById("project-section");
+            let targetPosition = target.getBoundingClientRect().top;
+
+            let offset = document.getElementById("navbar").offsetHeight;
+            let offsetPosition = targetPosition + window.pageYOffset - offset;
+
+            window.scrollTo({top: offsetPosition, behavior: "smooth"});
         },
 
     }
