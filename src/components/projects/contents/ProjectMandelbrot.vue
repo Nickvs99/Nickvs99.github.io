@@ -25,6 +25,9 @@ import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 
 export default {
     components: {ProjectGithubLink},
+    mounted() {
+        window.MathJax.typeset();
+    }
 };
 
 </script>
