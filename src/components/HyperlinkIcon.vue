@@ -55,12 +55,12 @@ export default {
 <style lang="scss" scoped>
 
 .anchor {
+    @extend %clickable-primary-svg;
+
     position: absolute;
 }
 
 .hexagon {
-    @extend %clickable-primary-svg;
-
     width: 100%;
 
     stroke: var(--clr-primary-dark);

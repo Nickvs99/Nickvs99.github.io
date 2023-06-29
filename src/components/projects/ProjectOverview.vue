@@ -27,19 +27,19 @@
             </details>
         </div>
 
-        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
+        <button class="filter-project-box filter-project-cards-item arrow-sort" 
             :class="{ascending: sortAZ}"
             @click="toggleSortAZ"
         >
             A-Z
-        </div>
+        </button>
         
-        <div id="sort-projects-alphabetical" class="filter-project-box filter-project-cards-item arrow-sort" 
+        <button class="filter-project-box filter-project-cards-item arrow-sort" 
             :class="{ascending: sortYear}"
             @click="toggleSortYear"
         >    
             Year
-        </div>
+        </button>
     </div>
 </div>  
 
@@ -228,12 +228,12 @@ export default {
     flex-direction: row;
     flex-wrap: wrap;
     gap: 10px;
+
+    height: 40px;
 }
 
 .filter-project-cards-item {
     @extend %border-sm;
-
-    height: 40px;
 }
 
 #filter-project-cards-input {

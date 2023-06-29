@@ -10,8 +10,8 @@
 
     #{$property}: $clr;
 
-    &:hover {
-        #{$property}: $clr-hover;
+    &:hover, &:focus-visible{
+        #{$property}: $clr-hover !important;
         cursor: pointer;
     }
 

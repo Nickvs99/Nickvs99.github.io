@@ -5,4 +5,10 @@ import "@/styles/styles.scss";
 import "@/styles/theme.scss";
 import router from "./router";
 
-createApp(App).use(router).mount("#app");
+import globalDirectives from "./directives";
+
+const app = createApp(App);
+app.use(router);
+app.use(globalDirectives);
+
+app.mount("#app");

@@ -17,10 +17,6 @@
             color: var(--clr-primary)
         }
     }
-
-    .polygon-container {
-        fill: var(--clr-primary)
-    }
 }
 
 .dark-theme {
@@ -33,9 +29,5 @@
 
     input, textarea {
         // Neiter input nor textarea currently have a style for the dark theme
-    }
-
-    .polygon-container {
-        fill: var(--font-clr-light);
     }
 }

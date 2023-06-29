@@ -1,7 +1,7 @@
 <template>
 
 <div class="hex-li-container">
-    <EquilateralShape n="6" />
+    <EquilateralShape n="6" class="hex-li-shape" />
     <li class="hex-li">
         <slot/>
     </li>
@@ -40,6 +40,14 @@ ul:has(> .hex-li-container) {
     display: flex;
     align-items: center;
     gap: 0 0.5em;
+}
+
+.dark-theme  .hex-li-shape {
+    fill: var(--font-clr-light);
+}
+
+.light-theme .hex-li-shape {
+    fill: var(--clr-primary);
 }
 
 .hex-li {

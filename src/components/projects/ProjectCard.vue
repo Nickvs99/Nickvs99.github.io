@@ -1,7 +1,7 @@
 <template>
 
     
-<div :id=containerID class="project-card dark-theme" @click=showProjectDoc>
+<div v-press :id=containerID class="project-card dark-theme" @click=showProjectDoc role="button" tabindex="0">
 
     <div class="project-title-container">
         <h2 class="project-title"> {{ title }}</h2>

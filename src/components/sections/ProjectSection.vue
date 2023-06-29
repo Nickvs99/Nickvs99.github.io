@@ -3,8 +3,7 @@
     
     <div class="project-title-row">
         <h1>Projects</h1>
-        
-        <ArrowBackIcon v-if="showGoBackIcon" @click="goToOverview()"/>
+        <ArrowBackIcon v-press v-if="showGoBackIcon" @click=goToOverview role="button" tabindex="0"/>
     </div>
 
     <router-view v-slot="{Component}">

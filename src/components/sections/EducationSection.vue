@@ -4,12 +4,12 @@
     
     <h1>Education</h1>
     <div id="school-navbar">
-        <div v-for="educationObj in educationObjs" :key="educationObj.title" 
+        <button v-for="educationObj in educationObjs" :key="educationObj.title" 
             @click="goTo(educationObj.title)" 
             :class="['school-navbar-item', {active: isActive(educationObj.title)}]"
         > 
             {{ educationObj.title }} 
-        </div>
+        </button>
     </div>
 
     <EducationContent />
@@ -71,7 +71,9 @@ export default {
 .school-navbar-item {
     @extend %clickable-secondary;
 
+    color: var(--clr-light);
     padding: 10px;
+    border: none;
 }
 
 #school-content-container {
