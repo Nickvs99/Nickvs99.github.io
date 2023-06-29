@@ -2,8 +2,12 @@
 
 <div class="project-doc-container" >
     <div class="project-title-container">
-        <h2 class="project-title"> {{ title }} </h2>
-        <div class="project-year">, {{ year }} </div>
+        <div>
+            <h2 class="project-title"> {{ title }} </h2>
+            <div class="project-year">, {{ year }} </div>            
+        </div>
+
+        <ProjectGithubLink v-if="githubLink" :href=githubLink></ProjectGithubLink>
     </div>
 
     <div class="project-doc-keyword-container">
@@ -19,18 +23,20 @@
 
 import { defineAsyncComponent } from "vue";
 
+import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 import ProjectKeyword from "@/components/projects/ProjectKeyword.vue";
 import { projects } from "./projects.js";
 
 export default {
-    components: {ProjectKeyword},
+    components: { ProjectGithubLink, ProjectKeyword},
 
     data() {
         return {
             title: "",
             keywords: [],
             contentSrc: "",
-            year: 0,            
+            year: 0,
+            githubLink: null,            
         };
     },
 
@@ -62,6 +68,7 @@ export default {
             this.keywords = project.keywords;
             this.contentSrc = project.contentSrc;
             this.year = project.year;
+            this.githubLink = project.github;
         },
 
         scrollInToView() {
@@ -91,6 +98,13 @@ export default {
     // Creates new Block formatting context, making sure that all
     // margins are within the content-wrapper
     overflow: auto;
+}
+
+.project-title-container { 
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 1em;
 }
 
 .project-doc-keyword-container {

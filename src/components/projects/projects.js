@@ -5,6 +5,7 @@ export const projects = [
         keywords: ["Python", "Django", "Javascript", "SCSS", "HTML"],
         contentSrc: "components/projects/contents/ProjectMusicMatch.vue",
         year: 2020,
+        github: "https://github.com/Nickvs99/MusicMatch",
     },
     {
         title: "Living World",
@@ -12,6 +13,7 @@ export const projects = [
         keywords: ["Unity", "C#"],
         contentSrc: "components/projects/contents/ProjectLivingWorld.vue",
         year: 2019,
+        github: "https://github.com/Nickvs99/Living_World",
     },
     {
         title: "Boids",
@@ -19,6 +21,7 @@ export const projects = [
         keywords: ["C++", "SFML"],
         contentSrc: "components/projects/contents/ProjectBoids.vue",
         year: 2021,
+        github: "https://github.com/Nickvs99/Boids",
     },
     {
         title: "Mandelbrot set",
@@ -26,6 +29,7 @@ export const projects = [
         keywords: ["C++", "SFML"],
         contentSrc: "components/projects/contents/ProjectMandelbrot.vue",
         year: 2021,
+        github: "https://github.com/Nickvs99/Mandelbrot",
     },
     {
         title: "Amstelhaege",
@@ -33,6 +37,7 @@ export const projects = [
         keywords: ["Python"],
         contentSrc: "components/projects/contents/ProjectAmstelhaege.vue",
         year: 2020,
+        github: "https://github.com/Nickvs99/AmstelHaege",
     },
     {
         title: "MCRT",
@@ -40,6 +45,7 @@ export const projects = [
         keywords: ["C#"],
         contentSrc: "components/projects/contents/ProjectMCRT.vue",
         year: 2021,
+        github: "https://github.com/Nickvs99/MCRT",
     },
     {
         title: "Portfolio website",
@@ -47,6 +53,7 @@ export const projects = [
         keywords: ["Vue", "Javascript", "SCSS", "HTML"],
         contentSrc: "components/projects/contents/ProjectPortfolio.vue",
         year: 2022,
+        github: "https://github.com/Nickvs99/Nickvs99.github.io"
     },
     {
         title: "Processing projects",

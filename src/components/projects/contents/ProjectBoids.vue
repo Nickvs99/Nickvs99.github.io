@@ -23,18 +23,14 @@
 
 <p>Depending on the parameters chosen different flocking behaviours can occur.</p>
 
-
-<ProjectGithubLink href="https://github.com/Nickvs99/Boids"></ProjectGithubLink>
-
 </template>
 
 <script>
 
 import HexLi from "@/components/HexLi.vue";
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 
 export default {
-    components: { HexLi, ProjectGithubLink },
+    components: { HexLi },
 };
 
 </script>

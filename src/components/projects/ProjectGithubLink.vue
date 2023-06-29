@@ -16,15 +16,15 @@ export default {
 
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .github-link {
-    position:absolute;
-    top: 10px;
-    right: 10px;
+    display: inherit;
 }
 
 .github-link-img {
+    object-fit: cover;
+    aspect-ratio: 1/1;
     width: 50px;
 }
 

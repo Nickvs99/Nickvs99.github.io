@@ -60,17 +60,12 @@
     This allows for a broader search in the parameter space and for a better solution. 
 </p>
 
-<ProjectGithubLink href="https://github.com/Nickvs99/MCRT"></ProjectGithubLink>
-
 </template>
 
 
 <script>
 
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
-
 export default {
-    components: {ProjectGithubLink},
     mounted() {
         window.MathJax.typeset();
     }

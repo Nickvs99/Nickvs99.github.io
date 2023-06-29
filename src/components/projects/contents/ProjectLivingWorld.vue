@@ -42,16 +42,11 @@
 
 See for yourself at <a href="https://github.com/Nickvs99/Living_World" target="_blank">https://github.com/Nickvs99/Living_World</a>!
 
-<ProjectGithubLink href="https://github.com/Nickvs99/Living_World"></ProjectGithubLink>
-
 </template>
 
 <script>
 
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
-
 export default {
-    components: {ProjectGithubLink},
     mounted() {
         window.MathJax.typeset();
     }

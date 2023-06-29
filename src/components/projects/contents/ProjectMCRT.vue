@@ -15,18 +15,9 @@
     A top view of a protoplanetary disk can be seen in the image. 
 </p> 
 
-
-<ProjectGithubLink href="https://github.com/Nickvs99/MCRT"></ProjectGithubLink>
-
 </template>
 
 <script>
-
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
-
-export default {
-    components: {ProjectGithubLink},
-};
 
 </script>
 

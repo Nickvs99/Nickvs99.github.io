@@ -14,17 +14,11 @@
     Non-diverging values of \( c \) are coloured black for aesthetics.
 </p>
 
-
-<ProjectGithubLink href="https://github.com/Nickvs99/Mandelbrot"></ProjectGithubLink>
-
 </template>
 
 <script>
 
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
-
 export default {
-    components: {ProjectGithubLink},
     mounted() {
         window.MathJax.typeset();
     }

@@ -12,16 +12,10 @@
 
 <p> Give it a try at <a href="https://spotifyfy.herokuapp.com" target="_blank">https://spotifyfy.herokuapp.com</a>! </p>
 
-<ProjectGithubLink href="https://github.com/Nickvs99/MusicMatch"></ProjectGithubLink>
 </template>
 
 <script>
 
-import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
-
-export default {
-    components: {ProjectGithubLink},
-};
 </script>
 
 <style >
