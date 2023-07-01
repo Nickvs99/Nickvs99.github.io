@@ -55,12 +55,13 @@ export default {
 
 <style lang="scss">
 
-
 .education-content {
     background-color: var(--clr-primary-dark);
 
     margin-top: 10px;
     padding: 10px;
+
+    overflow: auto;
 }
 
 </style>

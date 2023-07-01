@@ -1,6 +1,8 @@
 <template>
 
 <div>
+    <EducationImage :src="require(`@/assets/images/lab_42.jpg`)" title="University of Amsterdam, Computational Science Lab"/>
+
     <div class="education-quote">
         &ldquo;&nbsp;Observing the world through a computational and mathematical lens.&nbsp;&rdquo;
     </div>
@@ -29,8 +31,10 @@
 import { sortByString } from "@/js/sort.js";
 import HexLi from "@/components/HexLi.vue";
 
+import EducationImage from "./EducationImage.vue";
+
 export default {
-    components: {HexLi},
+    components: { EducationImage, HexLi},
     data() {
         return {
             courses: [

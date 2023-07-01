@@ -1,9 +1,12 @@
 <template>
 
 <div>
+    <EducationImage :src="require(`@/assets/images/science_park.jpg`)" title="University of Amsterdam, FNWI"/>
+    
     <div class="education-quote">
         &ldquo;&nbsp;Understanding the inner workings of the universe.&nbsp;&rdquo;
     </div>
+
 
     <p>
         Physics and Astronomy not only gave me a better grasp on reality itself, but it also developed my problem-solving and maths skills which are universally applicable. 
@@ -46,8 +49,10 @@
 import { sortByString } from "@/js/sort.js";
 import HexLi from "@/components/HexLi.vue";
 
+import EducationImage from "./EducationImage.vue";
+
 export default {
-    components: {HexLi},
+    components: { EducationImage, HexLi },
     data() {
         return {
             physicsCourses: [

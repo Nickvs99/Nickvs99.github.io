@@ -1,6 +1,7 @@
 <template>
 
 <div>
+    <EducationImage :src="require(`@/assets/images/kaj_munk_college.jpg`)" title="University of Amsterdam"/>
 
     <div class="education-quote">
         &ldquo;&nbsp;All stories start from small beginnings.&nbsp;&rdquo;
@@ -26,8 +27,10 @@
 import { sortByString } from "@/js/sort.js";
 import HexLi from "@/components/HexLi.vue";
 
+import EducationImage from "./EducationImage.vue";
+
 export default {
-    components: {HexLi},
+    components: { EducationImage, HexLi },
     data() {
         return {
             courses: [
