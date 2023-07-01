@@ -6,7 +6,7 @@
         
         <div id="home-content-left" ref="contentContainer">
             <h1 id="title-greeting">Hi, I'm Nick</h1>
-            <p id="summary-paragraph">A <b>Computational Science</b> master student with a bachelor level background in <b>Physics and Astronomy</b>. Loves a challenge and has a great interest in a wide range of fields, ranging from game development to finance, and from physics to web development. </p>
+            <p id="summary-paragraph">A <b>Computational Science</b> master student with a bachelor level background in <b>Physics and Astronomy</b>. Loves a challenge and has a great interest in a wide range of fields, ranging from game development to finance, and from physics to web development. And although I enjoy creating websites, I am definetly not a web designer :).</p>
             
             <HexagonGrid id="hexGrid" ref="hexGrid" hexGridAlign="center" hexGridStyle="even-right">
                 <HyperlinkIcon class="hyperlink-icon" href="mailto:vansantennick@gmail.com" src_icon="assets/icons/MailIcon.svg" src_alt="Email icon"/>
@@ -86,7 +86,7 @@ export default {
 
 #home-content-left {
     width: 50%;
-    max-width: 500px;
+    max-width: 505px;
 
     @media (max-width: $screen-width-md) {
         max-width: none;
