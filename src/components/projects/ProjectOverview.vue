@@ -15,7 +15,7 @@
                 <div id="keyword-container">
                     <div v-for="keyword in keywords" :key="keyword">
                         <label class="keyword-label">
-                            <input type="checkbox" :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
+                            <input type="checkbox" :name=keyword :value=keyword v-model="checkedKeywords" :checked='checkedKeywords.includes(keyword)' @change="updateListedProjects">
                             {{ keyword }}
                         </label>
                     </div>

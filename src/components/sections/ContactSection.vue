@@ -15,10 +15,11 @@
         <div class="form-elements">
 
             <div class="form-container">
-                <input id="name" class="form-input" name="name" placeholder="Your name" type="text" required />
+                <input id="name" class="form-input" name="name" placeholder="Your name" type="text" required autocomplete="name"/>
             
                 <input id="email" class="form-input" name="email" type="email"
-                    required placeholder="your.mail@email.com" />
+                    required placeholder="your.mail@email.com"
+                    autocomplete="email" />
                 
                 <textarea id="message" class="form-input" name="message" rows="10"
                     required placeholder="Your message"></textarea>
