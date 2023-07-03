@@ -61,11 +61,21 @@ export default {
 
 <style lang="scss" scoped>
 
+$screen-width-treshold: 550px;
+
+
 #school-navbar {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 10px;
+
+    @media(max-width: $screen-width-treshold) {
+        flex-direction: column;
+        gap: 2px;
+
+        background-color: var(--clr-secondary-dark);
+    }
 }
 
 .school-navbar-item {
@@ -74,6 +84,10 @@ export default {
     color: var(--clr-light);
     padding: 10px;
     border: none;
+
+    @media(max-width: $screen-width-treshold) {
+        text-align: start;
+    }
 }
 
 #school-content-container {
