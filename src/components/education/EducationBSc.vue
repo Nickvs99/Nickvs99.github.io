@@ -40,6 +40,21 @@
         </ul>
     </details>
 
+    <div class="icon-content-container">
+        <div class="content">
+            <SchoolIcon />
+            <div>University of Amsterdam &amp; Vrije Universiteit Amsterdam</div>
+        </div>
+        <div class="content">
+            <LocationIcon />
+            <div>Amsterdam, The Netherlands</div>
+        </div>
+        <div class="content">
+            <CalendarIcon />
+            <div>2017-2021</div>
+        </div>
+    </div>
+
 </div>
 
 </template>
@@ -51,8 +66,12 @@ import HexLi from "@/components/HexLi.vue";
 
 import EducationImage from "./EducationImage.vue";
 
+import CalendarIcon from "@/assets/icons/CalendarIcon.vue";
+import LocationIcon from "@/assets/icons/LocationIcon.vue";
+import SchoolIcon from "@/assets/icons/SchoolIcon.vue";
+
 export default {
-    components: { EducationImage, HexLi },
+    components: { CalendarIcon, EducationImage, HexLi, LocationIcon, SchoolIcon},
     data() {
         return {
             physicsCourses: [

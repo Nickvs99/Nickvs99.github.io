@@ -21,3 +21,27 @@
 .course-item {
     list-style-position: inside;
 }
+
+.icon-content-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1em;
+
+    margin: 1em 0 0 1em;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+    align-items: center;
+    
+    svg {
+        width: 2em;
+        fill: black;
+    }
+
+    > :not(svg) {
+        flex: 1;
+    }
+}
