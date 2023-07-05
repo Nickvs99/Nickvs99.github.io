@@ -78,6 +78,7 @@ export default {
             let shape = new EquilateralShape(6, this.cellWidth / 2, 30); //TODO variable offset
 
             this.hexWidth = shape.width;
+            this.hexHeight = shape.height;
 
             this.determineGridSize();
             
@@ -292,16 +293,20 @@ export default {
 
             let contentWidth = this.calcContentWidth(this.ncolumns);
 
+            // The offset is required due to the height and width changes.
+            // Not sure what the exact reason is 
+            let offset = -(this.hexHeight - this.hexWidth) / 2; 
+
             let diff = containerWidth - contentWidth;
 
             if (this.hexGridAlign === "left") {
-                return 0;
+                return offset;
             }
             else if (this.hexGridAlign === "center") {
-                return diff / 2;
+                return offset + diff / 2;
             }
             else if (this.hexGridAlign === "right") {
-                return diff;
+                return offset + diff;
             }
             else {
                 console.error("Invalid value for hexGridAlign.");
