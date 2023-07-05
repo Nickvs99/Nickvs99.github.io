@@ -199,7 +199,13 @@ export default {
 
                 let columnWidth = null;
                 if(["even-left", "even-right"].includes(this.hexGridStyle)) {
-                    columnWidth = this.ncolumns;
+                    if(this.rowBalance) {
+                        let rowsRemaining = this.nrows - i;
+                        columnWidth = Math.ceil(nCellsLeft / rowsRemaining);
+                    }
+                    else {
+                        columnWidth = this.ncolumns;
+                    }
                 }
 
                 else if (["even-small", "even-large"].includes(this.hexGridStyle)) {

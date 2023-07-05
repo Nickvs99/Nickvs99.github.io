@@ -14,7 +14,6 @@
                 <HyperlinkIcon class="hyperlink-icon" href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/icons/LinkedInIcon.png" src_alt="LinkedIn logo"/>
                 <HyperlinkIcon class="hyperlink-icon" href="./docs/Resume - Nick van Santen.pdf" src_icon="assets/icons/cv-icon.jpg" src_alt="CV icon" download/>
             </HexagonGrid>
-
         </div>
         
         <img src="@/assets/me.jpg" alt="Picture of me" id="profile-img" width="275" height="275">
@@ -32,36 +31,6 @@ import HyperlinkIcon from "@/components/HyperlinkIcon.vue";
 
 export default {
     components: { GenericSection, HexagonGrid, HyperlinkIcon },
-
-    mounted() {
-        window.addEventListener("resize", this.onResize);
-        this.resizeHexGrid();
-    },
-    unmounted() {
-        window.removeEventListener("resize", this.onResize);
-    },
-
-    methods: {
-
-        resizeHexGrid() {
-            let container = this.$refs.contentContainer;    
-            let availableWidth = container.getBoundingClientRect().width;
-            
-            // Resize the grid for values between 260 and 347 pixels. For these values the hex grid takes
-            // a 3, 1 shape, which looks horrendous. Therefore manually resize, such that the grid makes
-            // a 2, 2 shape.
-            if(availableWidth <= 260 || availableWidth >= 347) {
-                this.$refs.hexGrid.$el.style.width = 100 + "%";
-            }
-            else {
-                this.$refs.hexGrid.$el.style.width = 259 + "px";
-            }    
-        },
-
-        onResize() {
-            this.resizeHexGrid();
-        },
-    }
 };
 
 </script>
