@@ -17,21 +17,45 @@ export default {
     /**
      * Gets the available width and then tries to place as many hexagons inside that width.
      * If there is insufficient width for all hexagons then place another row underneath.
+     * TODO unspaghetti this code. Too many if statements
      */ 
-    props: ["hexGridAlign", "hexGridStyle"],
 
-    /**
-     * 4 hex grid styles:
-     *  - even-large            Even rows have one entry more
-     *  - even-left             Even rows are offset to the left
-     *  - even-right            Even rows are offset to the right
-     *  - even-small            Even rows have one entry less
-     * 
-     * Even refers to the 2nd, 4th, 6th row and thus row index 1, 3, 5, ...
-     * 
-     * TODO would be cleaner if each of the four styles inherit from some base class, 
-     * current implementation uses a bunch of if statements.
-     */
+    props: {
+        /**
+         * Where should the grid be placed within the container. Options are
+         *  - left
+         *  - center
+         *  - right
+         */
+        hexGridAlign: {
+            type: String,
+            required: false,
+            default: "center",
+        },
+        /**
+         * The placement of the hexagon celss:
+         *  - even-large    Even rows have one entry more
+         *  - even-left     Even rows are offset to the left
+         *  - even-right    Even rows are offset to the right
+         *  - even-small    Even rows have one entry less
+         * 
+         * Even refers to the 2nd, 4th, 6th row and thus row index 1, 3, 5, ...
+         */
+        hexGridStyle: {
+            type: String,
+            required: false,
+            default: "even-right",
+        },
+        /**
+         * With row-balance enabled the cells are placed such that each row has approximately the
+         * same number of elements. This does only works for even-left and even-right.
+         */
+        rowBalance: {
+            type: Boolean,
+            required: false,
+            default: true,
+        },
+    },
 
     mounted() {        
         this.cellWidth = this.getCellWidth();
@@ -49,18 +73,22 @@ export default {
 
         initializeGrid() {
 
+            this.nCells = this.$el.children.length;
+
             let shape = new EquilateralShape(6, this.cellWidth / 2, 30); //TODO variable offset
 
             this.hexWidth = shape.width;
 
             this.determineGridSize();
             
+            this.nElementsForEachRow = this.calcElementForEachRow();
+            
             this.marginX = this.calcMarginX();
 
             // TODO hexwidth / 2 only works for a 30 degree offset
             this.positionOffsetY = 2 * (this.hexWidth / 2) * Math.cos(30 * (Math.PI / 180));
 
-            for (let i = 0; i < this.$el.children.length; i++)
+            for (let i = 0; i < this.nCells; i++)
             {
                 let [x, y] = this.calcPosition(i);
                 this.setElementPosition(this.$el.children[i], x, y);
@@ -132,7 +160,6 @@ export default {
          */
         calcPosition(i) {
             let [row, column] = this.determineRowAndColumn(i);
-
             let rowOffset = this.calcRowOffset(row);
             let positionOffsetX = this.marginX + rowOffset;
 
@@ -141,50 +168,63 @@ export default {
 
         determineRowAndColumn(i) {
             
-            if(["even-left", "even-right"].includes(this.hexGridStyle)) {
+            let rowIndex = 0;
+            let rowLength = this.nElementsForEachRow[rowIndex];
+
+            // Keep removing the length of the row until that is no longer possible
+            // i is then at its column value
+            while ( i > rowLength - 1) {
                 
-                let rowIndex= Math.floor(i / this.ncolumns);
-                let columnIndex = i - rowIndex * this.ncolumns;
-
-                return [rowIndex, columnIndex];
+                i -= rowLength;
+                
+                rowIndex += 1;
+                rowLength = this.nElementsForEachRow[rowIndex];
             }
-            else if (["even-small", "even-large"].includes(this.hexGridStyle)) {
 
-                let rowIndex = 0;
-                let rowLength = this.determineRowLength(rowIndex);
-
-                // Keep removing the length of the row until that is no longer possible
-                // i is then at its column value
-                while ( i > rowLength - 1) {
-                    
-                    i -= rowLength;
-                    
-                    rowIndex += 1;
-                    rowLength = this.determineRowLength(rowIndex);
-                }
-
-                let columnIndex = i;
-                return [rowIndex, columnIndex];
-            }
+            let columnIndex = i;
+            return [rowIndex, columnIndex];
+            
         },
 
-        determineRowLength(rowIndex) {
-            
-            if(["even-left", "even-right"].includes(this.hexGridStyle)) {
-                return this.ncolumns;
+        /**
+         * Computes the number of elements for each row. This can be different than the number of columns
+         * in case 'row-balance' is used, or when 'even-large' or 'even-small' is used.
+         */
+        calcElementForEachRow() {
+
+            let nElementsForEachRow = Array(this.nrows).fill(null);
+            let nCellsLeft = this.nCells;
+
+            for(let i=0; i<this.nrows; i++){
+
+                let columnWidth = null;
+                if(["even-left", "even-right"].includes(this.hexGridStyle)) {
+                    columnWidth = this.ncolumns;
+                }
+
+                else if (["even-small", "even-large"].includes(this.hexGridStyle)) {
+                
+                    let isEven = this.isRowEven(i);
+                
+                    if(this.hexGridStyle === "even-small") {
+                        columnWidth = isEven ? this.ncolumns - 1 : this.ncolumns;
+                    }
+                    else if (this.hexGridStyle === "even-large") {
+                        columnWidth = isEven ? this.ncolumns : this.ncolumns - 1;
+                    }
+                }
+
+                columnWidth = Math.min(columnWidth, nCellsLeft);
+
+                nElementsForEachRow[i] = columnWidth;
+                nCellsLeft -= columnWidth;
             }
 
-            else if (["even-small", "even-large"].includes(this.hexGridStyle)) {
-                
-                let isEven = this.isRowEven(rowIndex);
-                
-                if(this.hexGridStyle === "even-small") {
-                    return isEven ? this.ncolumns - 1 : this.ncolumns;
-                }
-                else if (this.hexGridStyle === "even-large") {
-                    return isEven ? this.ncolumns : this.ncolumns - 1;
-                }
-            }
+            // Not all columns might be used after this method, e.g. due to row-balance.
+            // Therefore the number of columns is reset.
+            this.ncolumns = Math.max(...nElementsForEachRow);
+
+            return nElementsForEachRow;
         },
 
         calcRowOffset(row) {
