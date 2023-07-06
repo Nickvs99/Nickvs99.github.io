@@ -11,12 +11,13 @@
 
     <div id="navbar-collapsable-content" :class="{'menu-active': isCollapsed && menuActive, collapsed: isCollapsed}">
 
-        <NavBarItem v-for="item in  navbarItems" :key="item.content"
-            :class="{collapsed: isCollapsed, active: item.section_id === currentActiveSection && !isCollapsed}"
-            @click="deactivateMenu"
-            :content="item.content"
-            :section_id="item.section_id"
-        />
+    <NavBarItem v-for="item in  navbarItems" :key="item.content"
+        :class="{collapsed: isCollapsed, active: item.section_id === currentActiveSection && !isCollapsed}"
+        @click="deactivateMenu"
+        :content="item.content"
+        :section_id="item.section_id"
+        :routerName="item.routerName"
+    />
 
     </div>
 </GenericSection>
@@ -36,11 +37,11 @@ export default {
             menuActive: false,
             navbarItemsWidth: 0,
             navbarItems: [
-                {"content": "Home", "section_id": "home-section"},
-                {"content": "About me", "section_id": "aboutme-section"},
-                {"content": "Projects", "section_id": "project-section"},
-                {"content": "Education", "section_id": "education-section"},
-                {"content": "Contact", "section_id": "contact-section"},
+                {"content": "Home", "section_id": "home-section", "routerName": "home"},
+                {"content": "About me", "section_id": "aboutme-section", "routerName": "about-me"},
+                {"content": "Projects", "section_id": "project-section", "routerName": "projects"},
+                {"content": "Education", "section_id": "education-section", "routerName": "edu"},
+                {"content": "Contact", "section_id": "contact-section", "routerName": "contact"},
             ],
             currentActiveSection: "",
         };
