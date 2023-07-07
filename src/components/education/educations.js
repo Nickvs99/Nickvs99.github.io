@@ -4,7 +4,7 @@ export const educations = [
         componentPath: "components/education/EducationMSc.vue",
     },
     {
-        title: "BSc Physics and astronomy",
+        title: "BSc Physics & astronomy",
         componentPath: "components/education/EducationBSc.vue",
     },
     {

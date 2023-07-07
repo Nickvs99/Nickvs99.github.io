@@ -21,6 +21,7 @@
 <script>
 
 import { defineAsyncComponent } from "vue";
+import { scrollIntoView } from "@/js/util";
 
 import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 import ProjectKeyword from "@/components/projects/ProjectKeyword.vue";
@@ -44,7 +45,7 @@ export default {
         window.addEventListener("click", this.onClick);
         this.initProjectDoc();
 
-        this.scrollInToView();
+        scrollIntoView("project-section");
     },
 
     unmounted() {
@@ -69,18 +70,6 @@ export default {
             this.contentSrc = project.contentSrc;
             this.githubLink = project.github;
         },
-
-        scrollInToView() {
-
-            let target = document.getElementById("project-section");
-            let targetPosition = target.getBoundingClientRect().top;
-
-            let offset = document.getElementById("navbar").offsetHeight;
-            let offsetPosition = targetPosition + window.pageYOffset - offset;
-
-            window.scrollTo({top: offsetPosition, behavior: "smooth"});
-        },
-
     }
 };
 

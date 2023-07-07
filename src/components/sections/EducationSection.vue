@@ -10,7 +10,6 @@
             :class="['school-navbar-item', {active: isActive(educationObj.title)}]"
         > 
             {{ educationObj.title }} 
-            <ShareButton :resolve="{name: 'education', params: {education: educationObj.title}}"/>
         </button>
     </div>
 
@@ -21,6 +20,8 @@
 </template>
 
 <script>
+
+import { scrollIntoView } from "@/js/util";
 
 import GenericSection from "./GenericSection.vue";
 
@@ -36,8 +37,16 @@ export default {
             educationObjs: null,
         };
     },
-    mounted() {
+    async mounted() {
         this.educationObjs = educations;
+
+        // Wait for the router to be resolved. This only occurs on an f5 or hard-reload
+        await this.$router.isReady();
+
+        // Scroll to education page, unless a project parameter is present since it takes precedence
+        if(this.$route.params.education && !this.$route.params.project) {
+            scrollIntoView("education-section");
+        }
     },
     methods: {
         goTo(educationTitle) {

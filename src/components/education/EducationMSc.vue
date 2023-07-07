@@ -1,11 +1,13 @@
 <template>
 
 <div>
-    <EducationImage :src="require(`@/assets/images/lab_42.jpg`)" title="University of Amsterdam, Computational Science Lab"/>
-
+    <h1>MSc Computational Science <ShareButton :resolve="{name: 'education'}"/></h1>
+    
     <div class="education-quote">
         &ldquo;&nbsp;Observing the world through a computational and mathematical lens.&nbsp;&rdquo;
     </div>
+
+    <EducationImage :src="require(`@/assets/images/lab_42.jpg`)" title="University of Amsterdam, Computational Science Lab"/>
 
     <p>
         Computational science focuses on developing computational models to explain, understand and improve on real-world problems.
@@ -46,6 +48,8 @@
 import { sortByString } from "@/js/sort.js";
 import HexLi from "@/components/HexLi.vue";
 
+import ShareButton from "@/components/ShareButton.vue";
+
 import EducationImage from "./EducationImage.vue";
 
 import CalendarIcon from "@/assets/icons/CalendarIcon.vue";
@@ -53,7 +57,7 @@ import LocationIcon from "@/assets/icons/LocationIcon.vue";
 import SchoolIcon from "@/assets/icons/SchoolIcon.vue";
 
 export default {
-    components: { CalendarIcon, EducationImage, HexLi, LocationIcon, SchoolIcon},
+    components: { CalendarIcon, EducationImage, HexLi, LocationIcon, ShareButton, SchoolIcon},
     data() {
         return {
             courses: [
@@ -80,7 +84,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/components/education/education-styles.scss";
 
+@import "@/components/education/education-styles.scss";
 
 </style>

@@ -1,10 +1,13 @@
 .education-quote {
-    font-size: xx-large;
+    display: inline-block;
+    width: 100%;
+
+    font-size: 1.25em;
     font-style: italic;
     text-align: center;
     text-wrap: balance;
 
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
 }
 
 .course-container {
@@ -44,4 +47,8 @@
     > :not(svg) {
         flex: 1;
     }
+}
+
+#education-section p:first-of-type {
+    margin-block-start: 0;
 }

@@ -27,7 +27,7 @@ export default {
 
 .img-container {
     position: relative;
-    float: left;
+    float: right;
     
     width: 50%;
 

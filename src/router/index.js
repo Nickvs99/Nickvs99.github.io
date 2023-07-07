@@ -6,7 +6,7 @@ import { isValidEducation, isValidProject } from "./validation.js";
 import ProjectDoc from "@/components/projects/ProjectDoc.vue";
 import ProjectOverview from "@/components/projects/ProjectOverview.vue";
 
-import { sleep } from "@/js/util.js";
+import { scrollIntoView, sleep } from "@/js/util.js";
 
 const routes = [
     {
@@ -150,21 +150,6 @@ function updateMetaTags(to) {
         descEl.setAttribute("content", to.meta.description || DEFAULT_DESCRIPTION);
 
     });
-}
-
-/**
- * Scrolls towards the associated region. A offset is applied such
- * that the navigation bar does not overlap with the section. 
- */
-function scrollIntoView(id) {
-
-    let target = document.getElementById(id);
-    let targetPosition = target.getBoundingClientRect().top;
-
-    let offset = document.getElementById("navbar").offsetHeight;
-    let offsetPosition = targetPosition + window.pageYOffset - offset;
-
-    window.scrollTo({top: offsetPosition, behavior: "smooth"});
 }
 
 export default router;

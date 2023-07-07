@@ -1,12 +1,13 @@
 <template>
 
 <div>
-    <EducationImage :src="require(`@/assets/images/science_park.jpg`)" title="University of Amsterdam, FNWI"/>
-    
+    <h1>BSc Physics &amp; Astronomy <ShareButton :resolve="{name: 'education'}"/></h1>
+
     <div class="education-quote">
-        &ldquo;&nbsp;Understanding the inner workings of the universe.&nbsp;&rdquo;
+        &ldquo;&nbsp;Grasping the inner workings of the universe.&nbsp;&rdquo;
     </div>
 
+    <EducationImage :src="require(`@/assets/images/science_park.jpg`)" title="University of Amsterdam, FNWI"/>
 
     <p>
         Physics and Astronomy not only gave me a better grasp on reality itself, but it also developed my problem-solving and maths skills which are universally applicable. 
@@ -64,6 +65,8 @@
 import { sortByString } from "@/js/sort.js";
 import HexLi from "@/components/HexLi.vue";
 
+import ShareButton from "@/components/ShareButton.vue";
+
 import EducationImage from "./EducationImage.vue";
 
 import CalendarIcon from "@/assets/icons/CalendarIcon.vue";
@@ -71,7 +74,7 @@ import LocationIcon from "@/assets/icons/LocationIcon.vue";
 import SchoolIcon from "@/assets/icons/SchoolIcon.vue";
 
 export default {
-    components: { CalendarIcon, EducationImage, HexLi, LocationIcon, SchoolIcon},
+    components: { CalendarIcon, EducationImage, HexLi, LocationIcon, ShareButton, SchoolIcon},
     data() {
         return {
             physicsCourses: [
