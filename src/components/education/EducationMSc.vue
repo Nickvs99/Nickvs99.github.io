@@ -1,7 +1,7 @@
 <template>
 
 <div>
-    <h1>MSc Computational Science <ShareButton :resolve="{name: 'education'}"/></h1>
+    <h2>MSc Computational Science <ShareButton :resolve="{name: 'education'}"/></h2>
     
     <div class="education-quote">
         &ldquo;&nbsp;Observing the world through a computational and mathematical lens.&nbsp;&rdquo;

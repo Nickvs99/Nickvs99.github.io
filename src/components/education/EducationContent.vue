@@ -58,8 +58,8 @@ export default {
 .education-content {
     background-color: var(--clr-primary-dark);
 
-    margin-top: 10px;
-    padding: 10px;
+    margin-top: 1em;
+    padding: 0 1em 1em 1em;
 
     overflow: auto;
 }

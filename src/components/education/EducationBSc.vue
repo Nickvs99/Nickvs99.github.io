@@ -1,7 +1,7 @@
 <template>
 
 <div>
-    <h1>BSc Physics &amp; Astronomy <ShareButton :resolve="{name: 'education'}"/></h1>
+    <h2>BSc Physics &amp; Astronomy <ShareButton :resolve="{name: 'education'}"/></h2>
 
     <div class="education-quote">
         &ldquo;&nbsp;Grasping the inner workings of the universe.&nbsp;&rdquo;
@@ -25,7 +25,7 @@
         </ul>
     </details>
 
-    <h2>Minor programming &amp; extracurricular courses</h2>
+    <h3>Minor programming &amp; extracurricular courses</h3>
 
     <p>
         Although physics was interesting, it was not the right fit for me. 

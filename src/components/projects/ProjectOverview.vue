@@ -269,11 +269,11 @@ export default {
 .arrow-sort {
 
     &:not(.ascending) {
-        --content: "⬇"; // Down-arrow
+        --content: "🠗"; // Down-arrow
     }    
 
     &.ascending {
-        --content: "⬆"; // Up-arrow
+        --content: "🠕"; // Up-arrow
     }
     
     &:after {
@@ -281,10 +281,9 @@ export default {
 
         position: relative;
         bottom: 1px;
-        left: 1px;
+        left: 3px;
 
-        font-size: 28px;
-        font-weight: 200;
+        font-size: 1.75rem;
     }
 }
 

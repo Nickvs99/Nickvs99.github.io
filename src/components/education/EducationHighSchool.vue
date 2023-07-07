@@ -2,13 +2,13 @@
 
 <div>
 
-    <h1>High school <ShareButton :resolve="{name: 'education'}"/></h1>
+    <h2>High school <ShareButton :resolve="{name: 'education'}"/></h2>
 
     <div class="education-quote">
         &ldquo;&nbsp;All stories start from small beginnings.&nbsp;&rdquo;
     </div>
     
-    <EducationImage :src="require(`@/assets/images/kaj_munk_college.jpg`)" title="University of Amsterdam"/>
+    <EducationImage :src="require(`@/assets/images/kaj_munk_college.jpg`)" title="Kaj Munk College"/>
 
     <p>
         In high school, I developed my interest in STEM-related fields. 

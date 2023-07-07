@@ -25,7 +25,7 @@ export default {
 .github-link-img {
     object-fit: cover;
     aspect-ratio: 1/1;
-    width: 50px;
+    width: 45px;
 }
 
 </style>

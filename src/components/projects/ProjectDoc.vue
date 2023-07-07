@@ -90,8 +90,7 @@ export default {
 .project-title-container { 
     display: flex;
     justify-content: space-between;
-
-    margin-bottom: 1em;
+    align-items: center;
 }
 
 .project-doc-keyword-container {
