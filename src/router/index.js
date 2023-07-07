@@ -6,6 +6,8 @@ import { isValidEducation, isValidProject } from "./validation.js";
 import ProjectDoc from "@/components/projects/ProjectDoc.vue";
 import ProjectOverview from "@/components/projects/ProjectOverview.vue";
 
+import { sleep } from "@/js/util.js";
+
 const routes = [
     {
         path: "/",
@@ -164,9 +166,5 @@ function scrollIntoView(id) {
 
     window.scrollTo({top: offsetPosition, behavior: "smooth"});
 }
-
-function sleep(ms) {
-    return new Promise(r => setTimeout(r, ms));
-};
 
 export default router;

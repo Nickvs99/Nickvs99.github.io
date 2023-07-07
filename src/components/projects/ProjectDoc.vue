@@ -3,8 +3,7 @@
 <div class="project-doc-container" >
     <div class="project-title-container">
         <div>
-            <h2 class="project-title"> {{ title }} </h2>
-            <div class="project-year">, {{ year }} </div>            
+            <h2 class="project-title"> {{ title }} <ShareButton :resolve="{name: 'project'}"/></h2>      
         </div>
 
         <ProjectGithubLink v-if="githubLink" :href=githubLink></ProjectGithubLink>
@@ -27,9 +26,10 @@ import ProjectGithubLink from "@/components/projects/ProjectGithubLink.vue";
 import ProjectKeyword from "@/components/projects/ProjectKeyword.vue";
 import { projects } from "./projects.js";
 
-export default {
-    components: { ProjectGithubLink, ProjectKeyword},
+import ShareButton from "@/components/ShareButton.vue";
 
+export default {
+    components: { ProjectGithubLink, ProjectKeyword, ShareButton},
     data() {
         return {
             title: "",
@@ -67,7 +67,6 @@ export default {
             this.title = project.title;
             this.keywords = project.keywords;
             this.contentSrc = project.contentSrc;
-            this.year = project.year;
             this.githubLink = project.github;
         },
 
@@ -90,7 +89,6 @@ export default {
 <style lang="scss" scoped>
 
 @import "@/components/projects/project-styles.scss";
-
 
 .project-doc-container {
     position: relative;

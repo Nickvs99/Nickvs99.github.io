@@ -1,7 +1,8 @@
 <template>
 
 <GenericSection id="aboutme-section">
-    <h1>About me</h1>
+
+    <h1>About me <ShareButton :resolve="{name: 'about-me'}"/></h1>
 
     <div class="content-container">
         <div class="content">
@@ -50,8 +51,10 @@ import SchoolIcon from "@/assets/icons/SchoolIcon.vue";
 import TerminalIcon from "@/assets/icons/TerminalIcon.vue";
 import TranslateIcon from "@/assets/icons/TranslateIcon.vue";
 
+import ShareButton from "@/components/ShareButton.vue";
+
 export default {
-    components: { GenericSection, CakeIcon, HomePinIcon, MailIcon, PersonIcon, SchoolIcon, TerminalIcon, TranslateIcon }
+    components: { GenericSection, CakeIcon, HomePinIcon, MailIcon, PersonIcon, SchoolIcon, ShareButton, TerminalIcon, TranslateIcon }
 };
 
 </script>

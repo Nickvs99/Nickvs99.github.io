@@ -2,7 +2,7 @@
 <GenericSection id="project-section">
     
     <div class="project-title-row">
-        <h1>Projects</h1>
+        <h1>Projects <ShareButton :resolve="{name: 'projects'}"/></h1>
         <ArrowBackIcon v-press v-if="showGoBackIcon" @click=goToOverview role="button" tabindex="0"/>
     </div>
 
@@ -25,10 +25,11 @@ import FadeTransition from "../transitions/FadeTransition.vue";
 import router from "@/router";
 
 import GenericSection from "./GenericSection.vue";
+import ShareButton from "@/components/ShareButton.vue";
 
 export default {
     name: "ProjectSection",
-    components: { FadeTransition, GenericSection, ArrowBackIcon },
+    components: { FadeTransition, GenericSection, ArrowBackIcon, ShareButton },
     data() {
         return {
             showGoBackIcon: true,

@@ -2,13 +2,15 @@
 
 <GenericSection id="education-section">
     
-    <h1>Education</h1>
+    <h1>Education <ShareButton :resolve="{name: 'edu'}"/></h1>
+    
     <div id="school-navbar">
         <button v-for="educationObj in educationObjs" :key="educationObj.title" 
             @click="goTo(educationObj.title)" 
             :class="['school-navbar-item', {active: isActive(educationObj.title)}]"
         > 
             {{ educationObj.title }} 
+            <ShareButton :resolve="{name: 'education', params: {education: educationObj.title}}"/>
         </button>
     </div>
 
@@ -25,8 +27,10 @@ import GenericSection from "./GenericSection.vue";
 import EducationContent from "@/components/education/EducationContent.vue";
 import { educations, getEducationFromParams } from "@/components/education/educations.js";
 
+import ShareButton from "@/components/ShareButton.vue";
+
 export default {
-    components: { EducationContent, GenericSection },
+    components: { EducationContent, GenericSection, ShareButton },
     data() {
         return {
             educationObjs: null,

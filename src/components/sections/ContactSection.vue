@@ -1,8 +1,7 @@
 <template>
 
 <GenericSection id="contact-section">
-    <h1>Get in touch!</h1>
-
+    <h1>Get in touch! <ShareButton :resolve="{name: 'contact'}"/></h1>
 
     <form class="gform" method="POST" 
         action="https://script.google.com/macros/s/AKfycbwRSKg41eBdC3XX2BihwRH-EdzZlqQx4Yqqsus_sXwHNDzcziimJ6ByyTg3T7zZa74G6g/exec"
@@ -51,8 +50,10 @@ import ContactMailIconThin from "@/assets/icons/ContactMailIconThin.vue";
 import LoadIcon from "@/components/LoadIcon.vue";
 import GenericSection from "./GenericSection.vue";
 
+import ShareButton from "@/components/ShareButton.vue";
+
 export default {
-    components: { ContactMailIconThin, GenericSection, LoadIcon },
+    components: { ContactMailIconThin, GenericSection, LoadIcon, ShareButton},
     mounted() {
         // Set min height, such that the section does not shrink during loading, or on a success message
         this.$el.style.minHeight = this.$el.offsetHeight + "px";

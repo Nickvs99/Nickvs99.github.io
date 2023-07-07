@@ -5,7 +5,8 @@
     <div id="home-content">
         
         <div id="home-content-left" ref="contentContainer">
-            <h1 id="title-greeting">Hi, I'm Nick</h1>
+            <h1 id="title-greeting">Hi, I am Nick <ShareButton :resolve="{name: 'home'}"/></h1>
+            
             <p id="summary-paragraph">A <b>Computational Science</b> master student with a bachelor level background in <b>Physics and Astronomy</b>. Loves a challenge and has a great interest in a wide range of fields, ranging from game development to finance, and from physics to web development. And although I enjoy creating websites, I am definetly not a web designer :).</p>
             
             <HexagonGrid id="hexGrid" ref="hexGrid" hexGridAlign="center" hexGridStyle="even-right">
@@ -28,9 +29,10 @@
 import GenericSection from "@/components/sections/GenericSection.vue";
 import HexagonGrid from "@/components/grid/HexagonGrid.vue";
 import HyperlinkIcon from "@/components/HyperlinkIcon.vue";
+import ShareButton from "@/components/ShareButton.vue";
 
 export default {
-    components: { GenericSection, HexagonGrid, HyperlinkIcon },
+    components: { GenericSection, HexagonGrid, HyperlinkIcon, ShareButton },
 };
 
 </script>
