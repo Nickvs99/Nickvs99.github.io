@@ -1,13 +1,14 @@
 .education-quote {
-    display: inline-block;
-    width: 100%;
-
     font-size: 1.25em;
     font-style: italic;
     text-align: center;
     text-wrap: balance;
 
     margin-bottom: 1em;
+    margin-top: 1em;
+    @media(max-width: $screen-width-lg) {
+        margin-top: 0;
+    }
 }
 
 .course-container {

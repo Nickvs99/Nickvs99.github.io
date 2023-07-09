@@ -23,15 +23,11 @@ export default {
 
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
 .img-container {
     position: relative;
-    float: right;
-    
-    width: 50%;
-
-    margin: 0 10px 10px 0;
+    margin-top: 1em; //Same margin as quote
 
     &::after{
         content: "";

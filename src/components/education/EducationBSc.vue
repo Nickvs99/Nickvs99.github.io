@@ -3,59 +3,64 @@
 <div>
     <h2>BSc Physics &amp; Astronomy <ShareButton :resolve="{name: 'education'}"/></h2>
 
-    <div class="education-quote">
-        &ldquo;&nbsp;Grasping the inner workings of the universe.&nbsp;&rdquo;
-    </div>
-
-    <EducationImage :src="require(`@/assets/images/science_park.jpg`)" title="University of Amsterdam, FNWI"/>
-
-    <p>
-        Physics and Astronomy not only gave me a better grasp on reality itself, but it also developed my problem-solving and maths skills which are universally applicable. 
-    </p>
-
-    <p>
-        My bachelor thesis was about the vertical structure of protoplanetary disks and especially on reconciling the mismatch between observed and simulated grain radii within the disk.
-        You can read more about the project on my <a href="./docs/Thesis - Nick van Santen.pdf" download>thesis</a>.
-    </p>
-
-    <details>
-        <summary> View all physics courses </summary>
-        <ul id="physics-container" class="course-container">
-            <HexLi v-for="course in physicsCourses" :key="course">{{ course }}</HexLi>
-        </ul>
-    </details>
-
-    <h3>Minor programming &amp; extracurricular courses</h3>
-
-    <p>
-        Although physics was interesting, it was not the right fit for me. 
-        I needed a more practical challenge. 
-        Thankfully, I was able to achieve this through the minor programming and several extracurricular courses. 
-        These courses persuaded me to move away from physics and shift my attention to Computational Science. 
-    </p>
-
-    <details>
-        <summary> View all extracurricular courses </summary>
-        <ul class="course-container">
-            <HexLi v-for="course in extraCourses" :key="course">{{ course }}</HexLi>
-        </ul>
-    </details>
-
-    <div class="icon-content-container">
-        <div class="content">
-            <SchoolIcon />
-            <div>University of Amsterdam &amp; Vrije Universiteit Amsterdam</div>
-        </div>
-        <div class="content">
-            <LocationIcon />
-            <div>Amsterdam, The Netherlands</div>
-        </div>
-        <div class="content">
-            <CalendarIcon />
-            <div>2017-2021</div>
-        </div>
-    </div>
-
+    <ParagraphImageLayout>
+        <template #paragraph-start>
+            <div class="education-quote">
+                &ldquo;&nbsp;Grasping the inner workings of the universe.&nbsp;&rdquo;
+            </div>
+        
+            <p>
+                Physics and Astronomy not only gave me a better grasp on reality itself, but it also developed my problem-solving and maths skills which are universally applicable. 
+            </p>
+        
+            <p>
+                My bachelor thesis was about the vertical structure of protoplanetary disks and especially on reconciling the mismatch between observed and simulated grain radii within the disk.
+                You can read more about the project on my <a href="./docs/Thesis - Nick van Santen.pdf" download>thesis</a>.
+            </p>
+        
+            <details>
+                <summary> View all physics courses </summary>
+                <ul id="physics-container" class="course-container">
+                    <HexLi v-for="course in physicsCourses" :key="course">{{ course }}</HexLi>
+                </ul>
+            </details>
+        
+            <h3>Minor programming &amp; extracurricular courses</h3>
+        
+            <p>
+                Although physics was interesting, it was not the right fit for me. 
+                I needed a more practical challenge. 
+                Thankfully, I was able to achieve this through the minor programming and several extracurricular courses. 
+                These courses persuaded me to move away from physics and shift my attention to Computational Science. 
+            </p>
+        
+            <details>
+                <summary> View all extracurricular courses </summary>
+                <ul class="course-container">
+                    <HexLi v-for="course in extraCourses" :key="course">{{ course }}</HexLi>
+                </ul>
+            </details>
+        
+            <div class="icon-content-container">
+                <div class="content">
+                    <SchoolIcon />
+                    <div>University of Amsterdam &amp; Vrije Universiteit Amsterdam</div>
+                </div>
+                <div class="content">
+                    <LocationIcon />
+                    <div>Amsterdam, The Netherlands</div>
+                </div>
+                <div class="content">
+                    <CalendarIcon />
+                    <div>2017-2021</div>
+                </div>
+            </div>
+        </template>
+        
+        <template #image>
+            <EducationImage :src="require(`@/assets/images/science_park.jpg`)" title="University of Amsterdam, FNWI"/>
+        </template>
+    </ParagraphImageLayout>
 </div>
 
 </template>
@@ -65,6 +70,7 @@
 import { sortByString } from "@/js/sort.js";
 import HexLi from "@/components/HexLi.vue";
 
+import ParagraphImageLayout from "@/components/ParagraphImageLayout.vue";
 import ShareButton from "@/components/ShareButton.vue";
 
 import EducationImage from "./EducationImage.vue";
@@ -74,7 +80,7 @@ import LocationIcon from "@/assets/icons/LocationIcon.vue";
 import SchoolIcon from "@/assets/icons/SchoolIcon.vue";
 
 export default {
-    components: { CalendarIcon, EducationImage, HexLi, LocationIcon, ShareButton, SchoolIcon},
+    components: { CalendarIcon, EducationImage, HexLi, LocationIcon, ParagraphImageLayout, ShareButton, SchoolIcon},
     data() {
         return {
             physicsCourses: [
