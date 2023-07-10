@@ -1,20 +1,8 @@
 /* general styles for the project docs. */
 
-.project-img {
-    margin: 0 10px;
-    max-width: calc(min(100%, 400px));
-
-    float:right;
-
-    @media(max-width: $screen-width-lg) {
-        max-width: calc(min(60%, 400px));
-    }
-
-    @media(max-width: $screen-width-md) {
-        display: block;
-        float: none;
-        max-width: calc(min(100%, 400px));
-        margin: 0 auto;
+.project-doc-container {
+    img, video {
+        margin-top: 1em;
     }
 }
 

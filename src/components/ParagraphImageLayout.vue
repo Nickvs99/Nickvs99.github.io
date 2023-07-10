@@ -2,14 +2,14 @@
 
 <div class="paragraph-image-container">
 
-    <div v-if="isCollapsed" class="collapsed">
-        <div class="paragraph">
+    <div v-if="isCollapsed" class="collapsed paragraph">
+        <div>
             <slot name="paragraph-start"/>
         </div>
-        <div>
+        <div class="p-image">
             <slot name="image" />
         </div>
-        <div class="paragraph">
+        <div>
             <slot name="paragraph-end" />
         </div>            
     </div>
@@ -29,7 +29,7 @@
 <script>
     
 export default {
-    name: "testD",
+    name: "ParagraphImageLayout",
     data() {
         return {
             isCollapsed: false,
@@ -54,10 +54,23 @@ export default {
 </script>
     
 <style lang="scss">
+
+.paragraph-image-container {
+    .p-image > * {
+        display: block;
+        width: calc(min(60ch, 100%));
+        margin: auto;
+    }   
+}
     
 .collapsed {
     display: flex;
     flex-direction: column;
+
+    .p-image {
+        margin: auto;
+        max-width: calc(min(50ch, 100%));
+    }
 }
 
 .notCollapsed {
