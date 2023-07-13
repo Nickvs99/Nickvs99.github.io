@@ -15,7 +15,7 @@
         
             <p>
                 My bachelor thesis was about the vertical structure of protoplanetary disks and especially on reconciling the mismatch between observed and simulated grain radii within the disk.
-                You can read more about the project on my <a href="./docs/Thesis - Nick van Santen.pdf" download>thesis</a>.
+                You can read more about the project on my <a href="/docs/BSc Thesis - Nick van Santen.pdf" download>thesis</a>.
             </p>
         
             <details>

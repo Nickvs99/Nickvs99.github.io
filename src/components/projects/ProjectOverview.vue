@@ -217,7 +217,7 @@ export default {
 
 #project-card-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(305px, 1fr)); //305px is the minimum size to get processing projects on one line
     gap: 10px;
 
     margin-top: 20px;

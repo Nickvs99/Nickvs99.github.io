@@ -9,11 +9,11 @@
         </p>
 
         <p>
-            This data can be compared between users to create their own personal Spotify playlist, which both users should enjoy. 
-            Perfect for a long drive or a small party.
+            This data can be compared between users to create their own combined personal Spotify playlist, which both users should enjoy. 
+            Perfect for a roadtrip or a party.
         </p>
 
-        <p> Give it a try at <a href="https://spotifyfy.herokuapp.com" target="_blank">https://spotifyfy.herokuapp.com</a>! </p>
+        <p> Unfortanetly, MusicMatch is no longer available. </p>
     </template>
 </ParagraphImageLayout>
     

@@ -77,6 +77,9 @@ export default {
 
 .project-card-keyword-container {
     margin-top: auto;
+    
+    display: flex;
+    flex-wrap: wrap-reverse;
 }
 
 </style>

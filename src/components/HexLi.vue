@@ -38,7 +38,7 @@ ul:has(> .hex-li-container) {
 
 .hex-li-container {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0 0.5em;
 }
 

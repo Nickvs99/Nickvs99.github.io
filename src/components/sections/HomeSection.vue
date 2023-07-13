@@ -13,7 +13,7 @@
                 <HyperlinkIcon class="hyperlink-icon" href="mailto:vansantennick@gmail.com" src_icon="assets/icons/MailIcon.svg" src_alt="Email icon"/>
                 <HyperlinkIcon class="hyperlink-icon" href="https://github.com/Nickvs99" src_icon="assets/icons/github-logo.png" src_alt="Github logo"/>
                 <HyperlinkIcon class="hyperlink-icon" href="https://www.linkedin.com/in/nick-van-santen-51a2a8173/" src_icon="assets/icons/LinkedInIcon.png" src_alt="LinkedIn logo"/>
-                <HyperlinkIcon class="hyperlink-icon" href="./docs/Resume - Nick van Santen.pdf" src_icon="assets/icons/cv-icon.jpg" src_alt="CV icon" download/>
+                <HyperlinkIcon class="hyperlink-icon" href="/docs/Resume - Nick van Santen.pdf" src_icon="assets/icons/cv-icon.jpg" src_alt="CV icon" download/>
             </HexagonGrid>
         </div>
         

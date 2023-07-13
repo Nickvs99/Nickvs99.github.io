@@ -11,7 +11,7 @@
             <h3>Random painting</h3>       
         </template>
         <template #image>
-            <video autoplay muted loop>
+            <video autoplay muted loop class="align-with-h3">
                 <source src="@/assets/projects/Random_painting.mp4" type="video/mp4">
                 Video shows a canvas which is slowly painted with randomly coloured circles.
             </video>        
@@ -25,14 +25,13 @@
             </p>        
         </template>
     </ParagraphImageLayout>
-
     
     <ParagraphImageLayout>
         <template #paragraph-start>
             <h3>Bubbles</h3>  
         </template>
         <template #image>
-            <video autoplay muted loop>
+            <video autoplay muted loop class="align-with-h3">
                 <source src="@/assets/projects/Bubbles.mp4" type="video/mp4">
                 Video shows bubbles moving around.
             </video>    
@@ -45,14 +44,13 @@
             </p>    
         </template>
     </ParagraphImageLayout>
-
     
     <ParagraphImageLayout>
         <template #paragraph-start>
             <h3>Firework</h3>            
         </template>
         <template #image>
-            <video autoplay muted loop>
+            <video autoplay muted loop class="align-with-h3">
                 <source src="@/assets/projects/Firework.mp4" type="video/mp4">
                 Video shows interactive firework.
             </video>    
@@ -65,14 +63,13 @@
             </p>    
         </template>
     </ParagraphImageLayout>
-
     
     <ParagraphImageLayout>
         <template #paragraph-start>
             <h3>Pong</h3>
         </template>
         <template #image>
-            <video autoplay muted loop>
+            <video autoplay muted loop class="align-with-h3">
                 <source src="@/assets/projects/Pong.mp4" type="video/mp4">
                 Video shows the classic game pong.
             </video>    
@@ -86,13 +83,12 @@
         </template>
     </ParagraphImageLayout>
 
-    
     <ParagraphImageLayout>
         <template #paragraph-start>
             <h3>Solar system</h3>      
         </template>
         <template #image>
-            <video autoplay muted loop>
+            <video autoplay muted loop class="align-with-h3">
                 <source src="@/assets/projects/Solarsystem.mp4" type="video/mp4">
                 Video shows a N-body simulation.
             </video>    
@@ -107,14 +103,13 @@
             </p>    
         </template>
     </ParagraphImageLayout>
-
     
     <ParagraphImageLayout>
         <template #paragraph-start>
             <h3>Tree tent puzzle</h3>        
         </template>
         <template #image>
-            <video id="tree-tent-puzzle-video" autoplay muted loop>
+            <video id="tree-tent-puzzle-video" autoplay muted loop class="align-with-h3">
                 <source src="@/assets/projects/Tree_tent_puzzle.mp4" type="video/mp4">
                 Video shows the solving of a tree tent puzzle.
             </video>    
@@ -138,14 +133,13 @@
             </p>    
         </template>
     </ParagraphImageLayout>
-
     
     <ParagraphImageLayout>
         <template #paragraph-start>
             <h3>Shortest distance</h3>  
         </template>
         <template #image>
-            <video autoplay muted loop>
+            <video autoplay muted loop class="align-with-h3">
                 <source src="@/assets/projects/Shortest_distance.mp4" type="video/mp4">
                 Video shows a brute force method to compute the shortest distnace between a set of random points.
             </video>    
@@ -178,21 +172,11 @@ export default {
 
 <style lang="scss" scoped>
 
+@import "@/components/projects/project-styles.scss";
+
 #processing-container {
     display: flex;
     flex-direction: column;
-    
-    .notCollapsed {
-        img, video {
-            margin-top: 3.5em;
-        }
-    }
-
-    .collapsed {
-        img, video {
-            margin-top: 0;
-        }
-    }
 }
 
 </style>

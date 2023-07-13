@@ -1,5 +1,29 @@
 export const projects = [
     {
+        title: "AI Racing",
+        description: "A physics-based car controlled through a neural network trained by an evolutionary algorithm.",
+        keywords: ["Unity", "C#"],
+        contentSrc: "components/projects/contents/ProjectAIRacing.vue",
+        year: 2022,
+        github: "https://github.com/Nickvs99/AI-racing",
+    },
+    {
+        title: "DnD companion",
+        description: "A website which provides easy-access to additional information to the DnD campaigns.",
+        keywords: ["Vue", "Javascript", "SCSS", "HTML"],
+        contentSrc: "components/projects/contents/ProjectDnDCompanion.vue",
+        year: 2023,
+        github: "https://github.com/Nickvs99/DnD-campaign-companion",
+    },
+    {
+        title: "MSc thesis",
+        description: "Parameter optimization via an evolutionary algorithm asymmetric gene expression.",
+        keywords: ["COMSOL", "Python"],
+        contentSrc: "components/projects/contents/ProjectMScThesis.vue",
+        year: 2023,
+        github: "https://github.com/Nickvs99/MSc-thesis",
+    },
+    {
         title: "MusicMatch",
         description: "A web app that provides the ability to easily compare music tastes between people.",
         keywords: ["Python", "Django", "Javascript", "SCSS", "HTML"],
@@ -18,7 +42,7 @@ export const projects = [
     {
         title: "Boids",
         description: "Simulate flocking behaviour of bird like objects.",
-        keywords: ["C++", "SFML"],
+        keywords: ["C++"],
         contentSrc: "components/projects/contents/ProjectBoids.vue",
         year: 2021,
         github: "https://github.com/Nickvs99/Boids",
@@ -26,7 +50,7 @@ export const projects = [
     {
         title: "Mandelbrot set",
         description: "An interactive version of the Mandelbrot set",
-        keywords: ["C++", "SFML"],
+        keywords: ["C++"],
         contentSrc: "components/projects/contents/ProjectMandelbrot.vue",
         year: 2021,
         github: "https://github.com/Nickvs99/Mandelbrot",

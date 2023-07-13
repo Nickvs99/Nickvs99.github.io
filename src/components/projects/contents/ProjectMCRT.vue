@@ -14,7 +14,7 @@
     </template>
     <template #paragraph-end>
         <p>
-            The knowledge about MCRT was used for my BSc thesis about the vertical structure of protoplanetary disks
+            The knowledge about MCRT was used for my <a href="/docs/BSc Thesis - Nick van Santen.pdf" download>BSc thesis</a> about the vertical structure of protoplanetary disks
             , which was able to overcome the difference in observed grain radii and simulated radii.
             A top view of a protoplanetary disk can be seen in the image. 
         </p> 

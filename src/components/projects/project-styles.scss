@@ -4,6 +4,19 @@
     img, video {
         margin-top: 1em;
     }
+
+    .notCollapsed {
+        img.align-with-h3, video.align-with-h3 {
+            margin-top: 3.5em;
+        }
+    }
+
+    .collapsed {
+        img.align-with-h3, video.align-with-h3 {
+            margin-top: 0;
+     
+        }
+    }
 }
 
 .project-title {
